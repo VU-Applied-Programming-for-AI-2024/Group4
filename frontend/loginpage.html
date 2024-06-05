@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!-- This html code is of the login page-->
+<html lang="eng">
+        <head>
+            <!--Basic set up of the design-->
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="styles.css" />
+
+            <title>Login</title>
+        </head>
+
+        <body>
+            <!--Creating navigation bar at top of screen-->
+            <div class="navbar">
+                <div class="logo">
+                    <a href="index.html">Logo</a>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="dropDown()">Menu<i class="fa fa-caret-down"></i></button>
+
+                    <div class="dropdown-content" id="homepageDropdown">
+                        <a href="index.html">Home</a>
+                        <a href="loginpage.html">Login</a>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <!--Creating login title and form-->
+                <h2>Login</h2>
+                <form>
+                    <label for="username:"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="username" required>
+                    <br>
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <br>
+                    <button type="submit" onclick="window.location.href='gamepage.html'">Login</button>
+                    <br>
+                    <br>
+                </form>
+                <p>No account? <a href="registerpage.html">Register</a></p>
+            </div>
+
+
+            <script>
+                function dropDown() {
+                    // 
+                    // Function that makes the dropdown button work 
+                    // 
+                    document.getElementById("homepageDropdown").classList.toggle("show");
+                }
+            </script>
+
+        </body>
+</html>   
