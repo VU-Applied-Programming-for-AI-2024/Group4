@@ -1,0 +1,27 @@
+/* styles.css */
+
+.half-circle {
+    width: 300px; /* 调整半圆形容器的宽度 */
+    height: 150px; /* 调整半圆形容器的高度 */
+    border: 1px solid black; /* 添加边框用于示意 */
+    border-radius: 50% 50% 0 0; /* 将容器的四个角设置为半圆形 */
+    position: relative;
+    overflow: hidden; /* 隐藏超出容器的内容 */
+}
+
+h1 {
+    margin: 0;
+    padding: 20px; /* 调整文本的内边距 */
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%); /* 将文本水平居中 */
+    width: 100%; /* 文本占满容器的宽度 */
+    font-family: Arial, sans-serif; /* 设置字体 */
+}
+
+.half-circle h1 {
+    transform-origin: bottom center; /* 以底部中心为旋转中心 */
+    transform: perspective(600px) rotateX(90deg); /* 沿X轴旋转90度，使文本排列成半圆形 */
+}

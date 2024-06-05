@@ -144,14 +144,22 @@
 }
 
 /* a heading (title of website) */
-h1 {
-    color: #2166B6;
-    font-family: "Inter";
+body {
+    font-family: 'Luckiest Guy', cursive;
     margin-top: 80px;
     font-size: 64px;
     padding: 24px;
     text-align:center;
-}
+  }
+  
+  path {
+    fill: transparent;
+  }
+  
+  text {
+    fill: #7a2187;
+  }
+    
 
 /* a heading (title of login page) */
 h2 {
