@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- This html code is of the registration page-->
+<html lang="eng">
+        <head>
+            <!--Basic set up of the design-->
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="registerStyles.css" />
+
+            <title>Register</title>
+        </head>
+
+        <body>
+            <!--Creating navigation bar at top of screen-->
+            <div class="navbar">
+                <div class="logo">
+                    <a href="index.html">Logo</a>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="dropDown()">Menu<i class="fa fa-caret-down"></i></button>
+
+                    <div class="dropdown-content" id="homepageDropdown">
+                        <a href="index.html">Home</a>
+                        <a href="loginpage.html">Login</a>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <!--Creating Register title and form-->
+                <h2>Register</h2>
+                <form method="POST">
+                    <label for="username:"><b>Username</b></label>
+                    <input type="text" id ="username" placeholder="Enter Username" name="username" required>
+                    <br>
+                    <label for="email"><b>Email</b></label>
+                    <input type="email" id ="mail" placeholder="yourname@email.com" name="mail" required>
+                    <br>
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" id="password" minlength="8" placeholder="Enter Password" name="psw" required>
+                    <br>
+
+                    <!--Submit button with popup-->
+                    <button type="submit" id="popup-button">Register</button>
+                    <div id="popup-container"></div>
+                    <br>
+                    <br>
+                </form>
+                <p>Already have an account? <a href="loginpage.html">Login</a></p>
+            </div>
+
+
+            <script>
+                function dropDown() {
+                    // 
+                    // Function that makes the dropdown button work 
+                    // 
+                    document.getElementById("homepageDropdown").classList.toggle("show");
+                }
+            </script>
+
+            <script>
+                //Script that makes the popup work
+
+                //check if popup button (=register button) is clicked
+                document.getElementById("popup-button").addEventListener('click',
+                    function() {
+                        //retrieve variables (i.e the popup and its close button)
+                        var popupContainer = document.getElementById('popup-container');
+                        var popupBox = document.createElement('div');
+                        var closeButton = document.createElement('span');
+
+                        popupBox.className = 'popup-box'
+                        popupBox.innerHTML = '<div class="popup-content">Register form submitted!</div>';
+                        closeButton.className = 'button'
+                        closeButton.innerHTML = '&times;';
+
+
+                        //add close button and popup box to the view
+                        popupBox.appendChild(closeButton)
+                        popupContainer.appendChild(popupBox)
+
+                        //check if close button is clicked
+                        closeButton.addEventListener('click', function() {
+                            popupContainer.removeChild(popupBox)
+                        });
+                    });
+            </script>
+
+            <script>
+            function submitForm() {
+                //Function that disables the register button once a form has been registered already
+                document.getElementById("popup-button").disabled = true;
+            }
+            // try to retrieve information from registration form
+            var x = document.getElementById("registrationform").elements.namedItem("mail").value;
+            </script>
+
+        </body>
+</html>     
