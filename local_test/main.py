@@ -40,7 +40,7 @@ def redraw(win, player):
 
 def main():
     run = True
-    p = Player(0, 0, [0, 0, 0], 10, 10, 3)
+    p = Player(0, 0, [0, 0, 0], 50, 50, 3)
     clock = pygame.time.Clock()
 
     while run:
