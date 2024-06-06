@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <!-- This html code is of the registration page-->
+{% load static %}
 <html lang="eng">
         <head>
             <!--Basic set up of the design-->
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="registerStyles.css" />
+            <link rel="stylesheet" href="{% static 'css/registerStyles.css' %}">
 
             <title>Register</title>
         </head>
@@ -14,14 +15,14 @@
             <!--Creating navigation bar at top of screen-->
             <div class="navbar">
                 <div class="logo">
-                    <a href="index.html">Logo</a>
+                    <a href="/">Logo</a>
                 </div>
                 <div class="dropdown">
                     <button class="dropbtn" onclick="dropDown()">Menu<i class="fa fa-caret-down"></i></button>
 
                     <div class="dropdown-content" id="homepageDropdown">
-                        <a href="index.html">Home</a>
-                        <a href="loginpage.html">Login</a>
+                        <a href="/">Home</a>
+                        <a href="/login/">Login</a>
                     </div>
                 </div>
             </div>
@@ -29,7 +30,7 @@
             <div>
                 <!--Creating Register title and form-->
                 <h2>Register</h2>
-                <form method="POST">
+                <form method="post">
                     <label for="username:"><b>Username</b></label>
                     <input type="text" id ="username" placeholder="Enter Username" name="username" required>
                     <br>
@@ -46,7 +47,7 @@
                     <br>
                     <br>
                 </form>
-                <p>Already have an account? <a href="loginpage.html">Login</a></p>
+                <p>Already have an account? <a href="/login/">Login</a></p>
             </div>
 
 
