@@ -1,4 +1,5 @@
 import pygame
+import asyncio
 
 width = 500
 height = 500
@@ -38,7 +39,7 @@ def redraw(win, player):
     player.draw(win)
     pygame.display.update()
 
-def main():
+async def main():
     run = True
     p = Player(0, 0, [0, 0, 0], 50, 50, 3)
     clock = pygame.time.Clock()
@@ -51,5 +52,7 @@ def main():
                 pygame,quit()
         p.move()
         redraw(window, p)
+        await asyncio.sleep(0)
 
+asyncio.run(main())
 main()
