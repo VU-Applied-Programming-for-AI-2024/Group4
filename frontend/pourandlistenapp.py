@@ -4,7 +4,7 @@
 
 
 # importing Flask and other modules
-from flask import Flask, request, render_template 
+from flask import Flask, request, render_template, url_for
  
 print("i'm working")
 # Flask constructor
@@ -13,6 +13,26 @@ app = Flask(__name__)
 # A decorator used to tell the application
 # which URL is associated function
 @app.route('/', methods =["GET", "POST"])
+def index():
+   return render_template('index.html')
+
+
+@app.route('/login', methods =["GET", "POST"])
+def login():
+   return render_template('loginpage.html')
+
+
+@app.route('/register', methods =["GET", "POST"])
+def register():
+   return render_template('registerpage.html')
+
+
+@app.route('/game', methods =["GET", "POST"])
+def game():
+   return render_template('gamepage.html')
+
+
+
 def gfg():
     print('gfg activated')
     if request.method == "POST":
@@ -25,4 +45,4 @@ def gfg():
     return render_template("registerpage.html")
  
 if __name__=='__main__':
-   app.run()
+   app.run(debug=True)
