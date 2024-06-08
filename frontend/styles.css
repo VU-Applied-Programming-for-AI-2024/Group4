@@ -1,15 +1,38 @@
 
 /* Style sheet for all pages except the registration page*/
 
+/* upload images in the background*/
+
+body {
+  font-family: Georgia, serif;
+  margin-top: 80px;
+  font-size: 320%;
+  font-weight: bolder;
+  padding: 2px;
+  text-align:center;
+}
+
+
+.model_back {
+  background-image: url('image\ 1.png'), url('image\ 2.png');
+  background-size: 36%, 36%;
+  background-repeat: no-repeat, no-repeat;
+  background-position: left bottom, right bottom;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  /* z-index: 100; */
+}
+
 /* Creating an unused container */
 .container {
     height: 300px;
-    width: device-width;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 300px;
-    margin-bottom: 24px;
+    margin-top: 25px;
+    margin-bottom: 25px;
     border: 2px solid #0f4786;
 }
 
@@ -30,38 +53,43 @@
 
 /* creating a navigation bar at the top of the screen */
 .navbar {
-    overflow: hidden;
-    background-color: #2166B6;
-    font-family: Inter;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  height: 70px;
+  /* width: 100%; */
+  background-color: white; /* Yellow background */
+  padding: 10px 20px;
+  padding-top: 0px;
+  margin-top: 0px;
+  box-shadow: 2px 20px rgba(0, 0, 0, 0.1);
+  /* z-index: 10; */
 }
+
+/* .navbar {
+    overflow: hidden;
+    background-color: rgb(255, 221, 0);
+    font-family: sans-serif;
+} */
 
 /* text inside the navigation bar */
-.navbar a {
-    float: right;
-    font-size: 16px;
-    font-family: "Inter";
-    color: #ffffff;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    width: device-width;
+
+.navbar .logo a {
+  font-size: 24px;
+  color: #7a2187; 
+  text-decoration: none;
+  font-family: 'Courier New', Courier, monospace;
 }
 
-/* Logo inside the navigation bar */
-.navbar .logo{
-    float: left;
-    font-size: 16px;
-    font-family: "Brush Script MT", cursive;
-    color: #ffffff;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    width: device-width;
-}
 
 /* a start button leading to the login page */
 .start-button {
-    background-color: #2166B6; /* Blue */
+    background-color: rgb(255, 221, 0); 
 
     position: relative;
     left: 46%;
@@ -69,13 +97,15 @@
 
     border: none;
     display: flex;
-    color: white;
+    color: #7a2187;
 
     padding: 15px 32px;
     margin-top: -20px;
     margin-bottom: 20px;
     text-align: center;
     text-decoration: none;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
     font-size: 24px;
     border-radius:  8px;
     transition-duration: 0.4s;
@@ -89,22 +119,27 @@
 
 /* a dropdown menu button inside navigation bar*/
 .dropdown {
-    float: right;
-    overflow: hidden;
+  position: relative;
+  height: fit-content;
+  display: inline-block;
 }
 
+
 /* The actual dropdown button */
-.dropdown .dropbtn {
-    font-size: 24px; 
-    border: none;
-    outline: none;
-    color: white;
-    padding: 16px 64px;
-    background-color: inherit;
-    font-family: inherit; /* Important for vertical align on mobile phones */
-    margin: 0; /* Important for vertical align on mobile phones */
-    cursor: pointer;
+.dropbtn {
+  font-size: 50%;
+  font-weight: bold;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  border: none;
+  cursor: pointer;
+  background-color: inherit; 
+  color: #7a2187;
+  border-radius: 5px;
+  /* width: 300%; */
+  width: 160px;
 }
+
 
 /* hover over nav bar */
 .navbar a:hover, .dropdown:hover .dropbtn {
@@ -113,21 +148,26 @@
 
 /* Dropdown content cells (hidden by default) */
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 185px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+  display: none; /* Hidden by default */
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
+
 
 /* Links (text) inside the dropdown */
 .dropdown-content a {
+    /* .dropbtn; */
     float: none;
     color: #2166B6;
     padding: 16px 32px;
     font-family: Inter;
     text-decoration: none;
+    font-size: 25px;
     display: block;
     text-align: left;
     cursor: pointer;
@@ -144,22 +184,30 @@
 }
 
 /* a heading (title of website) */
-body {
-    font-family: 'Luckiest Guy', cursive;
-    margin-top: 80px;
-    font-size: 64px;
-    padding: 24px;
-    text-align:center;
-  }
-  
-  path {
-    fill: transparent;
-  }
-  
-  text {
-    fill: #7a2187;
-  }
-    
+
+.curve-text {
+  fill: rgb(255, 221, 0);
+  filter: drop-shadow(10px 10px 4px rgba(0,0,0,0.5)); 
+  font-size: 50px;
+} 
+
+
+/*  */
+
+.group-text {
+    color: white; 
+    font-size: 50px;
+}
+
+
+/* .title {
+  font-family: Arial, sans-serif;
+  color: #7a2187;
+  font-size: 150%;
+  text-align: center;
+} */
+
+
 
 /* a heading (title of login page) */
 h2 {
