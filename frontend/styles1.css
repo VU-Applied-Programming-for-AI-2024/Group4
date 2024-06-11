@@ -1,0 +1,143 @@
+/* styles.css */
+
+.title {
+    font-family: Arial, sans-serif;
+    color: #7a2187;
+    font-size: 450%;
+    text-align: center;
+    margin-top: 0;
+}
+
+body {
+    font-family: Georgia, serif;
+    font-weight: bolder;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+  
+.characters, .character-name {
+    display: flex;
+    justify-content: space-between;
+    position: static;
+    width: 80%;
+}
+
+.left-section {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    position: relative;
+    width: 45%;
+    left: 10px;
+}
+
+.right-section {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    width: 45%;
+    position: relative;
+    top: -50px;
+    right: 10px;
+}
+
+.image {
+    max-width: 70%;
+    position: relative;
+    left: 15%;
+    height: auto;
+}
+
+.btn {
+    margin-top: 10px;
+    background-color:white;
+    color:#7a2187;
+    padding: 15px 20px;
+    border: none;
+    border-color: #7a2187;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    vertical-align: bottom;
+    position: relative;
+    bottom: 0%;
+    width: 40%;
+    left: 30%;
+}
+
+.btn:hover {
+    background-color: #39103f;
+}
+
+.btn1 {
+    text-align: center;
+    margin-top: 10px;
+    background-color:#7a2187;
+    color:white;
+    padding: 15px 20px;
+    border: none;
+    border-color: #7a2187;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    vertical-align: bottom;
+    position: relative;
+    width: 40%;
+    left: 30%;
+}
+
+.btn1:hover {
+    background-color: #39103f;
+}
+
+.title2 {
+    font-family: Arial, sans-serif;
+    color: #7a2187;
+    font-size: 450%;
+    text-align: center;
+    margin-top: 0;
+}
+
+.image2 {
+    max-width: 85%;
+    position: relative;
+    left: 15%;
+    height: auto;
+}
+
+.right-section2 {
+    display: table-row;
+    align-items: center;
+    width: 45%;
+    position: relative;
+    top: 50px;
+    right: 10px;
+}
+
+.value-input {
+    /* width: 150px; */
+    height: 50px;
+    padding: 10px;
+    font-size: 20px;
+    color:#7a2187;
+    font-weight: 700;
+    border-radius: 5px;
+    position: relative;
+    width: 40%;
+    left: 30%;
+}
+
+.box{
+    top: 20%;
+    position: relative;
+}
+
