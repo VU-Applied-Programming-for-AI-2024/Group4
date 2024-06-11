@@ -1,0 +1,1 @@
+1) Can we start google colab beforehand since its opensource and doesn't provide same functionality as paid options.
