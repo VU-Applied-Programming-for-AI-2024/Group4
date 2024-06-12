@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Test form</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+
+{% block body %}
+
+{% if name %}
+    <h2>Hello {{ name }} </h2>
+{% else %}
+    <h2>What's your name?</h2>
+    <br/>
+    <form method="POST">
+        {{form.hidden_tag() }}
+        {{form.name.label }}
+        {{ form.name() }}
+        <br/>
+        {{ form.submit() }}
+    </form>
+{% endif %}
+
+{% endblock %}
