@@ -44,7 +44,7 @@ def index():
 
 @app.route('/login', methods =["GET", "POST"])
 def login():
-   return render_template('loginpage.html')
+   return render_template('old_loginpage.html')
 
 
 @app.route('/register', methods =["GET", "POST"])
@@ -55,13 +55,26 @@ def register():
        # getting input with name = mail in HTML (registration)form 
        email = request.form.get("mail") 
        print(username, email)
-       return render_template('registrationSucceeded.html')
-   return render_template('registerpage.html')
+       return render_template('old_registrationSucceeded.html')
+   return render_template('old_registerpage.html')
 
 
-@app.route('/game', methods =["GET", "POST"])
-def game():
-   return render_template('gamepage.html')
+@app.route('/choosechar', methods =["GET", "POST"])
+def choosechar():
+   return render_template('choose_character.html')
+
+@app.route('/nameboy', methods =["GET", "POST"])
+def nameboy():
+   return render_template('name_boy_character.html')
+
+@app.route('/namegirl', methods =["GET", "POST"])
+def namegirl():
+   return render_template('name_girl_character.html')
+
+@app.route('/search', methods =["GET", "POST"])
+def search():
+   return render_template('search.html')
+
 
 @app.route('/registrationsucces', methods =["GET", "POST"])
 def registrationsucces():

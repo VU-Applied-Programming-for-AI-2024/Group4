@@ -189,7 +189,7 @@ form {
     width: 50%;
     height: 100%;
     margin-top: 20px;
-    background-color: darkslateblue;
+    background-color: rgb(255, 221, 0);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -197,7 +197,7 @@ form {
 }
 
 .popup-content {
-    background-color: #2166B6;
+    background-color: rgb(255, 221, 0);
     padding: 20px;
     border-radius: 8px;
     width: 25%;

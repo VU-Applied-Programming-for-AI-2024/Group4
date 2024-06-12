@@ -1,0 +1,32 @@
+{% extends 'basegame.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles1.css') }}">
+
+<title>Choose your character</title>
+{% endblock %}
+
+
+{% block body %}
+
+<a class="title">Choose your character</a>
+
+<div class='characters'>
+    <div class="left section" onclick="redirectToPage()">
+        <img src="{{url_for('static', filename='choose_boy.png')}}"  alt="Character Dave" class="image">
+
+        <button class="btn">
+            <a href="/nameboy">Choose him!</a>
+        </button>
+    </div>
+
+    <div class="right section" onclick="redirectToPage()">
+        <img src="{{url_for('static', filename='choose_girl.png')}}"  alt="Character Julia" class="image">
+
+        <button class="btn">
+            <a href="/namegirl">Choose her!</a>
+        </button>
+    </div>
+</div>
+
+{% endblock %}

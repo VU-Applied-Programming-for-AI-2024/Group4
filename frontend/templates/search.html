@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Search bar</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="search-container">
+    <input type="text" class="searchInput" placeholder='Which type of game do your want'>
+    <button onclick="performSearch()" class="search-button">Search</button>
+</div>
+
+<div class="searchResults"></div>
+
+<!-- TODO: implement script for search-->
+
+</body>
+
+{% endblock %}

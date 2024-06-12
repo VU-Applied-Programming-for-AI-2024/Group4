@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<!-- This html code is of the index (=main) page-->
+<html lang="eng">
+    <head>
+        <!--Basic set up of the design-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+        <style>
+            body {
+                background-color: #7a2187; 
+            }
+        </style>
+
+        <!-- Jinja code; shows where custom code for each page goes-->
+        {% block head %}{% endblock %}
+    </head>
+
+    <body>
+        {% block body %}{% endblock %}
+    </body>
+</html>

@@ -1,106 +1,64 @@
-
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Chat Bot Game</title>
+<title>Pour and Listen</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 {% endblock %}
-
 
 {% block body %}
-            
-    <!--Creating Title at top of screen-->
-    <div>
-        <h1>Chat Bot Game</h1>
-        <p>By Applied Programming Group 4</p>
-        <button class="start-button"; onclick="window.location.href='/login'">Login</button>
-    </div>
 
+<div class="model_back">
 
-    <!-- Creating a slide show -->
-    <!-- Slideshow container -->
-    <div class="slideshow-container">
-
-        <!--Implement 3 75%-width images-->
-        <div class="mySlides fade">
-            <img src="{{url_for('static', filename='pixelartimage.jpg')}}" style="width:75%" class="center">
-        </div>
-            
-        <div class="mySlides fade">
-                <img src="{{url_for('static', filename='pixelimage2.jpg')}}" style="width:75%" class="center">
-        </div>
-            
-        <div class="mySlides fade">
-            <img src="{{url_for('static', filename='pixelimage3.jpg')}}" style="width:75%" class="center">
-        </div>
-            
-        <!-- Next and previous buttons -->
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-    <br>
-            
-    <!-- The dots/circles -->
-    <div style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span> 
-        <span class="dot" onclick="currentSlide(2)"></span> 
-        <span class="dot" onclick="currentSlide(3)"></span> 
-    </div>
-
-
-    <!-- <div>
-        <img src="pixelartimage.jpg" alt="Image of our game" width=50% height=50% class="center">
-    </div> -->
-
-    <!--Creating 'about' text at bottom left of screen-->
-    <div class="about">
-        <h1>About Chat Bot</h1>
-        <br>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor cumque, numquam voluptas, modi quas maxime culpa ullam possimus dicta fugiat ratione iusto hic temporibus tempora illo quae iste. Illo, iste?</p>
-    </div>
-
-
-    <script>
-        function dropDown() {
-            // 
-            // Function that makes the dropdown button work 
-            // 
-            document.getElementById("homepageDropdown").classList.toggle("show");
-        }
-    </script>
-
-    <script>
-        // Script for the slide show to work
+    <!-- Creating Title at top of screen -->
+    <svg viewBox="0 10 500 150">
+        <path id="curve" fill="transparent" d="M73.2,148.6c4-6.1,65.5-96.8,178.6-95.6c111.3,1.2,170.8,90.3,175.1,97" />
+            <text width="500" class="curve-text">
+            <textPath xlink:href="#curve">
+            Pour and Listen
+            </textPath>
+        </text>
+    </svg>
                 
-        let slideIndex = 1;
-        showSlides(slideIndex);
+    <!--creating authors text-->
+    <div>
+        <p class="group-text">By Applied Programming Group 4</p>
+        <button class="start-button"; onclick="window.location.href='/choosechar'">Login</button>
+    </div>
+   
+</div>
 
-        // Next/previous controls
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
+<script>
+    // Script for the slide show to work
+    
+    let slideIndex = 1;
+    showSlides(slideIndex);
 
-        // Thumbnail image controls
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
+    // Next/previous controls
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
 
-        //Function that properly shows the right slide
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("mySlides");
-            let dots = document.getElementsByClassName("dot");
-            if (n > slides.length) {slideIndex = 1} 
-            if (n < 1) {slideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none"; 
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex-1].style.display = "block"; 
-            dots[slideIndex-1].className += " active";
+    // Thumbnail image controls
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    //Function that properly shows the right slide
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1} 
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none"; 
         }
-    </script>
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block"; 
+        dots[slideIndex-1].className += " active";
+    }
+</script>
 
 {% endblock %}
-

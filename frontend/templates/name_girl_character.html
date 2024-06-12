@@ -1,0 +1,33 @@
+{% extends 'basegame.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles1.css') }}">
+
+<title>Name your character girl</title>
+{% endblock %}
+
+{% block body %}
+
+<a class="title2">Name your character</a>
+
+<div class="character-name">
+    <div class="left-section">
+        <img src="{{url_for('static', filename='choose_girl.png')}}"  alt="Character Julia" class="image">
+    </div>
+
+    <div class="right-section2">
+        <div class="box">
+            <input type="text" class="value-input" name="value-input" value="Julia"> 
+        </div>
+                    
+        <div class="box" onclick="redirectToPage()">   
+            <button class="btn1">
+                <a href="/search">Confirm</a>
+            </button> 
+        </div>
+    <div>
+
+<div>
+
+{% endblock %}
+
