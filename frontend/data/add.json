@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "label": "room",
+        "name": "MainRoom",
+        "path": "MainRoom.jpg"
+    },
+    {
+        "id": 2,
+        "label": "chair",
+        "name": "Chair",
+        "path": "resource1.jpeg"
+    }
+]

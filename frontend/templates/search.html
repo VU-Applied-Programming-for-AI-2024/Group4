@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Search bar</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+        <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+    </head>
+
+    <body>
+
+        <div class="search-container">
+            <input type="text" class="searchInput" placeholder="Select Furniture" name="search_input" 
+                   hx-get="/search_res" hx-trigger="keydown change delay:500ms" hx-target="#results">
+            <button type="submit">Search</button>
+        </div>
+    
+        <div class="searchResults">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Label</th>
+                    </tr>
+                </thead>
+                <tbody id="results">
+                    <!-- Search results will be injected here -->
+                </tbody>
+            </table>
+        </div>
+    
+    </body>
+</html>

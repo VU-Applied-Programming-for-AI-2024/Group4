@@ -1,0 +1,7 @@
+{% for result in results %}
+<tr>
+    <td>{{ result.id }}</td>
+    <td>{{ result.name }}</td>
+    <td><img src="{{ url_for('static', filename='images/' + result.path) }}" alt="{{result.name}}"></td>
+</tr>
+{% endfor %}
