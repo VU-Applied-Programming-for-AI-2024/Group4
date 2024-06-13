@@ -8,18 +8,39 @@
 
 {% block body %}
 
-{% if name %}
-    <h2>Hello {{ name }} </h2>
+{% if username %}
+    <h2>Our users</h2>
+    <br/>
+    <table>
+    {% for our_user in our_users %}
+        <tr>
+        <td>{{our_user.id }}. {{ our_user.username }} - {{ our_user.password }}</td>
+        </tr>
+    {% endfor %}
+    </table>
 {% else %}
     <h2>What's your name?</h2>
     <br/>
     <form method="POST">
         {{form.hidden_tag() }}
-        {{form.name.label }}
-        {{ form.name() }}
+
+        {{form.username.label }}
+        {{ form.username() }}
+        <br/>
+        {{form.password.label }}
+        {{ form.password() }}
+
         <br/>
         {{ form.submit() }}
     </form>
+
+<br/><br/><br/>
+
+{% for our_user in our_users %}
+    <br/>
+    {{our_user.id }}. {{ our_user.username }} - {{ our_user.password }}
+{% endfor %}
+
 {% endif %}
 
 {% endblock %}

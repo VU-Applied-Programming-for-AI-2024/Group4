@@ -8,11 +8,12 @@
 # importing Flask and other modules
 from flask import Flask, request, render_template, url_for
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import UserMixin, LoginManager
+from flask_login import UserMixin, LoginManager, login_user, login_required, logout_user, current_user
 from flask_bcrypt import Bcrypt 
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError, DataRequired
+from datetime import datetime
 
 from sqlalchemy import create_engine, Column, Integer, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
@@ -27,26 +28,45 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 #Create key to acces database
 app.config['SECRET_KEY'] = 'thisisasecretkey'
-#Initialize up database
+#Initialize database
 db = SQLAlchemy(app)
 
 
 
-#Creating layout of database:
+
+
+
+
+
+#A test database
+class Names(db.Model):
+   id = db.Column(db.Integer, primary_key=True)
+   name = db.Column(db.String(50), nullable=False)
+   email = db.Column(db.String(120), nullable=False, unique=True)
+
+   def __repr__(self):
+      return '<Name %r>' % self.name
+
+
+#Creating layout of database (model):
 class User(db.Model, UserMixin):
    __tablename__ = "users"
    id = db.Column(db.Integer, primary_key=True)
    username = db.Column(db.String(20), nullable=False, unique=True)
-   # password max length below is 80, 
+   # password max length below is 128, 
    # because the original password will be hashed
    # so might be longer than what you type in
-   password = db.Column(db.String(80), nullable=False)
+   password = db.Column(db.String(128), nullable=False)
+
+
+
+
 
 
 # Setting up the registration form:
 class RegistrationForm(FlaskForm):
-   username = StringField("Username", validators=[InputRequired(), Length(min=4, max=20,)])
-   password = StringField("Password", validators=[InputRequired(), Length(min=4, max=20,)])
+   username = StringField("Username", validators=[DataRequired(), Length(min=4, max=20,)])
+   password = StringField("Password", validators=[DataRequired(), Length(min=4, max=20,)])
    submit = SubmitField("Register")
 
    def validateUsername(self, Username):
@@ -64,12 +84,23 @@ class LoginForm(FlaskForm):
 
 #Setting up a test form, NOT used in final website
 class testForm(FlaskForm):
-   name = StringField('What is your name?', validators=[DataRequired()])
+   name = StringField('Name', validators=[DataRequired()])
+   email = StringField('Email', validators=[DataRequired()])
    submit = SubmitField("Submit")
+
+
+
+
+
+
+
+
+
+
+
 
 # A decorator used to tell the application
 # which URL is associated function
-
 #The main home page
 @app.route('/', methods =["GET", "POST"])
 def index():
@@ -84,12 +115,24 @@ def login():
 #Test form
 @app.route('/testform', methods =["GET", "POST"])
 def testfrom():
-   name = None
-   form = testForm()
+   username = None
+   form = RegistrationForm()
+   #check if form is validated (= correctly filled in )
    if form.validate_on_submit():
-      name = form.name.data
-      form.name.data = ''
-   return render_template('testform.html', form=form, name=name)
+      #ask database to return all users with specific username (should be None)
+      user = User.query.filter_by(username=form.username.data).first()
+      if user == None:
+         # hashed_pw = generate_password_hash(form.password_has.data, "pass678")
+         user = User(username=form.username.data, password=form.password.data)
+         db.session.add(user)
+         db.session.commit()
+      username = form.username.data
+      #clear the form
+      form.username.data = ''
+      form.password.data = ''
+      print('User added')
+   our_users = User.query.order_by(User.id)
+   return render_template('testform.html', form=form, username=username, our_users=our_users)
 
 #The registration page
 @app.route('/register', methods =["GET", "POST"])
