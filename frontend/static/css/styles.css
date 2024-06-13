@@ -82,11 +82,14 @@
     background-color: rgb(255, 221, 0); 
 
     position: relative;
-    left: 46%;
-    right: 50%;
+    /* left: 46%;
+    right: 50%; */
+    align-items: center;
+    /* margin-left: auto;
+    margin-right: auto; */
 
     border: none;
-    display: flex;
+    display: block;
     color: #7a2187;
 
     padding: 15px 32px;
@@ -251,6 +254,44 @@ p {
     margin-top: -60px;
     padding: 24px;
     text-align: center;
+}
+
+
+/* text with a white border */
+.textborder {
+  color:  #301f33;
+  font-family: "Inter";
+  font-size: 24px;
+  margin-top: -60px;
+  padding: 24px;
+  text-align: center;
+  text-shadow: 
+  /* first layer at 1px */
+  -1px -1px 0px #ffe189,
+   0px -1px 0px #ffe189,
+   1px -1px 0px #ffe189,
+  -1px  0px 0px #ffe189,
+   1px  0px 0px #ffe189,
+  -1px  1px 0px #ffe189ff,
+   0px  1px 0px #ffe189,
+   1px  1px 0px #ffe189;
+  /* second layer at 2px */
+  /* -2px -2px 0px #ffffff,
+  -1px -2px 0px #ffffff,
+   0px -2px 0px #ffffff,
+   1px -2px 0px #ffffff,
+   2px -2px 0px #ffffff,
+   2px -1px 0px #ffffff,
+   2px  0px 0px #ffffff,
+   2px  1px 0px #ffffff,
+   2px  2px 0px #ffffff,
+   1px  2px 0px #ffffff,
+   0px  2px 0px #ffffff,
+  -1px  2px 0px #ffffff,
+  -2px  2px 0px #ffffff,
+  -2px  1px 0px #ffffff,
+  -2px  0px 0px #ffffff,
+  -2px -1px 0px #ffffff; */
 }
 
 form {
