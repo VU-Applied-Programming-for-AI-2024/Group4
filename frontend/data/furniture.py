@@ -5,7 +5,7 @@ Base = declarative_base()
 
 class Furniture(Base):
     __tablename__ = "furniture"
-
+    
     id = Column("id", Integer, primary_key=True)
     name = Column("name", String, nullable=False)
     label = Column("label", String, nullable=False)
