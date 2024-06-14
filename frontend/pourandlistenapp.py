@@ -6,7 +6,7 @@
 
 
 # importing Flask and other modules
-from flask import Flask, request, render_template, url_for
+from flask import Flask, Request, render_template, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, LoginManager, login_user, login_required, logout_user, current_user
 from flask_bcrypt import Bcrypt 
@@ -69,7 +69,7 @@ class RegistrationForm(FlaskForm):
    password = StringField("Password", validators=[DataRequired(), Length(min=4, max=20,)])
    submit = SubmitField("Register")
 
-   def validateUsername(self, Username):
+   def validateUsername(self, username):
       #Function that checks if username already exists
       existing_user_username = User.query.filter_by(username=username.data).first()
       if existing_user_username:
@@ -111,6 +111,11 @@ def index():
 def login():
    form = LoginForm()
    return render_template('old_loginpage.html', form=form)
+
+# The about page
+@app.route('/about', methods=["GET"])
+def about():
+   return render_template('about.html')
 
 #Test form
 @app.route('/testform', methods =["GET", "POST"])
