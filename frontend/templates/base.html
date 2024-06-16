@@ -26,9 +26,14 @@
         <!--Creating navigation bar at top of screen-->
         <div class="navbar">
 
-            <div class="logo">
+            <!-- <div class="logo">
                 <a href="/">Home</a>
+            </div> -->
+
+            <div class="logo">
+                <img src="{{url_for('static', filename='pal_logo.png')}}" style="width:5%" onclick="window.location.href='/'">
             </div>
+
 
             <div class="dropdown">
                 <button class="dropbtn" onclick="dropDown()">Menu</button>
