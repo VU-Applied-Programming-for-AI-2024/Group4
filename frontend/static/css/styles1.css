@@ -1,6 +1,6 @@
 /* Styles for choose character page */
 
-.title {
+.choosetitle {
     font-family: Arial, sans-serif;
     color: #cc91d5a7;
     font-size: 450%;
@@ -87,6 +87,20 @@ body {
     width: 40%;
     left: 30%;
 }
+
+.dropbtn {
+    font-size: 50%;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    border: none;
+    cursor: pointer;
+    background-color: inherit; 
+    color: rgb(255, 221, 0);
+    border-radius: 5px;
+    /* width: 300%; */
+    width: 160px;
+  }
 
 .btn:hover {
     background-color: #39103f;

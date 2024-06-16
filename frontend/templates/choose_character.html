@@ -3,26 +3,186 @@
 {% extends 'basegame.html' %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/styles1.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 <title>Choose your character</title>
 {% endblock %}
 
 
 {% block body %}
+<style>
+/* Styles for choose character page */
 
-<a class="title">Choose your character</a>
+    .choosetitle {
+        font-family: Arial, sans-serif;
+        color: #cc91d5a7;
+        font-size: 450%;
+        text-align: center;
+        margin-top: 0;
+        padding: 40px
+    }
+    
+    body {
+        font-family: Georgia, serif;
+        font-weight: bolder;
+        background-color: #301f33;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        margin: 0;
+    }
+      
+    .characters, .character-name {
+        display: flex;
+        justify-content: space-between;
+        position: static;
+        width: 80%;
+    }
+    
+    .left-section {
+        display: flex;
+        /* flex-direction: column; */
+        align-items: center;
+        position: relative;
+        width: 45%;
+        left: 10px;
+    }
+    
+    .right-section {
+        display: flex;
+        /* flex-direction: column; */
+        align-items: center;
+        width: 45%;
+        position: relative;
+        top: -50px;
+        right: 10px;
+    }
+    
+    
+    /* Image for choose character with hover */
+    .image {
+        max-width: 70%;
+        position: relative;
+        left: 15%;
+        height: auto;
+    }
+    
+    .image:hover {
+        transform: scale(1.2);
+    }
+    
+    
+    /* Image for naming character (static image; no hover)*/
+    .image-static {
+        max-width: 70%;
+        position: relative;
+        left: 15%;
+        height: auto;
+    }
+    
+    .btn {
+        margin-top: 10px;
+        background-color:white;
+        color:#cc91d5a7;
+        padding: 15px 20px;
+        border: none;
+        border-color: #cc91d5a7;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 20px;
+        font-family: Arial, sans-serif;
+        font-weight: 700;
+        vertical-align: bottom;
+        position: relative;
+        bottom: 0%;
+        width: 40%;
+        left: 30%;
+    }
+    
+    .btn:hover {
+        background-color: #39103f;
+    }
+    
+    .btn1 {
+        text-align: center;
+        margin-top: 10px;
+        background-color:#cc91d5a7;
+        color:white;
+        padding: 15px 20px;
+        border: none;
+        border-color: #cc91d5a7;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 20px;
+        font-family: Arial, sans-serif;
+        font-weight: 700;
+        vertical-align: bottom;
+        position: relative;
+        width: 40%;
+        left: 30%;
+    }
+    
+    .btn1:hover {
+        background-color: #945ba6a7;
+    }
+    
+    .title2 {
+        font-family: Arial, sans-serif;
+        color: #cc91d5a7;
+        font-size: 450%;
+        text-align: center;
+        margin-top: 0;
+    }
+    
+    .image2 {
+        max-width: 85%;
+        position: relative;
+        left: 15%;
+        height: auto;
+    }
+    
+    .right-section2 {
+        display: table-row;
+        align-items: center;
+        width: 45%;
+        position: relative;
+        top: 50px;
+        right: 10px;
+    }
+    
+    .value-input {
+        /* width: 150px; */
+        height: 50px;
+        padding: 10px;
+        font-size: 20px;
+        color:#7a2187;
+        font-weight: 700;
+        border-radius: 5px;
+        position: relative;
+        width: 40%;
+        left: 30%;
+    }
+    
+    .box{
+        top: 20%;
+        position: relative;
+    }
+    </style>
+
+<a class="choosetitle">Choose your character</a>
 <br/>
 
 <!-- Code showing characters and creating buttons leading to naming character page -->
 <!--Boy character-->
 <div class='characters'>
     <div class="left section">
-        <img src="{{url_for('static', filename='choose_boy.png')}}"  alt="Character Dave" class="image" onclick="window.location.href='/nameboy'">
+        <img src="{{url_for('static', filename='choose_boy.png')}}"  alt="Character Dave" class="chooseimage" onclick="window.location.href='/nameboy'">
     </div>
 
     <!--Girl character-->
     <div class="left section">
-        <img src="{{url_for('static', filename='choose_girl.png')}}"  alt="Character Dave" class="image" onclick="window.location.href='/namegirl'">
+        <img src="{{url_for('static', filename='choose_girl.png')}}"  alt="Character Dave" class="chooseimage" onclick="window.location.href='/namegirl'">
     </div>
 </div>
 

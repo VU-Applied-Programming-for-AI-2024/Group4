@@ -19,6 +19,34 @@
     </head>
 
     <body>
+        <!--Creating navigation bar at top of screen-->
+        <div class="navbar">
+
+            <!-- Insert logo image (leading to home page) in top left of nav bar -->
+            <div class="logo">
+                <img src="{{url_for('static', filename='pal_logo.png')}}" style="width:5%" onclick="window.location.href='/'">
+            </div>
+
+            <!-- Create dropdown menu on top right of nav bar-->
+            <div class="dropdown">
+                <button class="dropbtn" onclick="dropDown()">Menu</button>
+                <div class="dropdown-content" id="homepageDropdown">
+                    <a href="/">Home</a>
+                    <a href="/about">Stats</a>
+                    <a href="/search">Search</a>
+                </div>
+            </div>
+
+        </div>
         {% block body %}{% endblock %}
+        
+        <script>
+            function dropDown() {
+                // 
+                // Function that makes the dropdown button work 
+                // 
+                document.getElementById("homepageDropdown").classList.toggle("show");
+            }
+        </script>
     </body>
 </html>

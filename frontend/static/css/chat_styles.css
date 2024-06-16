@@ -2,6 +2,9 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
+    font-family: Georgia, serif;
+    background-color:#7a2187;
+    font-weight: bolder;
 }
 
 .light-mode {
@@ -294,4 +297,43 @@ button {
     color: #cc91d5a7;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+
+.center {
+    display: block;
+    margin-left: 32%;
+    margin-right: auto;
+    margin-top: 25%;
+    width: 10%;
+    background-color: #cc91d5;
+    border-color: white;
+    border-width: 3px;
+    border-radius: 8px;
+    font-size: 36px;
+    color: rgb(255, 208, 0);
+    box-shadow: #301f33;
+  }
+
+.center:hover{
+    background-color: #995aa3;
+    box-shadow: #482f4d;
+}
+
+.exit-button {
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    margin-right: 0%;
+    margin-left: 75%;
+    display: relative;
+    font-size: 36px;
+}
+
+.gameWindow {
+    width: 50%;
+    display: flex;
+    position: absolute;
+    left: 25%;
+    top: 20%;
+    z-index: -1;
 }
