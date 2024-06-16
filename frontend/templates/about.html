@@ -1,23 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Pour and Listen</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <h1>About Pour and Listen</h1>
-    </header>
-    <main>
-        <section class="game-info">
-            <h2>Welcome to Pour and Listen</h2>
-            <p>Pour and Listen is an immersive game where you enter a cozy bar and engage in meaningful conversations with our attentive bartender. Whether you want to have an everyday conversation or discuss what's on your mind, our bartender is here to listen and make your experience enjoyable.</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Pour and Listen. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>About</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+
+
+
+{% block body %}
+<main></main>
+    <section class="center">
+        <h2>Welcome to Pour and Listen</h2>
+        <p style="line-height: 150%;"><i>Pour and Listen</i> is an immersive game where you enter a cozy bar and engage in meaningful conversations with our attentive bartender. Whether you want to have an everyday conversation or discuss what's on your mind, our bartender is here to listen and make your experience enjoyable.</p>
+    </section>
+</main>
+<footer>
+    <br/>
+    <p style="font-size: 20px;">&copy; 2024 Pour and Listen. All rights reserved.</p>
+</footer>
+{% endblock %}
