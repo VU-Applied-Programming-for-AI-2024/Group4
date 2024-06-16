@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Pour and Listen</title>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.js"></script>
+    <script type="module" src="src/main.js"></script>
+
+    <style>
+        #chat-container {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        #chat-messages {
+            max-height: 150px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+
+        #chat-input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            box-sizing: border-box;
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-messages"></div>
+        <input type="text" id="chat-input" placeholder="Type your message here...">
+    </div>
+</body>
+</html>
+ 
