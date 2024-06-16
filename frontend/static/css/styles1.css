@@ -1,17 +1,18 @@
-/* NOT IN USE */
+/* Styles for choose character page */
 
 .title {
     font-family: Arial, sans-serif;
-    color: #7a2187;
+    color: #cc91d5a7;
     font-size: 450%;
     text-align: center;
     margin-top: 0;
+    padding: 40px
 }
 
 body {
     font-family: Georgia, serif;
     font-weight: bolder;
-    background-color: #000000;
+    background-color: #301f33;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,7 +47,22 @@ body {
     right: 10px;
 }
 
+
+/* Image for choose character with hover */
 .image {
+    max-width: 70%;
+    position: relative;
+    left: 15%;
+    height: auto;
+}
+
+.image:hover {
+    transform: scale(1.2);
+}
+
+
+/* Image for naming character (static image; no hover)*/
+.image-static {
     max-width: 70%;
     position: relative;
     left: 15%;
@@ -56,10 +72,10 @@ body {
 .btn {
     margin-top: 10px;
     background-color:white;
-    color:#7a2187;
+    color:#cc91d5a7;
     padding: 15px 20px;
     border: none;
-    border-color: #7a2187;
+    border-color: #cc91d5a7;
     border-radius: 5px;
     cursor: pointer;
     font-size: 20px;
@@ -79,11 +95,11 @@ body {
 .btn1 {
     text-align: center;
     margin-top: 10px;
-    background-color:#7a2187;
+    background-color:#cc91d5a7;
     color:white;
     padding: 15px 20px;
     border: none;
-    border-color: #7a2187;
+    border-color: #cc91d5a7;
     border-radius: 5px;
     cursor: pointer;
     font-size: 20px;
@@ -96,12 +112,12 @@ body {
 }
 
 .btn1:hover {
-    background-color: #39103f;
+    background-color: #945ba6a7;
 }
 
 .title2 {
     font-family: Arial, sans-serif;
-    color: #7a2187;
+    color: #cc91d5a7;
     font-size: 450%;
     text-align: center;
     margin-top: 0;

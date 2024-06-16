@@ -109,11 +109,15 @@ class testForm(FlaskForm):
 def index():
    return render_template('index.html')
 
+@app.route('/chat', methods =["GET", "POST"])
+def chat():
+   return render_template('chat.html')
+
 #The login page
 @app.route('/login', methods =["GET", "POST"])
 def login():
    form = LoginForm()
-   return render_template('old_loginpage.html', form=form)
+   return render_template('loginpage.html', form=form)
 
 # The about page
 @app.route('/about', methods=["GET"])
@@ -153,7 +157,7 @@ def register():
    #     email = request.form.get("mail") 
    #     print(username, email)
    #     return render_template('old_registrationSucceeded.html')
-   return render_template('old_registerpage.html', form=form)
+   return render_template('registerpage.html', form=form)
 
 
 #The choose-character page

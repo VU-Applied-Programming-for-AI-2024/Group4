@@ -16,7 +16,7 @@
 <div class="character-name">
     <!--Showing image of girl character-->
     <div class="left-section">
-        <img src="{{url_for('static', filename='choose_girl.png')}}"  alt="Character Julia" class="image">
+        <img src="{{url_for('static', filename='choose_girl.png')}}"  alt="Character Julia" class="image-static">
     </div>
 
     <div class="right-section2">
@@ -27,9 +27,7 @@
         
         <!--Creating confirm button-->
         <div class="box" onclick="redirectToPage()">   
-            <button class="btn1">
-                <a href="/search">Confirm</a>
-            </button> 
+            <button class="btn1"; onclick="window.location.href='/chat'">Confirm</button>
         </div>
     <div>
 

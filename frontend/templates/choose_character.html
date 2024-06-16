@@ -11,25 +11,18 @@
 {% block body %}
 
 <a class="title">Choose your character</a>
+<br/>
 
 <!-- Code showing characters and creating buttons leading to naming character page -->
 <!--Boy character-->
 <div class='characters'>
-    <div class="left section" onclick="redirectToPage()">
-        <img src="{{url_for('static', filename='choose_boy.png')}}"  alt="Character Dave" class="image">
-
-        <button class="btn">
-            <a href="/nameboy">Choose him!</a>
-        </button>
+    <div class="left section">
+        <img src="{{url_for('static', filename='choose_boy.png')}}"  alt="Character Dave" class="image" onclick="window.location.href='/nameboy'">
     </div>
-    
-    <!--Girl character-->
-    <div class="right section" onclick="redirectToPage()">
-        <img src="{{url_for('static', filename='choose_girl.png')}}"  alt="Character Julia" class="image">
 
-        <button class="btn">
-            <a href="/namegirl">Choose her!</a>
-        </button>
+    <!--Girl character-->
+    <div class="left section">
+        <img src="{{url_for('static', filename='choose_girl.png')}}"  alt="Character Dave" class="image" onclick="window.location.href='/namegirl'">
     </div>
 </div>
 
