@@ -2,6 +2,18 @@
 /* Style sheet for all pages except the registration page*/
 
 /* Creating an unused container */
+
+.flashes {
+  list-style-type: none;
+  padding: 0;
+}
+.flashes li {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #f8d7da;
+  color: #721c24;
+}
 .container {
     height: 300px;
     width: device-width;
