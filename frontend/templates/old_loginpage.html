@@ -1,3 +1,4 @@
+<!-- This html code is the login page, STILL IN USE DESPITE THE 'old' IN THE FILENAME!!!-->
 
 {% extends 'base.html' %}
 
@@ -10,13 +11,10 @@
 
 <!--Creating login title and form-->
 <h2>Login</h2>
+
+<!--Creating a form for login purpose-->
+<!--Includes username box, password box and submit button-->
 <form method="POST" action="">
-    <!-- {{form.hidden_tag()}}
-    {{form.username }}
-    {{form.password }}
-    {{form.submit }} -->
-
-
     <label for="username:"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="username" id='username' required>
     <br>
@@ -28,6 +26,8 @@
     <br>
     <br>
 </form>
+
+<!--Text and link leading to registration page-->
 <p class = 'textborder'>No account? <a href="/register">Register</a></p>
 </div>
 

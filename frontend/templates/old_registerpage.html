@@ -1,3 +1,5 @@
+<!-- This html code is the registration page, STILL IN USE DESPITE THE 'old' IN THE FILENAME!!!-->
+
 {% extends 'base.html' %}
 
 {% block head %}
@@ -11,13 +13,10 @@
 <div>
     <!--Creating Register title and form-->
     <h2>Register</h2>
+
+    <!--Creating a form for registration purpose-->
+    <!--Includes username box, password box, email box and submit button-->    
     <form method="POST" action="">
-        <!-- {{form.hidden_tag()}}
-        {{form.username }}
-        {{form.password }}
-        {{form.submit }} -->
-
-
         <label for="username:"><b>Username</b></label>
         <input type="text" id ="username" placeholder="Enter Username" name="username" required>
         <br>
@@ -35,11 +34,13 @@
         <br>
     </form>
 
+    <!--Text and link leading to login page-->
     <p class="textborder">Already have an account? <a href="/login">Login</a></p>
 </div>
 
 <script>
-    //Script that makes the popup work
+    //Script that makes the popup work. 
+    //Probably going to remove from website
 
     //check if popup button (=register button) is clicked
     document.getElementById("popup-button").addEventListener('click',

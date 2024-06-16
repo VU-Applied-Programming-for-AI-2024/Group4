@@ -1,3 +1,8 @@
+#
+# I don't know what this is, it looks like a practice page
+# Not in use.
+#
+
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 from app import app, db

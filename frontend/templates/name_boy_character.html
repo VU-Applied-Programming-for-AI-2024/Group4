@@ -1,26 +1,30 @@
+<!-- This html code is the page where players name their boy character-->
+
 {% extends 'basegame.html' %}
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/styles1.css') }}">
-
 <title>Name your character boy</title>
 {% endblock %}
 
 {% block body %}
 
+<!--Creating title-->
 <a class="title2">Name your character</a>
 
 <div class="character-name">
-
+    <!--Showing image of boy character-->
     <div class="left-section">
         <img src="{{url_for('static', filename='choose_boy.png')}}"  alt="Character Dave" class="image">
     </div>
 
     <div class="right-section2">
+        <!--Creating input box of character name-->
         <div class="box">
             <input type="text" class="value-input" name="value-input" value="Dave"> 
         </div>
-                    
+        
+        <!--Creating confirm button-->
         <div class="box" onclick="redirectToPage()">   
             <button class="btn1">
                 <a href="/search">Confirm</a>

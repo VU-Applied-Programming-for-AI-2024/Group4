@@ -1,5 +1,8 @@
 #
-# Flask code
+# Flask code. This code is the server of our website. 
+# Run this code to start the website. 
+# This code also includes all routes to pages 
+# and the login/registration management
 #
 
 #pip install flask flask_sqlalchemy flask_login flask_bcrypt flask_wtf wtforms email_validator

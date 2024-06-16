@@ -1,8 +1,9 @@
+<!-- This html code is the page where player choose their character (boy or girl)-->
+
 {% extends 'basegame.html' %}
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/styles1.css') }}">
-
 <title>Choose your character</title>
 {% endblock %}
 
@@ -11,6 +12,8 @@
 
 <a class="title">Choose your character</a>
 
+<!-- Code showing characters and creating buttons leading to naming character page -->
+<!--Boy character-->
 <div class='characters'>
     <div class="left section" onclick="redirectToPage()">
         <img src="{{url_for('static', filename='choose_boy.png')}}"  alt="Character Dave" class="image">
@@ -19,7 +22,8 @@
             <a href="/nameboy">Choose him!</a>
         </button>
     </div>
-
+    
+    <!--Girl character-->
     <div class="right section" onclick="redirectToPage()">
         <img src="{{url_for('static', filename='choose_girl.png')}}"  alt="Character Julia" class="image">
 
