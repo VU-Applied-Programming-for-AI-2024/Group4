@@ -61,6 +61,26 @@ document.addEventListener('DOMContentLoaded', function () {
         chatContainer.classList.toggle('light-mode');
         chatContainer.classList.toggle('dark-mode');
     });
+
+
+    // initialize Phaser game when the DOM is loaded
+    if (document.getElementById('game-container')) {
+        const config = {
+            type: Phaser.AUTO,
+            width: 800,
+            height: 600,
+            scene: [BootScene, GameScene],
+            physics: {
+                default: 'arcade',
+                arcade: {
+                    gravity: { y: 0 },
+                    debug: false
+                }
+            }
+        };
+
+        const game = new Phaser.Game(config);
+    }
 });
 
 //function that checks if user sent (not empty) message

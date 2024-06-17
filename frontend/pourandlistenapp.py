@@ -109,6 +109,7 @@ class testForm(FlaskForm):
 def index():
    return render_template('index.html')
 
+# Chat page (game page)
 @app.route('/chat', methods =["GET", "POST"])
 def chat():
    return render_template('chat.html')
@@ -185,6 +186,10 @@ def search():
 def registrationsucces():
    return render_template('registrationSucceeded.html')
 
+# TEMPORARY PAGE WITH ONLY MOVING MECHANICS FOR THE GAME
+@app.route('/game-only', methods=["GET", "POST"])
+def game_only():
+    return render_template('game-only.html')
 
  
 if __name__=='__main__':
