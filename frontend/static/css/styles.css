@@ -1,0 +1,660 @@
+
+/* This is the correct style sheet of our website */
+/* Style sheet for all pages*/
+
+/* upload images in the background*/
+.model_back {
+  background-image: url("/static/happy_boy.png"), url('/static/happy_girl.png');
+  background-size: 30%, 30%;
+  background-repeat: no-repeat, no-repeat;
+  background-position: 15% 85%, 90% 85%;
+  width: 100%;
+  height: 100%;
+  padding-top: 20px;
+  position: absolute;
+  /* z-index: 100; */
+}
+
+/* Creating an unused container */
+.container {
+    height: 300px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border: 2px solid #7a2187;
+}
+
+/* center an image */
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+.right {
+  float: center;
+  width: 80%;
+  margin-left: 8%;
+  /* border: 3px solid #73AD21; */
+  padding: 10px;
+}
+
+  
+.formAligned {
+    display: block;
+    margin-left: 240px;
+    width: 50%;
+}
+
+/* creating a navigation bar at the top of the screen */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0px;
+  position: absolute;
+  top: -10px; 
+  left: -10px;
+  right: 10px;
+  height: 60px;
+  width: 99%;
+  background-color: #cc91d5a7; /* Yellow background */
+  /* padding: 10px 20px; */
+  /* padding-top: 5px; */
+  padding-left: 20px;
+  /* margin-top: 0px; */
+  /* box-shadow: 2px 20px rgba(0, 0, 0, 0.1); */
+  z-index: 10;
+}
+
+/* .navbar {
+    overflow: hidden;
+    background-color: rgb(255, 221, 0);
+    font-family: sans-serif;
+} */
+
+/* text inside the navigation bar */
+
+.logo{
+  font-size: 24px;
+  color: rgb(255, 221, 0); 
+  text-decoration: none;
+  padding-left: -30px;
+  padding-top: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  list-style: wrap;
+  align-items: center;
+}
+
+
+.navbar .image{
+  background-image: url("/static/pal_logo.png");
+  background-size: 30%, 30%;
+  background-repeat: no-repeat, no-repeat;
+  width: 100%;
+  height: 100%;
+  padding-top: 20px;
+  position: absolute;
+}
+
+
+.navsearchbar{
+  margin-top: 50px;
+  top: 24px;
+  padding-top: 24px;
+}
+
+
+
+
+
+/* a start button leading to the login page */
+.start-button {
+    background-color: rgb(255, 221, 0); 
+
+    position: relative;
+    /* left: 46%;
+    right: 50%; */
+    align-items: center;
+    display: block;
+    margin-left: 20px;
+    margin-right: 20px;
+    /* margin-left: auto;
+    margin-right: auto; */
+
+    border: none;
+    display: block;
+    color: #7a2187;
+
+    padding: 15px 32px;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 24px;
+    border-radius:  8px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+/* hover animation for the start button */
+.start-button:hover{
+    background-color: rgb(200, 155, 29);
+}
+
+/* a dropdown menu button inside navigation bar*/
+.dropdown {
+  position: relative;
+  height: fit-content;
+  display: inline-block;
+}
+
+
+/* The actual dropdown button */
+.dropbtn {
+  font-size: 50%;
+  font-weight: bold;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  border: none;
+  cursor: pointer;
+  background-color: inherit; 
+  color: rgb(255, 221, 0);
+  border-radius: 5px;
+  /* width: 300%; */
+  width: 160px;
+}
+
+
+/* hover over nav bar */
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: #8756a6;
+}
+
+/* Dropdown content cells (hidden by default) */
+.dropdown-content {
+  display: none; /* Hidden by default */
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: #cc91d5a7;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+
+/* Links (text) inside the dropdown */
+.dropdown-content a {
+    /* .dropbtn; */
+    float: none;
+    color: #4d2a56;
+    padding: 16px 32px;
+    font-family: Inter;
+    text-decoration: none;
+    font-size: 25px;
+    display: block;
+    text-align: left;
+    cursor: pointer;
+}
+
+/* Add a background color to dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ffe3ff;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* a heading (title of website) */
+.curve-text {
+  fill: rgb(255, 221, 0);
+  filter: drop-shadow(10px 10px 4px rgba(0,0,0,0.5)); 
+  font-size: 450x;
+  z-index: -2;
+} 
+
+
+/*  */
+
+.group-text {
+    color: white; 
+    font-size: 45px;
+    margin-top: -175px;
+
+    padding-bottom: 20px;
+    z-index: -1;
+    position: relative;
+}
+
+@media (max-width: 1100px) {                  
+  .group-text {
+    color: white; 
+    font-size: 36px;
+    margin-top: -50px;
+
+    padding-bottom: 20px;
+    z-index: -1;
+    position: relative;
+  }
+
+  .start-button {
+    background-color: rgb(255, 221, 0); 
+
+    position: relative;
+    /* left: 46%;
+    right: 50%; */
+    align-items: center;
+    display: block;
+    margin-right: -200px;
+    margin-right: 300px;
+    /* margin-left: auto;
+    margin-right: auto; */
+
+    border: none;
+    display: block;
+    color: #7a2187;
+
+    padding: 15px 32px;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 24px;
+    border-radius:  8px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  margin-left: -175px;
+  margin-right: 125px;
+  padding: 16px;
+  padding-left: 20px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+}
+
+@media (min-width: 1500px) {                  
+  .group-text {
+    color: white; 
+    font-size: 36px;
+    margin-top: -210px;
+    margin-left: 20px;
+    padding-bottom: 20px;
+    z-index: -1;
+    position: relative;
+  }
+}
+
+
+/* .title {
+  font-family: Arial, sans-serif;
+  color: #7a2187;
+  font-size: 150%;
+  text-align: center;
+} */
+
+
+
+/* a heading (title of login page) */
+h2 {
+    color: rgb(255, 221, 0);
+    font-family: "Inter";
+    margin-top: 180px;
+    font-size: 48px;
+    padding: 24px;
+    text-align:center;
+}
+
+/* general style for the about text*/
+.about {
+    color: #7a2187;
+    font-family: "Inter";
+    margin-top: -180px;
+    margin-left: 12px;
+    margin-top: 8px;
+    padding: 12px;
+    text-align:left;
+}
+
+/* style for the about heading */
+.about h1 {
+    color: rgb(255, 221, 0);
+    font-family: "Inter";
+    font-size: 32px;
+    padding: 12px;
+    margin-bottom: 24px;
+    text-align:left;
+}
+
+/* style for the about paragraph text */
+.about p {
+    color: rgb(255, 221, 0);
+    font-family: "Inter";
+    font-size: 18px;
+    margin-left: -10px;
+    margin-right: 720px;
+    text-align:left;
+}
+
+/* text */
+p {
+    color:  rgb(255, 221, 0);
+    font-family: "Inter";
+    font-size: 24px;
+    margin-top: -60px;
+    padding: 24px;
+    text-align: center;
+}
+
+
+/* text with a white border */
+.textborder {
+  color:  #301f33;
+  font-family: "Inter";
+  font-size: 24px;
+  margin-top: -60px;
+  padding: 24px;
+  text-align: center;
+  text-shadow: 
+  /* first layer at 1px */
+  -1px -1px 0px #ffe189,
+   0px -1px 0px #ffe189,
+   1px -1px 0px #ffe189,
+  -1px  0px 0px #ffe189,
+   1px  0px 0px #ffe189,
+  -1px  1px 0px #ffe189ff,
+   0px  1px 0px #ffe189,
+   1px  1px 0px #ffe189;
+  /* second layer at 2px */
+  /* -2px -2px 0px #ffffff,
+  -1px -2px 0px #ffffff,
+   0px -2px 0px #ffffff,
+   1px -2px 0px #ffffff,
+   2px -2px 0px #ffffff,
+   2px -1px 0px #ffffff,
+   2px  0px 0px #ffffff,
+   2px  1px 0px #ffffff,
+   2px  2px 0px #ffffff,
+   1px  2px 0px #ffffff,
+   0px  2px 0px #ffffff,
+  -1px  2px 0px #ffffff,
+  -2px  2px 0px #ffffff,
+  -2px  1px 0px #ffffff,
+  -2px  0px 0px #ffffff,
+  -2px -1px 0px #ffffff; */
+}
+
+form {
+    color: rgb(255, 221, 0);
+    font-family: "Inter";
+    font-size: 24px;
+    margin-top: -60px;
+    padding: 24px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+/* Slideshow container */
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+  }
+  
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
+  }
+  
+  /* Next & previous buttons */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    margin-left: -375px;
+    margin-right: 125px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+  
+  
+  /* The dots/bullets/indicators */
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+  .active, .dot:hover {
+    background-color: #717171;
+  }
+  
+  /* Fading animation */
+  .fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  
+  @keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+/* Popup container */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  /* The actual popup (appears on top) */
+  .popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #7a2187;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+  }
+  
+  /* Popup arrow */
+  .popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  /* Toggle this class when clicking on the popup container (hide and show the popup) */
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+  }
+  
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+
+
+
+body {
+  font-family: Georgia, serif;
+  background-color:#7a2187;
+  font-weight: bolder;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  padding-top: 10%;
+  margin-left: 10px;
+  padding-left: 10px;
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: rgb(255, 221, 0);
+  color:#7a2187;
+  font-weight: bolder;
+}
+
+.empty_btn{
+  cursor: pointer;
+  background-color: none;
+  color: none;
+  border: none;
+  margin-left: -100px;
+  padding-left: -100px;
+}
+
+.searchInput {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.searchResults {
+  margin-top: 20px;
+  text-align: center;
+}
+
+
+
+/* title for 'choose your character' text */
+.choosetitle {
+  font-family: Arial, sans-serif;
+  color: #cc91d5a7;
+  font-size: 450%;
+  text-align: center;
+  margin-top: 0;
+  padding: 40px
+}
+
+/* style to correctly position characters in 'choose character' page */
+.left-section {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  position: relative;
+  width: 45%;
+  left: 10px;
+}
+
+/* style to correctly div of characters and their name */
+.characters, .character-name {
+  display: flex;
+  justify-content: space-between;
+  position: static;
+  width: 80%;
+}
+
+/* Image for choose character with hover */
+.chooseimage {
+  max-width: 70%;
+  position: relative;
+  left: 15%;
+  height: auto;
+}
+
+.chooseimage:hover {
+  transform: scale(1.2);
+}
+
+
+/* Image for naming character (static image; no hover)*/
+.image-static {
+  max-width: 70%;
+  position: relative;
+  left: 15%;
+  height: auto;
+}
