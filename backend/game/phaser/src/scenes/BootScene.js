@@ -1,3 +1,5 @@
+// boot scene for loading images. very first scene
+
 export default class BootScene extends Phaser.Scene {
     constructor() {
         super({ key: 'BootScene' });

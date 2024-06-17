@@ -1,6 +1,9 @@
+import Phaser from 'phaser'
 import BootScene from './scenes/BootScene.js';
 import SelectionScene from './scenes/SelectionScene.js';
 import GameScene from './scenes/GameScene.js';
+import axios from 'axios';
+
 
 const config = {
     type: Phaser.AUTO,

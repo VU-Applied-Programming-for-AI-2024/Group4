@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export default class GameScene extends Phaser.Scene {
     constructor() {
         super({ key: 'GameScene' });
@@ -84,12 +86,10 @@ export default class GameScene extends Phaser.Scene {
         // Display the player's message
         this.displayMessage('Player', message);
 
-        // Simulate sending the message to an API and receiving a response
-        // In a real implementation, you would use fetch() or another method to communicate with the API
-        setTimeout(() => {
-            const response = this.getBartenderResponse(message);
+        // Send the message to the OpenAI API and display the response
+        this.getBartenderResponse(message).then(response => {
             this.displayMessage('Bartender', response);
-        }, 1000);
+        });
     }
 
     displayMessage(sender, message) {
@@ -99,10 +99,24 @@ export default class GameScene extends Phaser.Scene {
         this.chatMessages.scrollTop = this.chatMessages.scrollHeight; // Scroll to bottom
     }
 
-    getBartenderResponse(message) {
-        // Simulated response from the bartender
-        // In a real implementation, this would be replaced by an actual API call
-        return `You said: "${message}"`;
+    async getBartenderResponse(message) {
+        try {
+            const response = await axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', {
+                prompt: `Player: ${message}\n\nPour and Listen Bartender:`,
+                max_tokens: 150,
+                n: 1,
+                stop: ["\n", "Player:"],
+            }, {
+                headers: {
+                    'Authorization': `https://chatgpt.com/g/g-fjKil9mZO-pour-and-listen-bartender`
+                }
+            });
+
+            return response.data.choices[0].text.trim();
+        } catch (error) {
+            console.error('Error fetching response from OpenAI API:', error);
+            return 'Sorry, I had trouble understanding that. Could you try again?';
+        }
     }
 
     shutdown() {
