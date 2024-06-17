@@ -25,7 +25,7 @@ class GameScene extends Phaser.Scene {
 
     create() {
         // Add background and scale it to fit the game canvas
-        const bg = this.add.image(0, 0, 'bar').setOrigin(0.5, 0.5);
+        const bg = this.add.image(0, 0, 'bar').setOrigin(0, 0);
         bg.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
 
         // Retrieve selected character from sessionStorage
@@ -33,7 +33,7 @@ class GameScene extends Phaser.Scene {
         this.player = this.physics.add.sprite(this.sys.game.config.width / 2, this.sys.game.config.height / 2, selectedCharacter);
 
         // Scale the character sprite
-        this.player.setScale(0.10);
+        this.player.setScale(0.08);
 
         // // Set up animations
         // this.anims.create({
@@ -73,16 +73,16 @@ class GameScene extends Phaser.Scene {
         this.player.setVelocity(0);
 
         if (this.cursors.left.isDown) {
-            this.player.setVelocityX(-160);
+            this.player.setVelocityX(-300);
             this.player.anims.play('left', true);
         } else if (this.cursors.right.isDown) {
-            this.player.setVelocityX(160);
+            this.player.setVelocityX(300);
             this.player.anims.play('right', true);
         } else if (this.cursors.up.isDown) {
-            this.player.setVelocityY(-160);
+            this.player.setVelocityY(-300);
             this.player.anims.play('up', true);
         } else if (this.cursors.down.isDown) {
-            this.player.setVelocityY(160);
+            this.player.setVelocityY(300);
             this.player.anims.play('down', true);
         } else {
             this.player.anims.stop();
