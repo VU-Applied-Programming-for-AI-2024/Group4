@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move Picture with AWSD</title>
+    <style>
+        #container {
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+            position: relative;
+            overflow: hidden;
+        }
+        #picture {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img id="picture" src="char.png" alt="Movable Picture">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const picture = document.getElementById('picture');
+            let x = 0;
+            let y = 0;
+            const step = 2;
+            const keysPressed = {};
+
+            document.addEventListener('keydown', (event) => {
+                keysPressed[event.key] = true;
+            });
+
+            document.addEventListener('keyup', (event) => {
+                keysPressed[event.key] = false;
+            });
+
+            function updatePosition() {
+                if (keysPressed['a']) x -= step;
+                if (keysPressed['d']) x += step;
+                if (keysPressed['w']) y -= step;
+                if (keysPressed['s']) y += step;
+
+                // Ensure the picture stays within the container
+                const container = document.getElementById('container');
+                const containerRect = container.getBoundingClientRect();
+                const pictureRect = picture.getBoundingClientRect();
+
+                if (x < 0) x = 0;
+                if (y < 0) y = 0;
+                if (x > containerRect.width - pictureRect.width) x = containerRect.width - pictureRect.width;
+                if (y > containerRect.height - pictureRect.height) y = containerRect.height - pictureRect.height;
+
+                picture.style.transform = `translate(${x}px, ${y}px)`;
+
+                requestAnimationFrame(updatePosition);
+            }
+
+            updatePosition();
+        });
+    </script>
+</body>
+</html>
