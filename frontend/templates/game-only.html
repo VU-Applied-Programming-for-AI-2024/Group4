@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Talk to Our Bartender!</title>
     <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.js"></script>
+    <link rel="stylesheet" href=
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat_styles.css') }}">
     <style>
+
         body {
             margin: 0;
             padding: 0;
@@ -16,15 +20,29 @@
             background-color: #000;
         }
         #game-container {
-            width: 100px;
-            height: 100px;
+            /* width: 100px;
+            height: 100px; */
+            margin-right: 10px;
+            right: 10px;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            width: 80%
         }
     </style>
 </head>
+
+
 <body>
-    <div id="game-container">
+      
+    <!-- script for the game: -->
     <script src="{{ url_for('static', filename='js/game_script.js') }}"></script>
-    </div>
+<script>
+
+</script>
+
+
+</div>
 </body>
 </html>
 

@@ -10,10 +10,14 @@ body {
 .light-mode {
     background-color: #cc91d5a7;
     color: #301f33;
+    width: 1000px;
 }
 
 .dark-mode .chat-container {
     background-color: #cc91d5a7;
+    width: 1000px;
+    display:block;
+    position: absolute;
     color: #301f33;
 }
 
