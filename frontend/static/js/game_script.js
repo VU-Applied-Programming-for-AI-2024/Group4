@@ -91,11 +91,11 @@ class GameScene extends Phaser.Scene {
 }
 
 // Initialize Phaser game when the DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
     const config = {
         type: Phaser.AUTO,
         width: 800,
-        height: 600,
+        height:600,
         scene: [BootScene, GameScene],
         physics: {
             default: 'arcade',
@@ -103,7 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 gravity: { y: 0 },
                 debug: false
             }
-        }
+        },
+        parent: 'game-container'
     };
 
     const game = new Phaser.Game(config);
