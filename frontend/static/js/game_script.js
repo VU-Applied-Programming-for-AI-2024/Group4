@@ -31,13 +31,13 @@ class GameScene extends Phaser.Scene {
         // Set the world bounds to match the size of the background image
         this.physics.world.setBounds(0, 0, bg.displayWidth, bg.displayHeight);
 
+        // Enable collision between the player and the world bounds
+        this.player.setCollideWorldBounds(true);
+
         // Make sure that the character is the selected character, if no selected character -> boy
         const selectedCharacter = sessionStorage.getItem('selectedCharacter') || 'boy';
         this.player = this.physics.add.sprite(this.sys.game.config.width / 2, this.sys.game.config.height / 2, selectedCharacter);
         this.player.setScale(0.08);
-
-        // Enable collision between the player and the world bounds
-        this.player.setCollideWorldBounds(true);
 
         this.cursors = this.input.keyboard.createCursorKeys();
     }
