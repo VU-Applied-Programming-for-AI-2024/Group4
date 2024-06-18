@@ -12,8 +12,8 @@ db.init_app(app)
 login_manager.init_app(app)
 
 app.register_blueprint(auth_blueprint)
-# app.register_blueprint(general_blueprint)
-# app.register_blueprint(search_blueprint)
+app.register_blueprint(general_blueprint)
+app.register_blueprint(search_blueprint)
 
 with app.app_context():
     db.create_all()

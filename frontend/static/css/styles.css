@@ -3,17 +3,24 @@
 
 /* Creating an unused container */
 
-.flashes {
+.flash {
   list-style-type: none;
   padding: 0;
 }
-.flashes li {
+/* .flash li {
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
+} */
+.flash.error {
   background-color: #f8d7da;
   color: #721c24;
 }
+.flash.success {
+  background-color: #d4edda; /* Light green background */
+  color: #155724;
+}
+
 .container {
     height: 300px;
     width: device-width;
