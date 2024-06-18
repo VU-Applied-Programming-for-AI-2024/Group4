@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-curl https://api.openai.com/v1/models \
-  -H "Authorization: Bearer $sk-proj-uV8OlqqJ6Ea2MVIX6n6YT3BlbkFJCtH5a5uG9bzEfq7aZY77" \
-  -H "OpenAI-Organization: org-RNxIsjQZBUsZ9nzhA9bdIWoi" \
-  -H "OpenAI-Project: $proj_WUNKh8NZv0lRWi5aKnfC63Bw"
+// curl https://api.openai.com/v1/models \
+//   -H "Authorization: Bearer $sk-proj-uV8OlqqJ6Ea2MVIX6n6YT3BlbkFJCtH5a5uG9bzEfq7aZY77" \
+//   -H "OpenAI-Organization: org-RNxIsjQZBUsZ9nzhA9bdIWoi" \
+//   -H "OpenAI-Project: $proj_WUNKh8NZv0lRWi5aKnfC63Bw"
