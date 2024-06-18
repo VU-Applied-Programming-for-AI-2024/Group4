@@ -64,6 +64,16 @@ document.addEventListener('DOMContentLoaded', function () {
             sendMessage();
         }
     });
+
+    // Prevent Phaser from capturing the spacebar when the chat input is focused
+    userInput.addEventListener('focus', () => {
+        game.input.keyboard.enabled = false;
+    });
+
+    userInput.addEventListener('blur', () => {
+        game.input.keyboard.enabled = true;
+    });
+
 });
 
 

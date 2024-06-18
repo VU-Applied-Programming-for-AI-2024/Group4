@@ -1,19 +1,17 @@
-// Phaser game logic in this file (moving mechanics).
-
 class BootScene extends Phaser.Scene {
     constructor() {
         super({ key: 'BootScene' });
     }
 
     preload() {
-        // Load assets
+        console.log("Loading assets...");
         this.load.image('bar', '/static/cafe_pal.png');
-        this.load.image('boy', '/static/happy_boy.png');
-        this.load.image('girl', '/static/happy_girl.png');
+        this.load.image('boy', '/static/boy_no_border.png');
+        this.load.image('girl', '/static/girl_no_border.png');
     }
 
     create() {
-        // Start GameScene after assets are loaded
+        console.log("Assets loaded, starting GameScene...");
         this.scene.start('GameScene');
     }
 }
@@ -24,52 +22,19 @@ class GameScene extends Phaser.Scene {
     }
 
     create() {
-        // Add background and scale it to fit the game canvas
+        console.log("Creating GameScene...");
+
         const bg = this.add.image(0, 0, 'bar').setOrigin(0, 0);
         bg.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
 
-        // Retrieve selected character from sessionStorage
         const selectedCharacter = sessionStorage.getItem('selectedCharacter') || 'boy';
         this.player = this.physics.add.sprite(this.sys.game.config.width / 2, this.sys.game.config.height / 2, selectedCharacter);
-
-        // Scale the character sprite
         this.player.setScale(0.08);
 
-        // // Set up animations
-        // this.anims.create({
-        //     key: 'up',
-        //     frames: this.anims.generateFrameNumbers(selectedCharacter, { start: 0, end: 2 }),
-        //     frameRate: 10,
-        //     repeat: -1
-        // });
-
-        // this.anims.create({
-        //     key: 'down',
-        //     frames: this.anims.generateFrameNumbers(selectedCharacter, { start: 3, end: 5 }),
-        //     frameRate: 10,
-        //     repeat: -1
-        // });
-
-        // this.anims.create({
-        //     key: 'left',
-        //     frames: this.anims.generateFrameNumbers(selectedCharacter, { start: 6, end: 8 }),
-        //     frameRate: 10,
-        //     repeat: -1
-        // });
-
-        // this.anims.create({
-        //     key: 'right',
-        //     frames: this.anims.generateFrameNumbers(selectedCharacter, { start: 9, end: 11 }),
-        //     frameRate: 10,
-        //     repeat: -1
-        // });
-
-        // Set up keyboard input
         this.cursors = this.input.keyboard.createCursorKeys();
     }
 
     update() {
-        // Handle player movement
         this.player.setVelocity(0);
 
         if (this.cursors.left.isDown) {
@@ -90,12 +55,13 @@ class GameScene extends Phaser.Scene {
     }
 }
 
-// Initialize Phaser game when the DOM is loaded
+let game;
+
 document.addEventListener('DOMContentLoaded', function () {
     const config = {
         type: Phaser.AUTO,
         width: 800,
-        height:600,
+        height: 600,
         scene: [BootScene, GameScene],
         physics: {
             default: 'arcade',
@@ -107,5 +73,5 @@ document.addEventListener('DOMContentLoaded', function () {
         parent: 'game-container'
     };
 
-    const game = new Phaser.Game(config);
+    game = new Phaser.Game(config);
 });
