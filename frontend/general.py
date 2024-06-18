@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify, Blueprint, redirect, url_for, flash
+from flask_login import current_user
 
 general = Blueprint('general', __name__)
 # general.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{db_path}"
