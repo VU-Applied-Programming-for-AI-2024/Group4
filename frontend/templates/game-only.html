@@ -1,5 +1,35 @@
 {% extends 'basegame.html' %}
 
+<script>
+import axios from "axios";
+import {useState} from "react";
+
+
+export default function Ask() {
+    const [question, setQuestion] = useState("")
+    const [answer, setAnswer] = useState("")
+    const [loading, setLoading] = useState(false) 
+}
+
+const handleQuestionChange = (e: any) => {
+    setQuestion(e.target.value)
+}
+
+const askQuestion = async () => {
+    setLoading(true)
+    try {
+        const response = await axios.post(/static/apiscript, {question})
+        setAnswer(response.data.answer)
+    } catch (error) {
+        console.error(error)
+        setAnswer("An error has occured")
+    } finally {
+        setLoading(false)
+    }
+}
+
+</script>
+
 <!DOCTYPE html>
 <html lang="en">
     {% block head %}
