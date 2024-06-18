@@ -32,9 +32,24 @@ var cursors;
 var score = 0;
 var gameOver = false;
 var scoreText;
+var npc; 
+var dialogActive = false; 
+var inputText = ''; 
+var chatBox; 
 
 var game = new Phaser.Game(config);
+// function preload ()
+// {
 
+// }
+function create ()
+{
+
+}
+function update ()
+{
+
+}
 function preload ()
 {
     this.load.image('sky', 'assets/sky.png');
@@ -42,6 +57,7 @@ function preload ()
     this.load.image('star', 'assets/star.png');
     this.load.image('bomb', 'assets/bomb.png');
     this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
+    this.load.spritesheet('npc', 'assets/npc.png', { frameWidth: 32, frameHeight: 48 }); // Load NPC sprite
 }
 
 function create ()
@@ -63,6 +79,10 @@ function create ()
 
     // The player and its settings
     player = this.physics.add.sprite(100, 450, 'dude');
+
+    // NPC settings
+    npc = this.physics.add.sprite(200, 450, 'npc');
+    npc.setCollideWorldBounds(true);
 
     //  Player physics properties. Give the little guy a slight bounce.
     player.setBounce(0.2);
@@ -94,46 +114,95 @@ function create ()
 
     //  Collide the player and the stars with the platforms
     this.physics.add.collider(player, platforms);
+    this.physics.add.collider(npc, platforms);
+
+    //  Collide the player and the stars with the platforms
+    this.physics.add.collider(player, platforms);
+    this.physics.add.collider(npc, platforms); //
+
+    // Create chat box
+    chatBox = this.add.rectangle(400, 550, 780, 200, 0x000000, 0.7); // Semi-transparent chat box
+    chatBox.setOrigin(0.5, 0.5);
+    chatBox.setVisible(false); // Hide by default
+
+    this.input.keyboard.on('keydown-ENTER', handleEnter, this); // ENTER key event for handling dialog
+    this.input.keyboard.on('keydown', handleTyping, this); // key event for handling text input
 }
-function any_pressed ()
-{
-    return cursor.left.isDown || cursor.right.isDown || cursor.up.isDown || cursor.down.isDown
-}
-function update ()
-{
-    if (gameOver)
-    {
-        return;
-    }
-    if (cursors.left.isDown && !any_pressed())
-    {
-        player.setVelocityX(-160);
 
-        player.anims.play('left', true);
-    }
-    else if (cursors.right.isDown && !any_pressed())
-    {
-        player.setVelocityX(160);
+// function handleEnter(event) {
+//     if (dialogActive) {
+//         // Process the input text here
+//         console.log('Player:', inputText);
+//         inputText = '';
+//     } else if (checkOverlap(player, npc)) { // Start dialog if near NPC
+//         dialogActive = true;
+//         chatBox.setVisible(true);
+//     }
+// }
 
-        player.anims.play('right', true);
-    }
-    else if (cursors.down.isDown && !any_pressed())
-    {
-        player.setVelocityY(160);
+// function handleTyping(event) {
+//     if (dialogActive && event.key.length === 1) { // Only process character keys
+//         inputText += event.key;
+//     } else if (dialogActive && event.key === 'Backspace') {
+//         inputText = inputText.slice(0, -1);
+//     }
+// }
 
-//        player.anims.play('down', true);
-    }
-    else if (cursors.up.isDown && !any_pressed())
-    {
-        player.setVelocityY(-160);
+// function checkOverlap(spriteA, spriteB) {
+//     var boundsA = spriteA.getBounds();
+//     var boundsB = spriteB.getBounds();
+//     return Phaser.Geom.Intersects.RectangleToRectangle(boundsA, boundsB); // Added function to check overlap
+// }
 
-//        player.anims.play('up', true);
-    }
-    if (!any_pressed())
-    {
-        player.setVelocityX(0);
-        player.setVelocityY(0)
 
-        player.anims.play('turn');
-    }
-}
+
+// function any_pressed ()
+// {
+//     return cursor.left.isDown || cursor.right.isDown || cursor.up.isDown || cursor.down.isDown
+// }
+// function update ()
+// {
+//     if (gameOver)
+//     {
+//         return;
+//     }
+//     if (cursors.left.isDown && !any_pressed())
+//     {
+//         player.setVelocityX(-160);
+
+//         player.anims.play('left', true);
+//     }
+//     else if (cursors.right.isDown && !any_pressed())
+//     {
+//         player.setVelocityX(160);
+
+//         player.anims.play('right', true);
+//     }
+//     else if (cursors.down.isDown && !any_pressed())
+//     {
+//         player.setVelocityY(160);
+
+// //        player.anims.play('down', true);
+//     }
+//     else if (cursors.up.isDown && !any_pressed())
+//     {
+//         player.setVelocityY(-160);
+
+// //        player.anims.play('up', true);
+//     }
+//     if (!any_pressed())
+//     {
+//         player.setVelocityX(0);
+//         player.setVelocityY(0)
+
+//         player.anims.play('turn');
+//     }
+
+//     if (dialogActive) { // condition to handle dialog display
+//         // Render input text on the chat box
+//         var style = { font: "20px Arial", fill: "#ffffff", wordWrap: { width: chatBox.width - 20, useAdvancedWrap: true }};
+//         var chatText = this.add.text(chatBox.x - chatBox.width / 2 + 10, chatBox.y - chatBox.height / 2 + 10, inputText, style);
+//         chatText.setOrigin(0, 0);
+//         this.add.existing(chatText);
+//     }
+// }
