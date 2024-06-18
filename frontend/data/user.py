@@ -4,7 +4,7 @@ from db import db
 class User(db.Model, UserMixin):
     __tablename__ = "users"
 
-    uid = db.Column(db.String, primary_key=True)
+    uid = db.Column(db.String, primary_key=True, autoincrement=False)
     username = db.Column(db.String, unique=True, nullable=False)
     password = db.Column(db.String, nullable=False)
 

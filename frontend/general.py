@@ -20,4 +20,24 @@ def game():
 @general.route('/search')
 def search_page():
     return render_template("search.html")
-    
+
+@general.route('/chat', methods =["GET", "POST"])
+def chat():
+   return render_template('chat.html')
+
+@general.route('/about', methods=["GET"])
+def about():
+   return render_template('about.html')
+
+@general.route('/choosechar', methods =["GET", "POST"])
+def choosechar():
+   return render_template('choose_character.html')
+
+@general.route('/nameboy', methods =["GET", "POST"])
+def nameboy():
+   return render_template('name_boy_character.html')
+
+#The naming girl character page
+@general.route('/namegirl', methods =["GET", "POST"])
+def namegirl():
+   return render_template('name_girl_character.html')

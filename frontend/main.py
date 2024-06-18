@@ -1,19 +1,21 @@
 from flask import Flask
-from auth import auth as auth_blueprint
-from auth import login_manager
+from auth import auth, login_manager
 from db import db, db_path
-from general import general as general_blueprint
-from search import search as search_blueprint
+from general import general
+from search import search
+from game import game
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = '4ae628294ab30b9ef4d89841bc9c8bec23572095ee35e12eaefa2160276aace4'
 app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{db_path}"
+print(db_path)
 db.init_app(app)
 login_manager.init_app(app)
 
-app.register_blueprint(auth_blueprint)
-app.register_blueprint(general_blueprint)
-app.register_blueprint(search_blueprint)
+app.register_blueprint(auth)
+app.register_blueprint(general)
+app.register_blueprint(search)
+app.register_blueprint(game)
 
 with app.app_context():
     db.create_all()

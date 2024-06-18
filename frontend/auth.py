@@ -21,6 +21,7 @@ def load_user(user_id):
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
+   logout_user()
    if request.method == 'GET':
       return render_template('loginpage.html')
    elif request.method == 'POST':
@@ -32,10 +33,33 @@ def login():
       if user is not None and user.password == password:
          login_user(user)
          flash("Success", 'success')
-         return redirect(url_for('general.game'))
+         return redirect(url_for('general.choosechar'))
       else:
          flash("Couldn't login, check you login information.", 'error')
          return redirect(url_for("auth.login"))
+   
+@auth.route('/register', methods=["GET", "POST"])
+def register():
+   if request.method == "GET":
+      return render_template("registerpage.html")
+   elif request.method == "POST":
+      username = request.form.get('username')
+      password = request.form.get('password')
+
+      user = User.query.filter(User.username == username).first()
+
+      if user is None:
+         uid = str(int(db.session.execute(text("select max(uid) from users")).scalar()) + 1)
+         new_user = User(uid=uid, username=username, password=password)
+         db.session.add(new_user)
+         db.session.commit()
+         flash('Success!', 'success')
+         return redirect(url_for('general.registrationsucces'))
+         # except Exception as e:
+            # flash("Password doesn't meet requirements (it must be not empty)!", "error")
+      else:
+         flash("Such username is occupied, please try another one!", "error")
+      return redirect(url_for('auth.register'))
 
 @auth.route('/logout')
 def logout():
