@@ -55,7 +55,6 @@
         align-items: center;
         width: 45%;
         position: relative;
-        top: -50px;
         right: 10px;
     }
     
@@ -176,14 +175,26 @@
 <!-- Code showing characters and creating buttons leading to naming character page -->
 <!--Boy character-->
 <div class='characters'>
-    <div class="left section">
-        <img src="{{url_for('static', filename='choose_boy.png')}}"  alt="Character Dave" class="chooseimage" onclick="window.location.href='/nameboy'">
+    <div class="left-section">
+        <img src="{{url_for('static', filename='choose_boy.png')}}"  alt="Character Dave" class="chooseimage" id="boy">
     </div>
 
     <!--Girl character-->
-    <div class="left section">
-        <img src="{{url_for('static', filename='choose_girl.png')}}"  alt="Character Dave" class="chooseimage" onclick="window.location.href='/namegirl'">
+    <div class="right-section">
+        <img src="{{url_for('static', filename='choose_girl.png')}}"  alt="Character Julia" class="chooseimage" id="girl">
     </div>
 </div>
+
+<script>
+    document.getElementById('boy').addEventListener('click', () => {
+        sessionStorage.setItem('selectedCharacter', 'boy');
+        window.location.href = '{{ url_for('game_only') }}';
+    });
+
+    document.getElementById('girl').addEventListener('click', () => {
+        sessionStorage.setItem('selectedCharacter', 'girl');
+        window.location.href = '{{ url_for('game_only') }}';
+    });
+</script>
 
 {% endblock %}
