@@ -10,9 +10,21 @@
 
 {% block body %}
 <!--Creating search container and button-->
+<div id='chair'>
+    
+</div>
 <div class="search-container">
     <input type="text" class="searchInput" placeholder="Select Furniture" name="search_input" 
-                   hx-get="/search_res" hx-trigger="keydown change delay:500ms" hx-target="#results">
+                   hx-get="/search_res" hx-trigger="keydown change delay:500ms" hx-target="#result_table">
+                   <select id="filter" name="filter" hx-get="/search_res" hx-trigger="change" hx-target="#result_table">
+                    <option value="all">All</option>
+                    <option value="theme">Theme</option>
+                    <option value="floor">Floor</option>
+                    <option value="view">View</option>
+                    <option value="misc">Misc</option>
+                    <option value="room">Room</option>
+                    <option value="chair">Chair</option>
+                </select>
                    <button type="submit">Search</button>
 </div>
 
@@ -26,12 +38,10 @@
                 <th>Preview</th>
             </tr>
         </thead>
-        <tbody id="results">
+        <tbody id="result_table">
             
         </tbody>
     </table>
 </div>
-
-</body>
 
 {% endblock %}

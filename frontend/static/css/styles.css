@@ -744,7 +744,7 @@ transition-property: all;
 transition-timing-function: line;
 }
 
-td:hover img {
+td:hover button.img {
   max-width: 90%;
   max-height: 60%;
   transition: max-width 0.4s, max-height 0.4s;

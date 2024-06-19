@@ -3,6 +3,9 @@
     <td>{{ result.id }}</td>
     <td>{{ result.name }}</td>
     <td>{{ result.label }}</td>
-    <td><img src="{{ url_for('static', filename='images/' + result.path) }}" alt="{{result.name}}"></td>
+    <td><button class="select-button" name="item_id" value="{{ result.id }}" hx-post="/select_item" hx-target="{{'#' + result.label}}">
+        <img src="{{ url_for('static', filename='images/' + result.path) }}" alt="{{result.name}}">
+    </button></td>
 </tr>
+<!-- <input type="submit" name="select"> -->
 {% endfor %}
