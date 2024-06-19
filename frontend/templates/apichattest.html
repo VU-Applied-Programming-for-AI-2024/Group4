@@ -1,0 +1,23 @@
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Chat App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <h1>chat!</h1>
+    <form method="post" action = "{{ url_for{'chatbot'}}}">
+        <label for="message">Message:</label>
+        <input type="text" id="message", name="message" required>
+        <button type="submit">Send</button>
+    </form>
+
+</body>
+
+</html>

@@ -9,7 +9,7 @@
 
 
 # importing Flask and other modules
-from flask import Flask, Request, render_template, url_for
+from flask import Flask, Request, render_template, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, LoginManager, login_user, login_required, logout_user, current_user
 from flask_bcrypt import Bcrypt
@@ -22,6 +22,11 @@ from sqlalchemy import create_engine, Column, Integer, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import database_exists, create_database
+
+
+import openai
+OPENAI_API_KEY = "sk-proj-b6J8wQ3KXq6ASLinpnvsT3BlbkFJz6b5TXP4yGhGuWkGX8GC"
+openai.api_key = OPENAI_API_KEY
 
 
 
@@ -186,12 +191,54 @@ def search():
 def registrationsucces():
    return render_template('registrationSucceeded.html')
 
+
+
+
 # TEMPORARY PAGE WITH ONLY MOVING MECHANICS FOR THE GAME
-@app.route('/game-only', methods=["GET", "POST"])
+@app.route('/game-only', methods=["POST"])
 def game_only():
-    return render_template('game-only.html')
+   return render_template('game-only.html')
 
  
+@app.route('/apichat', methods=["POST"])
+def apichat():
+   #get user input
+   user_input = request.form["message"]
+   #get api answer
+   prompt = f"User: {user_input}\n Chatbot: "
+   chat_history = []
+   response = openai.Completion.create(
+      engine="gpt-4o",
+      prompt=prompt,
+      temperature=0.5,
+      max_tokens = 200,
+      top_p=1,
+      frequency_penalty=0,
+      stop=["\nUser: ", "\nChatbot: "]
+   )
+
+   bot_response = response.choices[0].text.strip()
+
+   chat_history.append(f"User: {user_input}\nChatbot: {bot_response}")
+
+   return render_template(
+      "apichattest.html",
+      user_input = user_input,
+      bot_response=bot_response,
+   )
+
+   completion = openai.ChatCompletion.create(
+   model="gpt-3.5-turbo",
+   messages=[
+      {"role": "user", "content": message}
+   ]
+   )
+   if completion.choices[0].message!=None:
+      return completion.choices[0].message
+   else:
+      return 'Failed to Generate response!'
+    
+
 if __name__=='__main__':
    with app.app_context():
       db.create_all()

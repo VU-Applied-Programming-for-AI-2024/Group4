@@ -4,12 +4,6 @@
 
 
 
-const openai = new OpenAI({
-    organization: "find in organization settings",
-    project: "find in general settings",
-});
-
-
 
 
 document.addEventListener('DOMContentLoaded', function () {
