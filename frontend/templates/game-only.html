@@ -108,10 +108,13 @@ const askQuestion = async () => {
     <div id="chat-container">
         <div id="messages"></div>
         <div id="chat-input">
+            <!-- Message input: -->
             <input type="text" id="message-input" placeholder="Type your message...">
             <button id="send-button">Send</button>
         </div>
     </div>
+    <!-- <script src="{{ url_for('static', filename='js/chatgpt.js') }}"></script> -->
+    <script type="module" src="{{ url_for('static', filename='js/chatgpt.js') }}"></script> 
     <script src="{{ url_for('static', filename='js/game_script.js') }}"></script> 
     <script src="{{ url_for('static', filename='js/chat_script.js') }}"></script>
 {% endblock %}

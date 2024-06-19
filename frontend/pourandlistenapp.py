@@ -197,6 +197,40 @@ def registrationsucces():
 # TEMPORARY PAGE WITH ONLY MOVING MECHANICS FOR THE GAME
 @app.route('/game-only', methods=["GET", "POST"])
 def game_only():
+   if request.method == "POST":
+      # getting input from HTML form
+      message = request.form.get("message-input") 
+      # user_message = "You: " + message
+
+      #implementing chatgpt
+      messages = [ {"role": "system", "content":"You are a friendly, easygoing bartender in a cozy bar that offers advice and good conversation."} ]
+      # message = input("User : ")
+      if message:
+         messages.append(
+            {"role": "user", "content": message},
+         )
+         chat = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo", messages=messages
+         )
+      # if message =='clear':
+      #    all_user_input= []
+      #    all_bot_response= []
+      #    message = 'hi'
+      answer = chat.choices[0].message.content
+      print(f"ChatGPT: {answer}")
+      messages.append({"role": "assistant", "content": answer}) 
+
+      #storing ALL sent messages & answers
+      all_user_input.append(message)
+      all_bot_response.append(answer)
+
+      print(message)
+      print(answer)
+      #sending bot's response to JS
+      return render_template(
+      "game-only.html",
+      bot_response = answer,
+      )
    return render_template('game-only.html')
 
 
@@ -236,7 +270,14 @@ def chatgptapi():
       )
     return render_template("apichat.html")
 
- 
+# @app.route('/chatgptjs', methods =["GET", "POST"])
+# def chatgptapijs():
+#    data = request.get_json() # retrieve the data sent from JavaScript 
+#    # process the data using Python code 
+#    result = data['value'] * 2
+#    return jsonify(result=result) # return the result to JavaScript 
+   
+
 #  @app.route('/chatindex', methods=["GET", "POST"])
 # def chatindex():
 #    return render_template('apichatindex.html')

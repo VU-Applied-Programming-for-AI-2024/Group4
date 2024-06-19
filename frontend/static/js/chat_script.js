@@ -1,9 +1,15 @@
 // import {Configuration, OpenAIApi} from "openai"
 // Authorization: Bearer "sk-proj-b6J8wQ3KXq6ASLinpnvsT3BlbkFJz6b5TXP4yGhGuWkGX8GC"
 // import OpenAI from "openai";
+import OpenAI from "openai";
 
 
+// const openai = new OpenAI({
+//   apiKey: "sk-proj-b6J8wQ3KXq6ASLinpnvsT3BlbkFJz6b5TXP4yGhGuWkGX8GC",
+// });
 
+const { Configuration, OpenAIApi } = require("openai");
+require('dotenv').config()
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -29,12 +35,34 @@ document.addEventListener('DOMContentLoaded', function () {
         chatBox.scrollTop = chatBox.scrollHeight;
     };
 
+    const getResponse = async (message) => {
+        console.log('GetResponse called')
+        const response = await openai.chat.completions.create({
+            messages: [
+            {
+                role: "system",
+                content: "You are a friendly, easygoing bartender in a cozy bar that offers advice and good conversation.",
+            },
+            ],
+            model: "gpt-3.5-turbo",
+        });
+    
+      var answer = response.choices[0].message
+      console.log(answer);
+      appendMessage('Bartender: ', answer);
+    };
+
     const sendMessage = () => {
         const message = userInput.value.trim();
         if (message !== '') {
             console.log('Sending message:', message);
+            //send message to function
+            // pass_values(input=message)
+            //show message on screen
             appendMessage('You', message);
+
             userInput.value = '';
+
             // Call the external API to get the bot response
             fetch('https://api.example.com/chat', {
                 method: 'POST',
@@ -43,6 +71,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 body: JSON.stringify({ message })
             })
+
+            //Call chatgpt response
+            getResponse(message)
+            
+            
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -50,8 +83,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 return response.json();
             })
             .then(data => {
-                console.log('Received bot response:', data.reply);
-                appendMessage('Bot', data.reply);
+                console.log('Received bot response:', data.response);
+                appendMessage('Bot', data.response);
             })
             .catch(error => {
                 console.error('Fetch error:', error);
@@ -88,6 +121,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+function sendData() { 
+    var value = document.getElementById('input').value; 
+    $.ajax({ 
+        url: '/chatgptapijs', 
+        type: 'POST', 
+        contentType: 'application/json', 
+        data: JSON.stringify({ 'value': value }), 
+        success: function(response) { 
+            document.getElementById('output').innerHTML = response.result; 
+        }, 
+        error: function(error) { 
+            console.log(error); 
+        } 
+    }); 
+} 
+
+
+function pass_values(input) {
+    $.ajax(
+    {
+        type:'POST',
+        contentType:'application/json;charset-utf-08',
+        dataType:'json',
+        url:'http://127.0.0.1:5000/pass_val?value='+input ,
+        success:function (data) {
+            var reply=data.reply;
+            if (reply=="success")
+            {
+                return;
+            }
+            else
+                {
+                alert("some error ocured in session agent")
+                }
+ 
+        }
+    }
+);
+ }
 
 
 // curl https://api.openai.com/v1/models \
