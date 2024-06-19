@@ -2,8 +2,38 @@
 
 {% extends 'base.html' %}
 
+
+
 {% block head %}
 <title>Search bar</title>
+
+<div class="choice-container">
+    <div class="box">
+        <div class="title">Floor</div>
+        <div class="content">12345</div>
+    </div>
+
+    <div class="box">
+        <div class="title">View</div>
+        <div class="content">12345</div>
+    </div>
+
+    <div class="box">
+        <div class="title">Theme</div>
+        <div class="content">12345</div>
+    </div>
+
+    <div class="box">
+        <div class="title">Misc</div>
+        <div class="content">12345</div>
+    </div>
+</div>
+
+<div>
+    <button class="start-game-button">Start the game!</button>
+</div>
+
+
 <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 <script src="https://unpkg.com/htmx.org@1.9.12"></script>
 {% endblock %}
@@ -37,6 +67,79 @@
                 <th>Label</th>
                 <th>Preview</th>
             </tr>
+
+            <tr>
+                <td>12345</td>
+                <td>Blue tile floor</td>
+                <td>Floor</td>
+                <td>
+                    <img src="{{url_for('static', filename='Bar-Floor.png')}}">
+                </td>
+            </tr>
+
+            <tr>
+                <td>12345</td>
+                <td>Brown plank floor</td>
+                <td>Floor</td>
+                <td>
+                    <img src="{{url_for('static', filename='Coffee-floor.png')}}">
+                </td>
+            </tr>
+
+            <tr>
+                <td>12345</td>
+                <td>City view</td>
+                <td>View</td>
+                <td>
+                    <img src="{{url_for('static', filename='Bar-View.png')}}">
+                </td>
+            </tr>
+
+            <tr>
+                <td>12345</td>
+                <td>Nature view</td>
+                <td>View</td>
+                <td>
+                    <img src="{{url_for('static', filename='Coffee- view.png')}}">
+                </td>
+            </tr>
+
+            <tr>
+                <td>12345</td>
+                <td>Bar</td>
+                <td>Theme</td>
+                <td>
+                    <img src="{{url_for('static', filename='Bar-Bar.png')}}">
+                </td>
+            </tr>
+
+            <tr>
+                <td>12345</td>
+                <td>Cafe</td>
+                <td>Theme</td>
+                <td>
+                    <img src="{{url_for('static', filename='Coffee-coffee shop.png')}}">
+                </td>
+            </tr>
+
+            <tr>
+                <td>12345</td>
+                <td>Recreation</td>
+                <td>Misc</td>
+                <td>
+                    <img src="{{url_for('static', filename='Bar-Recreation.png')}}">
+                </td>
+            </tr>
+
+            <tr>
+                <td>12345</td>
+                <td>Decoration</td>
+                <td>Misc</td>
+                <td>
+                    <img src="{{url_for('static', filename='Coffee-decoration.png')}}">
+                </td>
+            </tr>
+
         </thead>
         <tbody id="result_table">
             
