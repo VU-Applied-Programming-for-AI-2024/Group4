@@ -12,7 +12,7 @@
 
 <body>
     <h1>chat!</h1>
-    <form method="post" action = "{{ url_for{'chatbot'}}}">
+    <form method="post" action = "{{ url_for('apichat') }}">
         <label for="message">Message:</label>
         <input type="text" id="message", name="message" required>
         <button type="submit">Send</button>

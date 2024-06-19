@@ -34,7 +34,8 @@ class GameScene extends Phaser.Scene {
         this.physics.world.setBounds(0, 0, bg.displayWidth, bg.displayHeight);
 
         // Enable collision between the player and the world bounds
-        this.player.setCollideWorldBounds(true);
+        //WORLD BOUNDARIES WERE REMOVED:
+        // this.player.setCollideWorldBounds(true);
 
         // Make sure that the character is the selected character, if no selected character -> boy
         const selectedCharacter = sessionStorage.getItem('selectedCharacter') || 'boy';

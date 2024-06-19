@@ -24,9 +24,9 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import database_exists, create_database
 
 
-import openai
+from openai import OpenAI
 OPENAI_API_KEY = "sk-proj-b6J8wQ3KXq6ASLinpnvsT3BlbkFJz6b5TXP4yGhGuWkGX8GC"
-openai.api_key = OPENAI_API_KEY
+# openai.api_key = OPENAI_API_KEY
 
 
 
@@ -195,12 +195,17 @@ def registrationsucces():
 
 
 # TEMPORARY PAGE WITH ONLY MOVING MECHANICS FOR THE GAME
-@app.route('/game-only', methods=["POST"])
+@app.route('/game-only', methods=["GET", "POST"])
 def game_only():
    return render_template('game-only.html')
 
+@app.route('/chatindex', methods=["GET", "POST"])
+def chatindex():
+   return render_template('apichatindex.html')
+
+
  
-@app.route('/apichat', methods=["POST"])
+@app.route('/apichat', methods=["GET","POST"])
 def apichat():
    #get user input
    user_input = request.form["message"]
@@ -222,22 +227,23 @@ def apichat():
    chat_history.append(f"User: {user_input}\nChatbot: {bot_response}")
 
    return render_template(
-      "apichattest.html",
+      "apichat.html",
       user_input = user_input,
       bot_response=bot_response,
    )
 
-   completion = openai.ChatCompletion.create(
-   model="gpt-3.5-turbo",
-   messages=[
-      {"role": "user", "content": message}
-   ]
-   )
-   if completion.choices[0].message!=None:
-      return completion.choices[0].message
-   else:
-      return 'Failed to Generate response!'
-    
+   # completion = openai.ChatCompletion.create(
+   # model="gpt-3.5-turbo",
+   # messages=[
+   #    {"role": "user", "content": message}
+   # ]
+   # )
+   # if completion.choices[0].message!=None:
+   #    return completion.choices[0].message
+   # else:
+   #    return 'Failed to Generate response!'
+   
+
 
 if __name__=='__main__':
    with app.app_context():
