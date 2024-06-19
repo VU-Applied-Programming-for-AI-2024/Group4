@@ -514,15 +514,6 @@ form {
 
 
 
-
-
-
-
-
-
-  
-
-
 /* Popup container */
 .popup {
     position: relative;
@@ -587,8 +578,8 @@ body {
 .search-container {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
-  padding-top: 10%;
+  margin-top: 10px;
+  padding-top: 5%;
   margin-left: 10px;
   padding-left: 10px;
 }
@@ -682,27 +673,81 @@ button {
   left: 41%;
 }
 
-table {
-  width: 95%;
+
+/* Box for users'choices*/
+.choice-container {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
-th h1{
+.box {
+  width: 200px;
+  padding: 20px;
+  background-color: #1F2739;
+  border: 1px solid #0E1119;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.box:hover {
+  transform: translateY(-5px);
+}
+
+.title {
+  font-weight: bold;
+  color: #7a2187;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.content {
+  color: #666666;
+  font-size: 20px;
+}
+
+
+.start-game-button {
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #7a2187;
+  background-color: rgb(255, 221, 0);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.start-game-button:hover {
+  background-color: rgb(161, 142, 16);
+}
+
+/* Table for options*/
+table {
+  width: 95%;
+  margin: auto;
+}
+
+/* th h1{
 font-weight: bold;
 font-size: 1em;
 text-align: left;
 color: #7a2187;
+} */
 
-}
 td{
-  width: 30%;
 font-weight: normal;
 font-size: 1em;
 -webkit-box-shadow:0 2px 2px-2px #0E1119;
 -moz-box-shadow:0 2px 2px -2px #0E1119;
 box-shadow: 0 2px 2px -2px #0E1119;
-
 }
+
 td, th{
+width: 25%;
 padding-bottom: 2%;
 padding-top: 2%;
 padding-left: 2%;
@@ -717,11 +762,20 @@ background-color: #323C50;
 tr:nth-child(even){
 background-color: #2C3446;
 }
+
 th{
 background-color: #1F2739;
-
+color:#7a2187;
 }
-td:first-child{color: #1F2739;}
+
+td{
+color:black;
+}
+
+td img {
+  max-width: 300px;
+  max-height: 300px;
+}
 
 tr:hover{
 background-color: #464A52;
@@ -731,8 +785,8 @@ box-shadow: 0 6px 6px -6px #0E1119;
 }
 
 td:hover{
-  max-width: 90%;
-  max-height: 60%;
+  max-width: 100%;
+  max-height: 80%;
 background-color: #FFF842;
 color: #403E10;
 font-weight: bold;
@@ -745,8 +799,8 @@ transition-timing-function: line;
 }
 
 td:hover img {
-  max-width: 90%;
-  max-height: 60%;
+  max-width: 100%;
+  max-height: 80%;
   transition: max-width 0.4s, max-height 0.4s;
 }
 
