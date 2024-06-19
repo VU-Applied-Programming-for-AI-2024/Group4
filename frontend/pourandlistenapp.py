@@ -24,9 +24,9 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import database_exists, create_database
 
 
-from openai import OpenAI
+import openai
 OPENAI_API_KEY = "sk-proj-b6J8wQ3KXq6ASLinpnvsT3BlbkFJz6b5TXP4yGhGuWkGX8GC"
-# openai.api_key = OPENAI_API_KEY
+openai.api_key = OPENAI_API_KEY
 
 
 
@@ -199,38 +199,74 @@ def registrationsucces():
 def game_only():
    return render_template('game-only.html')
 
-@app.route('/chatindex', methods=["GET", "POST"])
-def chatindex():
-   return render_template('apichatindex.html')
 
+all_user_input: list[str] = []
+all_bot_response: list[str] = []
+
+@app.route('/chatgpt', methods =["GET", "POST"])
+def chatgptapi():
+    if request.method == "POST":
+      # getting input with message = set_freq in HTML form
+      message = request.form.get("message") # <--- do whatever you want with that value
+      user_message = "You: " + message
+
+      #implementing chatgpt
+      messages = [ {"role": "system", "content":"You are a friendly, easygoing bartender in a cozy bar that offers advice and good conversation."} ]
+      # message = input("User : ")
+      if message:
+         messages.append(
+            {"role": "user", "content": message},
+         )
+         chat = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo", messages=messages
+         )
+      # if message =='clear':
+      #    all_user_input= []
+      #    all_bot_response= []
+      #    message = 'hi'
+      answer = chat.choices[0].message.content
+      print(f"ChatGPT: {answer}")
+      messages.append({"role": "assistant", "content": answer}) 
+      all_user_input.append(message)
+      all_bot_response.append(answer)
+      return render_template(
+      "apichat.html",
+      user_inputs = all_user_input,
+      bot_responses= all_bot_response,
+      )
+    return render_template("apichat.html")
 
  
-@app.route('/apichat', methods=["GET","POST"])
-def apichat():
-   #get user input
-   user_input = request.form["message"]
-   #get api answer
-   prompt = f"User: {user_input}\n Chatbot: "
-   chat_history = []
-   response = openai.Completion.create(
-      engine="gpt-4o",
-      prompt=prompt,
-      temperature=0.5,
-      max_tokens = 200,
-      top_p=1,
-      frequency_penalty=0,
-      stop=["\nUser: ", "\nChatbot: "]
-   )
+#  @app.route('/chatindex', methods=["GET", "POST"])
+# def chatindex():
+#    return render_template('apichatindex.html')
 
-   bot_response = response.choices[0].text.strip()
+# @app.route('/apichat', methods=["GET","POST"])
+# def apichat():
+#    #get user input
+#    user_input = request.form["message"]
+#    #get api answer
+#    prompt = f"User: {user_input}\n Chatbot: "
+#    chat_history = []
+#    response = openai.Completion.create(
+#       engine="gpt-4o",
+#       prompt=prompt,
+#       temperature=0.5,
+#       max_tokens = 200,
+#       top_p=1,
+#       frequency_penalty=0,
+#       stop=["\nUser: ", "\nChatbot: "]
+#    )
 
-   chat_history.append(f"User: {user_input}\nChatbot: {bot_response}")
+#    bot_response = response.choices[0].text.strip()
 
-   return render_template(
-      "apichat.html",
-      user_input = user_input,
-      bot_response=bot_response,
-   )
+#    chat_history.append(f"User: {user_input}\nChatbot: {bot_response}")
+
+#    return render_template(
+#       "apichat.html",
+#       user_input = user_input,
+#       bot_response=bot_response,
+#    )
 
    # completion = openai.ChatCompletion.create(
    # model="gpt-3.5-turbo",
