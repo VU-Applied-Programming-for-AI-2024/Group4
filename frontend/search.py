@@ -11,5 +11,4 @@ search = Blueprint('search', __name__)
 def search_data_page():
     search_input = request.args.get('search_input')
     results = db.session.execute(text(f"select * from furniture F where F.name like '%{search_input}%'")).all()
-    print(results)
     return render_template("search_results.html", results=results)
