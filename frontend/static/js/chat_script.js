@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     adjustGameContainerHeight();  // Initial adjustment
 
     const appendMessage = (sender, message) => {
+        console.log(`Appending message from ${sender}: ${message}`);
         const p = document.createElement('p');
         p.textContent = `${sender}: ${message}`;
         chatBox.appendChild(p);
@@ -31,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const sendMessage = () => {
         const message = userInput.value.trim();
         if (message !== '') {
+            console.log('Sending message:', message);
             appendMessage('You', message);
             userInput.value = '';
             // Call the external API to get the bot response
@@ -41,16 +43,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 body: JSON.stringify({ message })
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(data => {
+                console.log('Received bot response:', data.reply);
                 appendMessage('Bot', data.reply);
             })
             .catch(error => {
-                console.error('Error:', error);
+                console.error('Fetch error:', error);
                 appendMessage('System', 'There was an error sending your message.');
             });
+        } else {
+            console.log('Message is empty, not sending');
         }
     };
+    
 
     sendButton.addEventListener('click', sendMessage);
     userInput.addEventListener('keydown', (event) => {
@@ -68,6 +79,11 @@ document.addEventListener('DOMContentLoaded', function () {
         game.input.keyboard.enabled = true;
     });
 
+    // Log to ensure elements are correctly set up
+    console.log('Chat script initialized');
+    console.log('Chat box:', chatBox);
+    console.log('User input:', userInput);
+    console.log('Send button:', sendButton);
 });
 
 

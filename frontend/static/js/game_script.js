@@ -3,6 +3,7 @@ class BootScene extends Phaser.Scene {
         super({ key: 'BootScene' });
     }
 
+    // loading images
     preload() {
         console.log("Loading assets...");
         this.load.image('bar', '/static/cafe_pal.png');
@@ -28,7 +29,14 @@ class GameScene extends Phaser.Scene {
 
         const bg = this.add.image(0, 0, 'bar').setOrigin(0, 0);
         bg.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
+        
+        // Set the world bounds to match the size of the background image
+        this.physics.world.setBounds(0, 0, bg.displayWidth, bg.displayHeight);
 
+        // Enable collision between the player and the world bounds
+        this.player.setCollideWorldBounds(true);
+
+        // Make sure that the character is the selected character, if no selected character -> boy
         const selectedCharacter = sessionStorage.getItem('selectedCharacter') || 'boy';
         this.player = this.physics.add.sprite(this.sys.game.config.width / 2, this.sys.game.config.height / 2, selectedCharacter);
         this.player.setScale(0.08);
