@@ -11,6 +11,7 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = '4ae628294ab30b9ef4d89841bc9c8bec23572095ee35e12eaefa2160276aace4'
 app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{db_path}"
 app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SESSION_COOKIE_HTTPONLY'] = False
 
 db.init_app(app)
 login_manager.init_app(app)

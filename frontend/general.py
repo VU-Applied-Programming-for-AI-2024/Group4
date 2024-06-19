@@ -20,6 +20,7 @@ def game():
 @general.route('/search')
 def search_page():
     session['filter'] = 'all'
+    session['search_input'] = ''
     return render_template("search.html")
 
 @general.route('/chat', methods =["GET", "POST"])

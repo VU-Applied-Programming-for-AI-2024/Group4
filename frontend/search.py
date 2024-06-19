@@ -4,8 +4,6 @@ from data.user import User
 from db import db
 
 search = Blueprint('search', __name__)
-# auth.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{db_path}"
-# db.init_app(auth)
 
 @search.route('/search_res')
 def search_data_page():
@@ -32,6 +30,7 @@ def select_item():
     label = furniture.label
     path = furniture.path
     session[f'{label}'] = path
+    session.modified = True
 
     # return 'hello world'
     return render_template("select_item.html", path=path)

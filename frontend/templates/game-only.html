@@ -89,6 +89,22 @@
             <button id="send-button">Send</button>
         </div>
     </div>
+    <script>
+        var theme = "{{ theme }}";
+        var floor = "{{ floor }}";
+        var view = "{{ view }}";
+        var misc = "{{ misc }}";
+        console.log('Theme:', theme);
+        console.log('Floor:', floor);
+        console.log('View:', view);
+        console.log('Misc:', misc);
+
+        // Optionally, store it in sessionStorage
+        sessionStorage.setItem('theme', theme);
+        sessionStorage.setItem('floor', floor);
+        sessionStorage.setItem('view', view);
+        sessionStorage.setItem('misc', misc);
+    </script>
     <script src="{{ url_for('static', filename='js/game_script.js') }}"></script> 
     <script src="{{ url_for('static', filename='js/chat_script.js') }}"></script>
 {% endblock %}
