@@ -5,18 +5,32 @@
 {% block head %}
 <title>Search bar</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+<script src="https://unpkg.com/htmx.org@1.9.12"></script>
 {% endblock %}
 
 {% block body %}
 <!--Creating search container and button-->
 <div class="search-container">
-    <input type="text" class="searchInput" placeholder='Which type of game do your want'>
-    <button onclick="performSearch()" class="search-button">Search</button>
+    <input type="text" class="searchInput" placeholder="Select Furniture" name="search_input" 
+                   hx-get="/search_res" hx-trigger="keydown change delay:500ms" hx-target="#results">
+                   <button type="submit">Search</button>
 </div>
 
-<div class="searchResults"></div>
-
-<!-- TODO: implement script for search-->
+<div class="searchResults">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Label</th>
+                <th>Preview</th>
+            </tr>
+        </thead>
+        <tbody id="results">
+            
+        </tbody>
+    </table>
+</div>
 
 </body>
 
