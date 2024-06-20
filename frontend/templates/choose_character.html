@@ -186,15 +186,18 @@
 </div>
 
 <script>
-    document.getElementById('boy').addEventListener('click', () => {
-        sessionStorage.setItem('selectedCharacter', 'boy');
-        window.location.href = '{{ url_for('game_only') }}';
-    });
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('boy').addEventListener('click', () => {
+            sessionStorage.setItem('selectedCharacter', 'boy');
+            window.location.href = "{{ url_for('game.game_only') }}";
+        });
 
-    document.getElementById('girl').addEventListener('click', () => {
-        sessionStorage.setItem('selectedCharacter', 'girl');
-        window.location.href = '{{ url_for('game_only') }}';
+        document.getElementById('girl').addEventListener('click', () => {
+            sessionStorage.setItem('selectedCharacter', 'girl');
+            window.location.href = "{{ url_for('game.game_only') }}";
+        });
     });
 </script>
+
 
 {% endblock %}

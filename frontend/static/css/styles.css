@@ -3,6 +3,21 @@
 /* Style sheet for all pages*/
 
 /* upload images in the background*/
+
+.flash {
+  list-style-type: none;
+  font-size: 70%;
+  padding: 0;
+}
+.flash.error {
+  /* background-color: #f8d7da; */
+  color: #ff0000de;
+}
+.flash.success {
+  background-color: #d4edda; /* Light green background */
+  color: #00ff3cd0;
+}
+
 .model_back {
   background-image: url("/static/happy_boy.png"), url('/static/happy_girl.png');
   background-size: 30%, 30%;
@@ -132,6 +147,7 @@
     color: #7a2187;
 
     padding: 15px 32px;
+    width: 170px;
     margin-top: -20px;
     margin-bottom: 20px;
     text-align: center;
@@ -584,6 +600,7 @@ button {
   border-radius: 5px;
   background-color: rgb(255, 221, 0);
   color:#7a2187;
+  font-family: Georgia, serif;
   font-weight: bolder;
 }
 
@@ -658,3 +675,4 @@ button {
   left: 15%;
   height: auto;
 }
+>>>>>>>>> Temporary merge branch 2

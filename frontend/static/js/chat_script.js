@@ -121,45 +121,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-function sendData() { 
-    var value = document.getElementById('input').value; 
-    $.ajax({ 
-        url: '/chatgptapijs', 
-        type: 'POST', 
-        contentType: 'application/json', 
-        data: JSON.stringify({ 'value': value }), 
-        success: function(response) { 
-            document.getElementById('output').innerHTML = response.result; 
-        }, 
-        error: function(error) { 
-            console.log(error); 
-        } 
-    }); 
-} 
+// function sendData() { 
+//     var value = document.getElementById('input').value; 
+//     $.ajax({ 
+//         url: '/chatgptapijs', 
+//         type: 'POST', 
+//         contentType: 'application/json', 
+//         data: JSON.stringify({ 'value': value }), 
+//         success: function(response) { 
+//             document.getElementById('output').innerHTML = response.result; 
+//         }, 
+//         error: function(error) { 
+//             console.log(error); 
+//         } 
+//     }); 
+// } 
 
 
-function pass_values(input) {
-    $.ajax(
-    {
-        type:'POST',
-        contentType:'application/json;charset-utf-08',
-        dataType:'json',
-        url:'http://127.0.0.1:5000/pass_val?value='+input ,
-        success:function (data) {
-            var reply=data.reply;
-            if (reply=="success")
-            {
-                return;
-            }
-            else
-                {
-                alert("some error ocured in session agent")
-                }
+// function pass_values(input) {
+//     $.ajax(
+//     {
+//         type:'POST',
+//         contentType:'application/json;charset-utf-08',
+//         dataType:'json',
+//         url:'http://127.0.0.1:5000/pass_val?value='+input ,
+//         success:function (data) {
+//             var reply=data.reply;
+//             if (reply=="success")
+//             {
+//                 return;
+//             }
+//             else
+//                 {
+//                 alert("some error ocured in session agent")
+//                 }
  
-        }
-    }
-);
- }
+//         }
+//     }
+// );
+//  }
 
 
 // curl https://api.openai.com/v1/models \
