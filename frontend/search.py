@@ -20,7 +20,7 @@ def search_data_page():
         search_input = session['search_input']
 
 
-    results = db.session.execute(text(f"select * from furniture F where F.name like '%{search_input}%' and (F.label == '{filter_value}' or '{filter_value}' == 'all')")).all()
+    results = db.session.execute(text(f"select * from furniture F where F.name like '%{search_input}%' and (F.label == '{filter_value}' or '{filter_value}' == 'all') ORDER BY CASE WHEN F.label == 'floor' then 1 WHEN F.label == 'view' then 2 WHEN F.label == 'theme' then 3 ELSE 4 END")).all()
     return render_template("search_results.html", results=results)
 
 @search.route('/select_item', methods=["POST"])

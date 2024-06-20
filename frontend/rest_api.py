@@ -1,12 +1,14 @@
 from flask import Flask, render_template, request, jsonify, Blueprint, redirect, url_for, flash, session
 from flask_login import current_user
+from chatgpt import chat
 
 api = Blueprint('api', __name__)
 messages = []
 
-def api_call(messages):
+def api_call(message, chatgpt):
     # put here api thing
-    response = {'response': messages[-1]['message']}
+    response_content = chatgpt.response(message)
+    response = {'response': response_content}
     return response
 
 @api.route('/chat', methods=['POST'])
@@ -16,7 +18,7 @@ def chat_api():
     data = request.json
     message = data.get('message', '')
     messages.append({'message': message})
-    response = api_call(messages)
+    response = api_call(message, chat)
     messages.append(response)
     return jsonify(response)
 
