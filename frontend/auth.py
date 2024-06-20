@@ -35,7 +35,7 @@ def login():
          flash("Success", 'success')
          return redirect(url_for('general.search_page'))
       else:
-         flash("Couldn't login, check you login information.", 'error')
+         flash("Login failed. Please check your login information.", 'error')
          return redirect(url_for("auth.login"))
    
 @auth.route('/register', methods=["GET", "POST"])

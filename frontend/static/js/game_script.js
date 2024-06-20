@@ -38,8 +38,8 @@ class BootScene extends Phaser.Scene {
 
         console.log("Loading assets...");
 
-        this.load.image('boy', '/static/boy_no_border.png');
-        this.load.image('girl', '/static/girl_no_border.png');
+        this.load.image('boy', '/static/images/boy_no_border.png');
+        this.load.image('girl', '/static/images/girl_no_border.png');
     }
 
     create() {

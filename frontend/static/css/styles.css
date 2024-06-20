@@ -11,10 +11,10 @@
 }
 .flash.error {
   /* background-color: #f8d7da; */
-  color: #ff0000de;
+  color: rgb(255, 221, 0);
 }
 .flash.success {
-  background-color: #d4edda; /* Light green background */
+  background-color: #cc91d5a7; /* Light green background */
   color: #00ff3cd0;
 }
 
