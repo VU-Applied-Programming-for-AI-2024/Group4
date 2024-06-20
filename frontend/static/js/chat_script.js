@@ -13,6 +13,8 @@ require('dotenv').config()
 
 
 document.addEventListener('DOMContentLoaded', function () {
+    console.log('DOM fully loaded and parsed');
+    
     const chatBox = document.getElementById('messages');
     const userInput = document.getElementById('message-input');
     const sendButton = document.getElementById('send-button');
@@ -22,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const adjustGameContainerHeight = () => {
         const chatContainerHeight = chatContainer.offsetHeight;
         gameContainer.style.height = `calc(100vh - ${chatContainerHeight}px)`;
+        console.log(`Game container height adjusted: ${gameContainer.style.height}`);
     };
 
     window.addEventListener('resize', adjustGameContainerHeight);
@@ -54,11 +57,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const sendMessage = () => {
         const message = userInput.value.trim();
+        console.log(`Message to send: "${message}"`);
         if (message !== '') {
-            console.log('Sending message:', message);
-            //send message to function
-            // pass_values(input=message)
-            //show message on screen
             appendMessage('You', message);
 
             userInput.value = '';
@@ -94,21 +94,27 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log('Message is empty, not sending');
         }
     };
-    
 
-    sendButton.addEventListener('click', sendMessage);
+    sendButton.addEventListener('click', (event) => {
+        event.preventDefault();  // Prevent default form submission
+        sendMessage();
+    });
+
     userInput.addEventListener('keydown', (event) => {
         if (event.key === 'Enter') {
+            event.preventDefault();  // Prevent default form submission
             sendMessage();
         }
     });
 
     // Prevent Phaser from capturing the spacebar when the chat input is focused
     userInput.addEventListener('focus', () => {
+        console.log('Input focused, disabling game input');
         game.input.keyboard.enabled = false;
     });
 
     userInput.addEventListener('blur', () => {
+        console.log('Input blurred, enabling game input');
         game.input.keyboard.enabled = true;
     });
 
@@ -118,51 +124,3 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('User input:', userInput);
     console.log('Send button:', sendButton);
 });
-
-
-
-// function sendData() { 
-//     var value = document.getElementById('input').value; 
-//     $.ajax({ 
-//         url: '/chatgptapijs', 
-//         type: 'POST', 
-//         contentType: 'application/json', 
-//         data: JSON.stringify({ 'value': value }), 
-//         success: function(response) { 
-//             document.getElementById('output').innerHTML = response.result; 
-//         }, 
-//         error: function(error) { 
-//             console.log(error); 
-//         } 
-//     }); 
-// } 
-
-
-// function pass_values(input) {
-//     $.ajax(
-//     {
-//         type:'POST',
-//         contentType:'application/json;charset-utf-08',
-//         dataType:'json',
-//         url:'http://127.0.0.1:5000/pass_val?value='+input ,
-//         success:function (data) {
-//             var reply=data.reply;
-//             if (reply=="success")
-//             {
-//                 return;
-//             }
-//             else
-//                 {
-//                 alert("some error ocured in session agent")
-//                 }
- 
-//         }
-//     }
-// );
-//  }
-
-
-// curl https://api.openai.com/v1/models \
-//   -H "Authorization: Bearer $sk-proj-uV8OlqqJ6Ea2MVIX6n6YT3BlbkFJCtH5a5uG9bzEfq7aZY77" \
-//   -H "OpenAI-Organization: org-RNxIsjQZBUsZ9nzhA9bdIWoi" \
-//   -H "OpenAI-Project: $proj_WUNKh8NZv0lRWi5aKnfC63Bw"

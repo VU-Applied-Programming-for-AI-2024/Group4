@@ -1,144 +1,126 @@
 {% extends 'basegame.html' %}
-<!-- 
-<script>
-import axios from "axios";
-import {useState} from "react";
 
-
-export default function Ask() {
-    const [question, setQuestion] = useState("")
-    const [answer, setAnswer] = useState("")
-    const [loading, setLoading] = useState(false) 
-}
-
-const handleQuestionChange = (e: any) => {
-    setQuestion(e.target.value)
-}
-
-const askQuestion = async () => {
-    setLoading(true)
-    try {
-        const response = await axios.post(/static/apiscript, {question})
-        setAnswer(response.data.answer)
-    } catch (error) {
-        console.error(error)
-        setAnswer("An error has occured")
-    } finally {
-        setLoading(false)
-    }
-} -->
-<!-- 
-</script> -->
-
-    {% block head %}
-    <title>Talk to our Bartender!</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    {% endblock %}
-    
-    {% block body %}
-    <style>
-
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            background-color: #7a2187;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        #game-container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-        }
-
-        #chat-container {
-            width: 100%;
-            background: #cc91d5a7;
-            border-top: 1px solid #ccc;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        #messages {
-            flex: 1;
-            overflow-y: auto;
-            max-height: 150px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-
-        #chat-input {
-            display: flex;
-        }
-
-        #chat-input input {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px 0 0 5px;
-        }
-
-        #chat-input button {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-left: 0;
-            border-radius: 0 5px 5px 0;
-            background: #7a2187;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        #chat-input button:hover {
-            background: #218838; /* Darker shade for hover effect */
-        }
-
-        .dark-mode {
-            background-color: #333;
-            color: #fff;
-        }
-    </style>
-    <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.js"></script>
-</head>
-
-    <div id="game-container"></div>
-    <div id="chat-container">
-        <div id="messages"></div>
-        <div id="chat-input">
-            <!-- Message input: -->
-            <input type="text" id="message-input" placeholder="Type your message...">
-            <button id="send-button">Send</button>
-        </div>
-    </div>
-    <!-- <script src="{{ url_for('static', filename='js/chatgpt.js') }}"></script> -->
-    <!-- <script type="module" src="{{ url_for('static', filename='js/chatgpt.js') }}"></script>  -->
-    <script>
-        var theme = "{{ theme }}";
-        var floor = "{{ floor }}";
-        var view = "{{ view }}";
-        var misc = "{{ misc }}";
-        var light = "{{ light }}";
-        console.log('Theme:', theme);
-        console.log('Floor:', floor);
-        console.log('View:', view);
-        console.log('Misc:', misc);
-        console.log('Light:', light);
-
-        // Optionally, store it in sessionStorage
-        sessionStorage.setItem('theme', theme);
-        sessionStorage.setItem('floor', floor);
-        sessionStorage.setItem('view', view);
-        sessionStorage.setItem('misc', misc);
-        sessionStorage.setItem('light', light);
-    </script>
-    <script src="{{ url_for('static', filename='js/game_script.js') }}"></script> 
-    <script src="{{ url_for('static', filename='js/chat_script.js') }}"></script>
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talk to our Bartender!</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 {% endblock %}
 
+{% block body %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        background-color: #7a2187;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #game-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    #chat-container {
+        width: 100%;
+        background: #cc91d5a7;
+        border-top: 1px solid #ccc;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    #messages {   /* This rule styles the container that holds all the chat messages. */
+        flex: 1;
+        overflow-y: auto;
+        max-height: 150px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+
+    #messages p {   * This rule styles each individual message within the container. */
+        display: block;
+        margin: 0.5em 0;
+        padding: 0.5em;
+        background-color: #cc91d5a7
+        border-radius: 5px;
+        word-wrap: break-word; /* Ensure long words don't break the layout */
+    }
+
+    #chat-input {
+        display: flex;
+    }
+
+    #chat-input input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px 0 0 5px;
+    }
+
+    #chat-input button {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-left: 0;
+        border-radius: 0 5px 5px 0;
+        background: #7a2187;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    #chat-input button:hover {
+        background: #218838; /* Darker shade for hover effect */
+    }
+
+    .dark-mode {
+        background-color: #333;
+        color: #fff;
+    }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.js"></script>
+</head>
+
+<body>
+<div id="game-container"></div>
+<div id="chat-container">
+    <div id="messages"></div>
+    <div id="chat-input">
+        <input type="text" id="message-input" placeholder="Type your message...">
+        <button id="send-button">Send</button>
+    </div>
+</div>
+<script>
+    var theme = "{{ theme }}";
+    var floor = "{{ floor }}";
+    var view = "{{ view }}";
+    var misc = "{{ misc }}";
+    var light = "{{ light }}";
+    console.log('Theme:', theme);
+    console.log('Floor:', floor);
+    console.log('View:', view);
+    console.log('Misc:', misc);
+    console.log('Light:', light);
+
+    // Optionally, store it in sessionStorage
+    sessionStorage.setItem('theme', theme);
+    sessionStorage.setItem('floor', floor);
+    sessionStorage.setItem('view', view);
+    sessionStorage.setItem('misc', misc);
+    sessionStorage.setItem('light', light);
+</script>
+<script src="{{ url_for('static', filename='js/game_script.js') }}"></script> 
+<script src="{{ url_for('static', filename='js/chat_script.js') }}"></script>
+{% endblock %}
+</body>
+</html>
