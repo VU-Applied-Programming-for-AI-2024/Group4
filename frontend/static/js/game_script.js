@@ -6,6 +6,7 @@ class BootScene extends Phaser.Scene {
     // loading images
     preload() {
         var env = {};
+        // fetch('http://localhost:5000/session', {
         fetch('http://127.0.0.1:5000/session', {
             method: 'GET',
             headers: {
@@ -35,17 +36,7 @@ class BootScene extends Phaser.Scene {
             appendMessage('System', 'There was an error sending your message.');
         });
 
-        // light_path = sessionStorage.getItem('light');
-        // theme_path = sessionStorage.getItem('theme');
-        // floor_path = sessionStorage.getItem('floor');
-        // misc_path = sessionStorage.getItem('misc');
-        // view_path = sessionStorage.getItem('view');
         console.log("Loading assets...");
-        // this.load.image('theme', '/static/images/' + theme_path);
-        // this.load.image('floor', '/static/images/' + floor_path);
-        // this.load.image('misc', '/static/images/' + misc_path);
-        // this.load.image('view', '/static/images/' + view_path);
-        // this.load.image('light', '/static/images/' + light_path);
 
         this.load.image('boy', '/static/boy_no_border.png');
         this.load.image('girl', '/static/girl_no_border.png');
@@ -68,13 +59,17 @@ class GameScene extends Phaser.Scene {
 
         const floor = this.add.image(0, 0, 'floor').setOrigin(0, 0);
         const view = this.add.image(0, 0, 'view').setOrigin(0, 0);
-        const misc = this.add.image(0, 0, 'misc').setOrigin(0, 0);
-        const bg = this.add.image(0, 0, 'theme').setOrigin(0, 0);
+        var bg = this.physics.add.staticGroup();
+        bg.create(0, 0, 'theme').setDisplaySize(this.sys.game.config.width, this.sys.game.config.height).setOrigin(0, 0).refreshBody();
+        // var bg = this.add.image(0, 0, 'theme').setOrigin(0, 0);
+        var misc = this.physics.add.staticGroup();
+        misc.create(0, 0, 'misc').setDisplaySize(this.sys.game.config.width, this.sys.game.config.height).setOrigin(0, 0).refreshBody();
+        // var misc = this.add.image(0, 0, 'misc').setOrigin(0, 0);
         const light = this.add.image(0, 0, 'light').setOrigin(0, 0);
         floor.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
         view.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
-        misc.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
-        bg.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
+        // bg.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
+        // misc.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
         light.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
         
         // Set world bounds to match the size of the game

@@ -49,6 +49,15 @@
             padding: 10px;
         }
 
+        #messages p{
+            display: block;
+            margin: 0.5em 0;
+            padding: 0.5em;
+            background-color: #cc91d5a7;
+            border-radius: 5px;
+            word-wrap: break-word;
+        }
+
         #chat-input {
             display: flex;
         }
@@ -90,7 +99,7 @@
             <button id="send-button">Send</button>
         </div>
     </div>
-    <script>
+    <!-- <script>
         var theme = "{{ theme }}";
         var floor = "{{ floor }}";
         var view = "{{ view }}";
@@ -108,7 +117,7 @@
         sessionStorage.setItem('view', view);
         sessionStorage.setItem('misc', misc);
         sessionStorage.setItem('light', light);
-    </script>
+    </script> -->
     <script src="{{ url_for('static', filename='js/game_script.js') }}"></script> 
     <script src="{{ url_for('static', filename='js/chat_script.js') }}"></script>
 {% endblock %}
