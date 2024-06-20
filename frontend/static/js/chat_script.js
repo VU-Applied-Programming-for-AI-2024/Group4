@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
             appendMessage('You', message);
             userInput.value = '';
             // Call the external API to get the bot response
-            fetch('https://api.example.com/chat', {
+            fetch('http://127.0.0.1:5000/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 return response.json();
             })
             .then(data => {
-                console.log('Received bot response:', data.reply);
-                appendMessage('Bot', data.reply);
+                console.log('Received bot response:', data['response']);
+                appendMessage('Bot', data['response']);
             })
             .catch(error => {
                 console.error('Fetch error:', error);

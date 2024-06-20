@@ -5,6 +5,7 @@ from general import general
 from search import search
 from game import game
 from flask_session import Session
+from gptapi import api
 
 
 app = Flask(__name__)
@@ -23,6 +24,7 @@ app.register_blueprint(auth)
 app.register_blueprint(general)
 app.register_blueprint(search)
 app.register_blueprint(game)
+app.register_blueprint(api)
 
 
 with app.app_context():

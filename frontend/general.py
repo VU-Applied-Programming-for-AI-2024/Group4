@@ -23,10 +23,6 @@ def search_page():
     session['search_input'] = ''
     return render_template("search.html")
 
-@general.route('/chat', methods =["GET", "POST"])
-def chat():
-   return render_template('chat.html')
-
 @general.route('/about', methods=["GET"])
 def about():
    return render_template('about.html')
