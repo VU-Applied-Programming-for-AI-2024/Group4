@@ -33,7 +33,7 @@ def login():
       if user is not None and user.password == password:
          login_user(user)
          flash("Success", 'success')
-         return redirect(url_for('general.choosechar'))
+         return redirect(url_for('general.search_page'))
       else:
          flash("Couldn't login, check you login information.", 'error')
          return redirect(url_for("auth.login"))

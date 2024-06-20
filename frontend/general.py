@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, Blueprint, redirect, url_for, flash
+from flask import Flask, render_template, request, jsonify, Blueprint, redirect, url_for, flash, session
 from flask_login import current_user
 
 general = Blueprint('general', __name__)
@@ -19,11 +19,9 @@ def game():
 
 @general.route('/search')
 def search_page():
+    session['filter'] = 'all'
+    session['search_input'] = ''
     return render_template("search.html")
-
-@general.route('/chat', methods =["GET", "POST"])
-def chat():
-   return render_template('chat.html')
 
 @general.route('/about', methods=["GET"])
 def about():
