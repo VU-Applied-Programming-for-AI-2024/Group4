@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
+    console.log('DOM fully loaded and parsed');
+    
     const chatBox = document.getElementById('messages');
     const userInput = document.getElementById('message-input');
     const sendButton = document.getElementById('send-button');
@@ -8,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const adjustGameContainerHeight = () => {
         const chatContainerHeight = chatContainer.offsetHeight;
         gameContainer.style.height = `calc(100vh - ${chatContainerHeight}px)`;
+        console.log(`Game container height adjusted: ${gameContainer.style.height}`);
     };
 
     window.addEventListener('resize', adjustGameContainerHeight);
@@ -23,8 +26,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const sendMessage = () => {
         const message = userInput.value.trim();
+        console.log(`Message to send: "${message}"`);
         if (message !== '') {
-            console.log('Sending message:', message);
             appendMessage('You', message);
             userInput.value = '';
             // Call the external API to get the bot response
@@ -53,21 +56,27 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log('Message is empty, not sending');
         }
     };
-    
 
-    sendButton.addEventListener('click', sendMessage);
+    sendButton.addEventListener('click', (event) => {
+        event.preventDefault();  // Prevent default form submission
+        sendMessage();
+    });
+
     userInput.addEventListener('keydown', (event) => {
         if (event.key === 'Enter') {
+            event.preventDefault();  // Prevent default form submission
             sendMessage();
         }
     });
 
     // Prevent Phaser from capturing the spacebar when the chat input is focused
     userInput.addEventListener('focus', () => {
+        console.log('Input focused, disabling game input');
         game.input.keyboard.enabled = false;
     });
 
     userInput.addEventListener('blur', () => {
+        console.log('Input blurred, enabling game input');
         game.input.keyboard.enabled = true;
     });
 
