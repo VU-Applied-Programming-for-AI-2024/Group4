@@ -7,6 +7,10 @@ general = Blueprint('general', __name__)
 
 @general.route('/')
 def index():
+   try:
+      print(current_user.username, session.get('logged_in'))
+   except Exception:
+      print('not logged in')
    return render_template('index.html')
 
 @general.route('/registrationsucces', methods =["GET", "POST"])
@@ -22,6 +26,10 @@ def search_page():
     session['filter'] = 'all'
     session['search_input'] = ''
     return render_template("search.html")
+
+@general.route('/summary_plot')
+def summary_plot():
+    return render_template("summary_plot.html")
 
 @general.route('/about', methods=["GET"])
 def about():

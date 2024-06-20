@@ -30,6 +30,7 @@ class BootScene extends Phaser.Scene {
             this.load.image('misc', '/static/images/' + env['misc']);
             this.load.image('view', '/static/images/' + env['view']);
             this.load.image('light', '/static/images/' + env['light']);
+            this.load.image('character', '/static/images/' + env['character']);
         })
         .catch(error => {
             console.error('Fetch error:', error);
@@ -38,8 +39,8 @@ class BootScene extends Phaser.Scene {
 
         console.log("Loading assets...");
 
-        this.load.image('boy', '/static/images/boy_no_border.png');
-        this.load.image('girl', '/static/images/girl_no_border.png');
+        this.load.image('boy', '/static/images/boy.png');
+        this.load.image('girl', '/static/images/girl.png');
     }
 
     create() {
@@ -51,33 +52,26 @@ class BootScene extends Phaser.Scene {
 class GameScene extends Phaser.Scene {
     constructor() {
         super({ key: 'GameScene' });
-    }
+    }    
 
     create() {
-        // this.add.image(0, 0, 'theme')
         console.log("Creating GameScene...");
 
         const floor = this.add.image(0, 0, 'floor').setOrigin(0, 0);
         const view = this.add.image(0, 0, 'view').setOrigin(0, 0);
-        var bg = this.physics.add.staticGroup();
-        bg.create(0, 0, 'theme').setDisplaySize(this.sys.game.config.width, this.sys.game.config.height).setOrigin(0, 0).refreshBody();
-        // var bg = this.add.image(0, 0, 'theme').setOrigin(0, 0);
-        var misc = this.physics.add.staticGroup();
-        misc.create(0, 0, 'misc').setDisplaySize(this.sys.game.config.width, this.sys.game.config.height).setOrigin(0, 0).refreshBody();
-        // var misc = this.add.image(0, 0, 'misc').setOrigin(0, 0);
+        const bg = this.add.image(0, 0, 'theme').setOrigin(0, 0);
+        const misc = this.add.image(0, 0, 'misc').setOrigin(0, 0);
         const light = this.add.image(0, 0, 'light').setOrigin(0, 0);
+        bg.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
+        misc.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
         floor.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
         view.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
-        // bg.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
-        // misc.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
         light.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
         
         // Set world bounds to match the size of the game
         this.physics.world.setBounds(0, 0, this.sys.game.config.width, this.sys.game.config.height);
 
-        // Make sure that the character is the selected character, if no selected character -> boy
-        const selectedCharacter = sessionStorage.getItem('selectedCharacter') || 'boy';
-        this.player = this.physics.add.sprite(this.sys.game.config.width / 2, this.sys.game.config.height / 2, selectedCharacter);
+        this.player = this.physics.add.sprite(this.sys.game.config.width / 2, this.sys.game.config.height / 2, 'character');
         this.player.setScale(0.08);
 
         // Make the player collide with the world bounds

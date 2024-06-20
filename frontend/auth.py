@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, Blueprint, redirect, url_for, flash
+from flask import Flask, render_template, request, jsonify, Blueprint, redirect, url_for, flash, session
 from flask_login import LoginManager, login_user, logout_user, current_user
 from sqlalchemy import text
 from wtforms import Form, StringField, PasswordField
@@ -33,6 +33,8 @@ def login():
       if user is not None and user.password == password:
          login_user(user)
          flash("Success", 'success')
+         session['logged_in'] = True
+         session['username'] = username
          return redirect(url_for('general.search_page'))
       else:
          flash("Login failed. Please check your login information.", 'error')
@@ -63,8 +65,9 @@ def register():
 
 @auth.route('/logout')
 def logout():
+   session['logged_in'] = False
    logout_user()
-   return 'Successfuly logged out'
+   return redirect(url_for('auth.login'))
 
 
 # @auth.route('/login')

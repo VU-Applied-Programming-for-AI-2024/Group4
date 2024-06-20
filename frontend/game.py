@@ -11,11 +11,12 @@ game = Blueprint('game', __name__)
 @game.route('/game_only', methods=['GET', 'POST'])
 def game_only():
    if request.method == 'GET':
+      session['messages'] = []
       furnitures = [session['floor'], 
                    session['view'],
                    session['theme'],
-                   session['misc']]
-      print(furnitures)
+                   session['misc'],
+                   session['character']]
       if all(furniture is not None for furniture in furnitures):
          type_view = "Bar" if furnitures[1].startswith('Bar') else "Coffee"
          type_theme = "Bar" if furnitures[2].startswith('Bar') else "Coffee"

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+<title>Choose your character</title>
+{% endblock %}
+
+{% block body %}
+<canvas id="summary_chart" width="30%" height="30%"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+function random_color() {
+    var hex = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; ++i) {
+        color += hex[Math.floor(Math.random() * hex.length)];
+    }
+    return color;
+}
+
+var summary_chart = document.getElementById("summary_chart");
+
+// Chart.defaults.global.defaultFontFamily = "Lato";
+// Chart.defaults.global.defaultFontSize = 18;
+var summary_data = {};
+fetch('http://127.0.0.1:5000/summary_data', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+}).then(response => {
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+})
+.then(data => {
+    console.log('Received summary log:', data);
+    summary_data['labels'] = [];
+    summary_data['datasets'] = [{}];
+    summary_data['datasets'][0]['data'] = [];
+    summary_data['datasets'][0]['backgroundColor'] = [];
+    for (var key in data) {
+        summary_data['labels'].push(key);
+        summary_data['datasets'][0]['data'].push(data[key]);
+        summary_data['datasets'][0]['backgroundColor'].push(random_color())
+    }
+    console.log('Summary data:', summary_data);
+    var pieChart = new Chart(summary_chart, {
+        type: 'pie',
+        data: summary_data,
+        options: {
+            responsive: true,
+        }
+    });
+    pieChart.resize();
+})
+
+</script>
+
+{% endblock %}

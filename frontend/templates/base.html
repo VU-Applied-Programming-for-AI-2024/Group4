@@ -32,9 +32,14 @@
                 <div class="dropdown-content" id="homepageDropdown">
                     <a href="/">Home</a>
                     <a href="/about">About</a>
-                    <a href="/login">Login</a>
-                    <a href="/register">Sign Up</a>
                     <a href="/search">Search</a>
+                    {%if session.get('logged_in')%}
+                        <a href="/logout">Logout</a>
+                        <a>{{session.get('username')}}</a>
+                    {%else%}
+                        <a href="/login">Login</a>
+                        <a href="/register">Sign Up</a>
+                    {%endif%}
                 </div>
             </div>
 
