@@ -5,7 +5,7 @@ from general import general
 from search import search
 from game import game
 from flask_session import Session
-from gptapi import api
+from rest_api import api
 
 
 app = Flask(__name__)

@@ -5,18 +5,48 @@ class BootScene extends Phaser.Scene {
 
     // loading images
     preload() {
-        var light_path = sessionStorage.getItem('light');
-        var theme_path = sessionStorage.getItem('theme');
-        var floor_path = sessionStorage.getItem('floor');
-        var misc_path = sessionStorage.getItem('misc');
-        var view_path = sessionStorage.getItem('view');
+        var env = {};
+        fetch('http://127.0.0.1:5000/session', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Received session log:', data);
+            for (var key in data) {
+                console.log(key, data[key]);
+                env[key] = data[key];
+              }
+            this.load.image('theme', '/static/images/' + env['theme']);
+            this.load.image('floor', '/static/images/' + env['floor']);
+            this.load.image('misc', '/static/images/' + env['misc']);
+            this.load.image('view', '/static/images/' + env['view']);
+            this.load.image('light', '/static/images/' + env['light']);
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+            appendMessage('System', 'There was an error sending your message.');
+        });
+
+        // light_path = sessionStorage.getItem('light');
+        // theme_path = sessionStorage.getItem('theme');
+        // floor_path = sessionStorage.getItem('floor');
+        // misc_path = sessionStorage.getItem('misc');
+        // view_path = sessionStorage.getItem('view');
         console.log("Loading assets...");
-        console.log(theme_path);
-        this.load.image('theme', '/static/images/' + theme_path);
-        this.load.image('floor', '/static/images/' + floor_path);
-        this.load.image('misc', '/static/images/' + misc_path);
-        this.load.image('view', '/static/images/' + view_path);
-        this.load.image('light', '/static/images/' + light_path);
+        // this.load.image('theme', '/static/images/' + theme_path);
+        // this.load.image('floor', '/static/images/' + floor_path);
+        // this.load.image('misc', '/static/images/' + misc_path);
+        // this.load.image('view', '/static/images/' + view_path);
+        // this.load.image('light', '/static/images/' + light_path);
+
         this.load.image('boy', '/static/boy_no_border.png');
         this.load.image('girl', '/static/girl_no_border.png');
     }

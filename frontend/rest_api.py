@@ -19,3 +19,7 @@ def chat_api():
     response = api_call(messages)
     messages.append(response)
     return jsonify(response)
+
+@api.route('/session', methods=['GET'])
+def session_send():
+    return jsonify(session)
