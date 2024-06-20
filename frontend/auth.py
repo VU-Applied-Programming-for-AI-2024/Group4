@@ -32,9 +32,9 @@ def login():
 
       if user is not None and user.password == password:
          login_user(user)
-         flash("Success", 'success')
          session['logged_in'] = True
          session['username'] = username
+         flash("Registration succeeded.", 'success')
          return redirect(url_for('general.search_page'))
       else:
          flash("Login failed. Please check your login information.", 'error')

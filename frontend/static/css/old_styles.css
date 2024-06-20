@@ -1,5 +1,6 @@
 
 /* STILL IN USE DESPITE OLD IN THE NAME. DO NOT DELETE*/
+/* used in base.html*/
 
 /* upload images in the background*/
 
@@ -56,19 +57,20 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 20px;
-  position: fixed;
-  top: 10px;
-  left: 10px;
+  border-radius: 0px;
+  position: absolute;
+  top: -10px; 
+  left: -10px;
   right: 10px;
-  height: 70px;
-  /* width: 100%; */
-  background-color: white; /* Yellow background */
-  padding: 10px 20px;
-  padding-top: 0px;
-  margin-top: 0px;
-  box-shadow: 2px 20px rgba(0, 0, 0, 0.1);
-  /* z-index: 10; */
+  height: 60px;
+  width: 99%;
+  background-color: #cc91d5a7; /* Yellow background */
+  /* padding: 10px 20px; */
+  /* padding-top: 5px; */
+  padding-left: 20px;
+  /* margin-top: 0px; */
+  /* box-shadow: 2px 20px rgba(0, 0, 0, 0.1); */
+  z-index: 10;
 }
 
 /* .navbar {
@@ -79,11 +81,27 @@ body {
 
 /* text inside the navigation bar */
 
-.navbar .logo a {
+.logo{
   font-size: 24px;
-  color: #7a2187; 
+  color: rgb(255, 221, 0); 
   text-decoration: none;
+  padding-left: -30px;
+  padding-top: 10px;
   font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  list-style: wrap;
+  align-items: center;
+}
+
+
+.navbar .image{
+  background-image: url("/static/pal_logo.png");
+  background-size: 30%, 30%;
+  background-repeat: no-repeat, no-repeat;
+  width: 100%;
+  height: 100%;
+  padding-top: 20px;
+  position: absolute;
 }
 
 
@@ -114,7 +132,7 @@ body {
 
 /* hover animation for the start button */
 .start-button:hover{
-    background-color: #0f4786;
+    background-color: #717171;
 }
 
 /* a dropdown menu button inside navigation bar*/
@@ -134,7 +152,7 @@ body {
   border: none;
   cursor: pointer;
   background-color: inherit; 
-  color: #7a2187;
+  color: rgb(255, 221, 0);
   border-radius: 5px;
   /* width: 300%; */
   width: 160px;
@@ -143,8 +161,9 @@ body {
 
 /* hover over nav bar */
 .navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: #0f4786;
+  background-color: #8756a6;
 }
+
 
 /* Dropdown content cells (hidden by default) */
 .dropdown-content {
@@ -152,7 +171,7 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  background-color: #f9f9f9;
+  background-color: #cc91d5a7;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -163,7 +182,7 @@ body {
 .dropdown-content a {
     /* .dropbtn; */
     float: none;
-    color: #2166B6;
+    color: #4d2a56;
     padding: 16px 32px;
     font-family: Inter;
     text-decoration: none;
@@ -173,9 +192,9 @@ body {
     cursor: pointer;
 }
 
-/* Add a grey background color to dropdown links on hover */
+/* Add a background color to dropdown links on hover */
 .dropdown-content a:hover {
-    background-color: #ddd;
+  background-color: #ffe3ff;
 }
 
 /* Show the dropdown menu on hover */
@@ -211,7 +230,7 @@ body {
 
 /* a heading (title of login page) */
 h2 {
-    color: #2166B6;
+    color: rgb(255, 221, 0);
     font-family: "Inter";
     margin-top: 180px;
     font-size: 48px;
@@ -242,7 +261,7 @@ h2 {
 
 /* style for the about paragraph text */
 .about p {
-    color: #04172c;
+    color: rgb(255, 221, 0);
     font-family: "Inter";
     font-size: 18px;
     margin-left: -10px;
@@ -252,7 +271,7 @@ h2 {
 
 /* text */
 p {
-    color:  #04172c;
+    color:  rgb(255, 221, 0);
     font-family: "Inter";
     font-size: 24px;
     margin-top: -60px;
@@ -261,7 +280,7 @@ p {
 }
 
 form {
-    color: #04172c;
+    color: rgb(255, 221, 0);
     font-family: "Inter";
     font-size: 24px;
     margin-top: -60px;
