@@ -17,7 +17,10 @@ def game_only():
                    session['misc']]
       print(furnitures)
       if all(furniture is not None for furniture in furnitures):
-         return render_template('game-only.html', floor=furnitures[0], view=furnitures[1], theme=furnitures[2], misc=furnitures[3])
+         type_view = "Bar" if furnitures[1].startswith('Bar') else "Coffee"
+         type_theme = "Bar" if furnitures[2].startswith('Bar') else "Coffee"
+         session['light'] = type_view + type_theme + '.png'
+         return render_template('game-only.html', floor=furnitures[0], view=furnitures[1], theme=furnitures[2], misc=furnitures[3], light=session['light'])
       else:
          flash("Access denied: pick all furniture and login")
          return redirect(url_for('general.search'))

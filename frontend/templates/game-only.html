@@ -94,16 +94,19 @@
         var floor = "{{ floor }}";
         var view = "{{ view }}";
         var misc = "{{ misc }}";
+        var light = "{{ light }}";
         console.log('Theme:', theme);
         console.log('Floor:', floor);
         console.log('View:', view);
         console.log('Misc:', misc);
+        console.log('Light:', light);
 
         // Optionally, store it in sessionStorage
         sessionStorage.setItem('theme', theme);
         sessionStorage.setItem('floor', floor);
         sessionStorage.setItem('view', view);
         sessionStorage.setItem('misc', misc);
+        sessionStorage.setItem('light', light);
     </script>
     <script src="{{ url_for('static', filename='js/game_script.js') }}"></script> 
     <script src="{{ url_for('static', filename='js/chat_script.js') }}"></script>

@@ -5,6 +5,7 @@ class BootScene extends Phaser.Scene {
 
     // loading images
     preload() {
+        var light_path = sessionStorage.getItem('light');
         var theme_path = sessionStorage.getItem('theme');
         var floor_path = sessionStorage.getItem('floor');
         var misc_path = sessionStorage.getItem('misc');
@@ -15,6 +16,7 @@ class BootScene extends Phaser.Scene {
         this.load.image('floor', '/static/images/' + floor_path);
         this.load.image('misc', '/static/images/' + misc_path);
         this.load.image('view', '/static/images/' + view_path);
+        this.load.image('light', '/static/images/' + light_path);
         this.load.image('boy', '/static/boy_no_border.png');
         this.load.image('girl', '/static/girl_no_border.png');
     }
@@ -38,10 +40,12 @@ class GameScene extends Phaser.Scene {
         const view = this.add.image(0, 0, 'view').setOrigin(0, 0);
         const misc = this.add.image(0, 0, 'misc').setOrigin(0, 0);
         const bg = this.add.image(0, 0, 'theme').setOrigin(0, 0);
+        const light = this.add.image(0, 0, 'light').setOrigin(0, 0);
         floor.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
         view.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
         misc.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
         bg.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
+        light.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
         
         // Set world bounds to match the size of the game
         this.physics.world.setBounds(0, 0, this.sys.game.config.width, this.sys.game.config.height);
