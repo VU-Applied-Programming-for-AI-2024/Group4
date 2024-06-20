@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Chat App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <h1>chat!</h1>
+
+    <form name="message_form" action= "{{ url_for('chatgptapi') }}" method="post">
+        <label for="message">You:</label>
+        <input type="string" id="message" name="message" >
+        <button type="submit">submit</button>
+    </form>
+
+    <br>
+    <br>
+    {% for message in user_inputs %}
+    <p style="position: absolute; display: box"> {{ message }}</p>
+    <br>
+
+    {% endfor %}
+
+    {%for bot_response in bot_responses %}
+    <p style="margin-left:210px; position: absolute; display: box"> {{ bot_response }}</p>
+    <br>
+
+    {% endfor %}
+
+</body>
+
+</html>

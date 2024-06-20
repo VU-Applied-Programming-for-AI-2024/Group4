@@ -1,0 +1,77 @@
+<!-- This html code is the search page (still needs a lot of work)-->
+
+{% extends 'base.html' %}
+
+
+
+{% block head %}
+<title>Search bar</title>
+
+<div class="choice-container">
+    <div class="box" id='floor'>
+        <div class="title">Floor</div>
+        <div class="content">Choose Floor!</div>
+    </div>
+
+    <div class="box" id='view'>
+        <div class="title">View</div>
+        <div class="content">Choose View!</div>
+    </div>
+
+    <div class="box" id='theme'>
+        <div class="title">Theme</div>
+        <div class="content">Choose Theme!</div>
+    </div>
+
+    <div class="box" id="misc">
+        <div class="title">Misc</div>
+        <div class="content">Choose Misc!</div>
+    </div>
+</div>
+
+<div>
+    <a class="start-game-button" href="/choosechar">Start the game!</a>
+</div>
+
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+<script src="https://unpkg.com/htmx.org@1.9.12"></script>
+{% endblock %}
+
+{% block body %}
+<!--Creating search container and button-->
+<div id='chair'>
+    
+</div>
+<div class="search-container">
+    <input type="text" class="searchInput" placeholder="Select Furniture" name="search_input" 
+                   hx-get="/search_res" hx-trigger="keydown change delay:500ms" hx-target="#result_table">
+                   <select id="filter" name="filter" hx-get="/search_res" hx-trigger="change" hx-target="#result_table">
+                    <option value="all">All</option>
+                    <option value="theme">Theme</option>
+                    <option value="floor">Floor</option>
+                    <option value="view">View</option>
+                    <option value="misc">Misc</option>
+                    <option value="room">Room</option>
+                    <option value="chair">Chair</option>
+                </select>
+</div>
+
+<div class="searchResults">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Label</th>
+                <th>Preview</th>
+            </tr>
+
+        </thead>
+        <tbody id="result_table">
+            
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

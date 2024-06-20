@@ -1,0 +1,447 @@
+
+/* Old style sheet previously for all pages except the registration page*/
+/* NOT IN USE */
+
+/* upload images in the background*/
+
+body {
+  font-family: Georgia, serif;
+  margin-top: 80px;
+  font-size: 320%;
+  font-weight: bolder;
+  padding: 2px;
+  text-align:center;
+}
+
+
+.model_back {
+  background-image: url('image\ 1.png'), url('image\ 2.png');
+  background-size: 36%, 36%;
+  background-repeat: no-repeat, no-repeat;
+  background-position: left bottom, right bottom;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  /* z-index: 100; */
+}
+
+/* Creating an unused container */
+.container {
+    height: 300px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border: 2px solid #0f4786;
+}
+
+/* center an image */
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  
+.formAligned {
+    display: block;
+    margin-left: 240px;
+    width: 50%;
+}
+
+/* creating a navigation bar at the top of the screen */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  height: 70px;
+  /* width: 100%; */
+  background-color: white; /* Yellow background */
+  padding: 10px 20px;
+  padding-top: 0px;
+  margin-top: 0px;
+  box-shadow: 2px 20px rgba(0, 0, 0, 0.1);
+  /* z-index: 10; */
+}
+
+/* .navbar {
+    overflow: hidden;
+    background-color: rgb(255, 221, 0);
+    font-family: sans-serif;
+} */
+
+/* text inside the navigation bar */
+
+.navbar .logo a {
+  font-size: 24px;
+  color: #7a2187; 
+  text-decoration: none;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+
+/* a start button leading to the login page */
+.start-button {
+    background-color: rgb(255, 221, 0); 
+
+    position: relative;
+    left: 46%;
+    right: 50%;
+
+    border: none;
+    display: flex;
+    color: #7a2187;
+
+    padding: 15px 32px;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 24px;
+    border-radius:  8px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+/* hover animation for the start button */
+.start-button:hover{
+    background-color: #0f4786;
+}
+
+/* a dropdown menu button inside navigation bar*/
+.dropdown {
+  position: relative;
+  height: fit-content;
+  display: inline-block;
+}
+
+
+/* The actual dropdown button */
+.dropbtn {
+  font-size: 50%;
+  font-weight: bold;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  border: none;
+  cursor: pointer;
+  background-color: inherit; 
+  color: #7a2187;
+  border-radius: 5px;
+  /* width: 300%; */
+  width: 160px;
+}
+
+
+/* hover over nav bar */
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: #0f4786;
+}
+
+/* Dropdown content cells (hidden by default) */
+.dropdown-content {
+  display: none; /* Hidden by default */
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+
+/* Links (text) inside the dropdown */
+.dropdown-content a {
+    /* .dropbtn; */
+    float: none;
+    color: #2166B6;
+    padding: 16px 32px;
+    font-family: Inter;
+    text-decoration: none;
+    font-size: 25px;
+    display: block;
+    text-align: left;
+    cursor: pointer;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* a heading (title of website) */
+
+.curve-text {
+  fill: rgb(255, 221, 0);
+  filter: drop-shadow(10px 10px 4px rgba(0,0,0,0.5)); 
+  font-size: 50px;
+} 
+
+
+/*  */
+
+.group-text {
+    color: white; 
+    font-size: 45px;
+}
+
+
+/* .title {
+  font-family: Arial, sans-serif;
+  color: #7a2187;
+  font-size: 150%;
+  text-align: center;
+} */
+
+
+
+/* a heading (title of login page) */
+h2 {
+    color: #2166B6;
+    font-family: "Inter";
+    margin-top: 180px;
+    font-size: 48px;
+    padding: 24px;
+    text-align:center;
+}
+
+/* general style for the about text*/
+.about {
+    color: #2166B6;
+    font-family: "Inter";
+    margin-top: -180px;
+    margin-left: 12px;
+    margin-top: 8px;
+    padding: 12px;
+    text-align:left;
+}
+
+/* style for the about heading */
+.about h1 {
+    color: #04172c;
+    font-family: "Inter";
+    font-size: 32px;
+    padding: 12px;
+    margin-bottom: 24px;
+    text-align:left;
+}
+
+/* style for the about paragraph text */
+.about p {
+    color: #04172c;
+    font-family: "Inter";
+    font-size: 18px;
+    margin-left: -10px;
+    margin-right: 720px;
+    text-align:left;
+}
+
+/* text */
+p {
+    color:  #04172c;
+    font-family: "Inter";
+    font-size: 24px;
+    margin-top: -60px;
+    padding: 24px;
+    text-align: center;
+}
+
+form {
+    color: #04172c;
+    font-family: "Inter";
+    font-size: 24px;
+    margin-top: -60px;
+    padding: 24px;
+    text-align: center;
+}
+
+
+
+
+/* Popup box */
+.popupBox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  margin-top: 20px;
+  background-color: darkslateblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.popup-content {
+  background-color: rgb(255, 221, 0);
+  padding: 20px;
+  border-radius: 8px;
+  width: 25%;
+  margin-top: 20px;
+  color: #7a2187;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button {
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+/* Slideshow container */
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+  }
+  
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
+  }
+  
+  /* Next & previous buttons */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    margin-left: 125px;
+    margin-right: 125px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+  
+  
+  /* The dots/bullets/indicators */
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+  .active, .dot:hover {
+    background-color: #717171;
+  }
+  
+  /* Fading animation */
+  .fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  
+  @keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+/* Popup container */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  /* The actual popup (appears on top) */
+  .popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+  }
+  
+  /* Popup arrow */
+  .popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  /* Toggle this class when clicking on the popup container (hide and show the popup) */
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+  }
+  
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }

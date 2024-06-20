@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+          content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat_styles.css') }}">
+    <!-- Add Phaser script -->
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.js"></script>
+</head>
+
+<body>
+
+    <div id="outsideChat">
+        <img src="{{url_for('static', filename='cafe_pal.png')}}" class="gameWindow">
+        <button onclick="openChat()" class="center">Chat</button>
+    </div>
+
+    <div id="chatpage" style="display: none;">
+        <div class="sidebar collapsed">
+            <div class="tooltip">
+                <span class="tooltiptext">
+                Open Sidebar
+                </span>
+                <button id="sidebar-toggle">
+                <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="sidebar-content">
+                <div class="conversation-list">
+                    <div class="conversation">
+                        <p class="conversation-text">
+                        Last Conversation:
+                        </p>
+                        <p class="conversation-content">
+                        No conversation yet
+                        </p>
+                    </div>
+                </div>
+                <button id="new-conversation-btn">
+                Start New Conversation
+                </button>
+            </div>
+        </div>
+        <div class="chat-container light-mode">
+            <div class="chat-content">
+                <div class="chat-header">
+                    <div class="logo-container">
+                        <h1>Pour and Listen
+                        </h1>
+                    </div>
+                    <div class="exit-button">
+                        <!-- <p onclick="window.location.href='/'">X</p> -->
+                        <p onclick="openChat()" style="font-family: Arial, Helvetica, sans-serif;">X</p>
+                    </div>
+
+                    <div class="mode-toggle">
+                        <label class="switch" style="display:none">
+                            <input type="checkbox" 
+                                id="mode-toggle-checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                </div>
+                <div id="game-container" class="game-container"></div> <!-- Added for Phaser game -->
+                <div class="chat-box" id="chat-box"></div>
+                <div class="input-container">
+                    <input type="text" id="user-input" 
+                        placeholder="Type your message...">
+                    <button id="send-button">
+                    <b>&uarr;</b>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='chat_script.js') }}"></script>
+
+    <script>
+        function openChat() {
+        var x = document.getElementById("chatpage");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+
+        var x = document.getElementById("outsideChat");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+        }
+    </script>
+
+
+    </script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script> <!-- Added to include script.js -->
+</body>
+
+</html>

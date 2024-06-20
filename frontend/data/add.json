@@ -1,0 +1,50 @@
+[
+    {
+        "id": "1",
+        "name": "Bar Misc",
+        "label": "misc",
+        "path": "Bar-Recreation.png"
+    },
+    {
+        "id": "2",
+        "name": "Bar Theme",
+        "label": "theme",
+        "path": "Bar-Bar.png"
+    },
+    {
+        "id": "3",
+        "name": "Bar Floor",
+        "label": "floor",
+        "path": "Bar-Floor.png"
+    },
+    {
+        "id": "4",
+        "name": "Bar View",
+        "label": "view",
+        "path": "Bar-View.png"
+    },
+    {
+        "id": "5",
+        "name": "Coffee View",
+        "label": "view",
+        "path": "Coffee- view.png"
+    },
+    {
+        "id": "6",
+        "name": "Coffe Shop Theme",
+        "label": "theme",
+        "path": "Coffee-coffee shop.png"
+    },
+    {
+        "id": "7",
+        "name": "Coffee Misc",
+        "label": "misc",
+        "path": "Coffee-decoration.png"
+    },
+    {
+        "id": "8",
+        "name": "Coffee Floor",
+        "label": "floor",
+        "path": "Coffee-floor.png"
+    }
+]

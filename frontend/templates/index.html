@@ -1,0 +1,72 @@
+<!-- This html code is the main home page-->
+
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Pour and Listen</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="model_back">
+
+    <!-- Creating curved title at top of screen -->
+    <svg viewBox="0 10 500 150">
+        <path id="curve" fill="transparent" d="M73.2,148.6c4-6.1,65.5-96.8,178.6-95.6c111.3,1.2,170.8,90.3,175.1,97" />
+            <text width="500" class="curve-text">
+            <textPath xlink:href="#curve">
+            Pour and Listen
+            </textPath>
+        </text>
+    </svg>
+                
+
+    <div>
+        <!--Creating authors text-->
+        <p class="group-text">By Applied Programming Group 4</p>
+
+        <!--Creating login and signup buttons-->
+        <button class="start-button"; onclick="window.location.href='/login'">Login</button>
+        <br/>
+        <button class="start-button"; onclick="window.location.href='/register'">Sign Up</button>
+    </div>
+   
+</div>
+
+<script>
+    // Script for the slide show to work
+    // NOT in used anymore !!!!!
+    
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    //Function that properly shows the right slide
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1} 
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none"; 
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block"; 
+        dots[slideIndex-1].className += " active";
+    }
+</script>
+
+{% endblock %}
