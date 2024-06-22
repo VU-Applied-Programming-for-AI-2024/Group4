@@ -34,11 +34,11 @@
                     <a href="/about">About</a>
                     <a href="/search">Search</a>
                     {%if session.get('logged_in')%}
-                        <a href="/logout">Logout</a>
+                        <a href="/logout">Log out</a>
                         <a>{{session.get('username')}}</a>
                     {%else%}
-                        <a href="/login">Login</a>
-                        <a href="/register">Sign Up</a>
+                        <a href="/login">Log in</a>
+                        <a href="/register">Sign up</a>
                     {%endif%}
                 </div>
             </div>

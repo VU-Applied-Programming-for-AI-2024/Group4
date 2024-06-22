@@ -9,12 +9,12 @@
 
 <div class="choice-container">
 {% for label, path in paths.items()%}
-    {%if path%}
+    {%if path != ''%}
         <div class="box">
             <img src="{{ url_for('static', filename='images/' + path) }}" alt="{{chair}}">
         </div>
     {%else%}
-        <div class="box">
+        <div class="box" id="{{label}}">
             <div class="title">{{label.capitalize()}}</div>
             <div class="content">Choose {{label.capitalize()}}!</div>
         </div>
@@ -63,7 +63,7 @@
     
 </div>
 <div class="search-container">
-    <input type="text" class="searchInput" placeholder="Select Furniture" name="search_input" 
+    <input type="text" class="searchInput" placeholder="Select items" name="search_input" 
                    hx-get="/search_res" hx-trigger="keydown change delay:500ms" hx-target="#result_table">
                    <select id="filter" name="filter" hx-get="/search_res" hx-trigger="change" hx-target="#result_table">
                     <option value="all">All</option>

@@ -35,7 +35,7 @@ def login():
          session['logged_in'] = True
          session['username'] = username
          flash("Registration succeeded.", 'success')
-         return redirect(url_for('general.search_page'))
+         return redirect(url_for('search.search_page'))
       else:
          flash("Login failed. Please check your login information.", 'error')
          return redirect(url_for("auth.login"))

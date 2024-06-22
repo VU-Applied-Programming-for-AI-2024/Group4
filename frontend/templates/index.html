@@ -19,7 +19,7 @@
     <!-- Creating curved title at top of screen -->
     <svg viewBox="0 10 500 150">
         <path id="curve" fill="transparent" d="M73.2,148.6c4-6.1,65.5-96.8,178.6-95.6c111.3,1.2,170.8,90.3,175.1,97" />
-            <text width="500" class="curve-text">
+            <text width="400" class="curve-text">
             <textPath xlink:href="#curve">
             Pour and Listen
             </textPath>
@@ -33,19 +33,19 @@
 
         <!--Creating login and signup buttons-->
         {%if not is_auth%}
-            <button class="start-button"; onclick="window.location.href='/login'">Login</button>
+            <button class="start-button"; onclick="window.location.href='/login'">Log in</button>
             <br/>
-            <button class="start-button"; onclick="window.location.href='/register'">Sign Up</button>
+            <button class="start-button"; onclick="window.location.href='/register'">Sign up</button>
         {%else%}
             <button class="start-button"; onclick="window.location.href='/search'">Play!</button>
             <br/>
-            <button class="start-button"; onclick="window.location.href='/logout'">Log Out</button>
+            <button class="start-button"; onclick="window.location.href='/logout'">Log out</button>
         {%endif%}
     </div>
    
 </div>
 
-<script>
+<!-- <script>
     // Script for the slide show to work
     // NOT in used anymore !!!!!
     
@@ -78,6 +78,6 @@
         slides[slideIndex-1].style.display = "block"; 
         dots[slideIndex-1].className += " active";
     }
-</script>
+</script> -->
 
 {% endblock %}
