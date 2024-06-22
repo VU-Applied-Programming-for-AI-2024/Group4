@@ -19,27 +19,27 @@
 {% endwith %}
 <div class="loginForm">
 <!--Creating login title and form-->
-<h2>Login</h2>
+  <h2>Log in</h2>
 
-<!--Creating a form for login purpose-->
-<!--Includes username box, password box and submit button-->
+  <!--Creating a form for login purpose-->
+  <!--Includes username box, password box and submit button-->
 
-<form method="POST" action="">
-    <label for="username"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="username" id='username' required>
-    <br>
-    <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" id="password" required>
-    <br>
-    <br>
-    <button type="submit">Login</button>
-    <br>
-    <br>
-    <br>
-</form>
+  <form method="POST" action="">
+      <label for="username"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="username" id='username' required>
+      <br>
+      <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" id="password" required>
+      <br>
+      <br>
+      <button type="submit">Log in</button>
+      <br>
+      <br>
+      <br>
+  </form>
 
-<!--Text and link leading to registration page-->
-<p class = 'textborder'>No account? <a href="/register">Register</a></p>
+  <!--Text and link leading to registration page-->
+  <p class = 'textborder'>No account? <a href="/register">Register</a></p>
 </div>
 
 {% endblock %}

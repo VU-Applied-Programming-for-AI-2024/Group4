@@ -10,11 +10,10 @@ def search_page():
     print('here')
     session['filter'] = 'all'
     session['search_input'] = ''
-    labels = ['view', 'theme', 'floor', 'misc', 'character']
+    labels = ['floor', 'view', 'theme', 'misc', 'character']
     paths = {}
     for label in labels:
-        if session[label] is not None and session[label] != '':
-            paths[label] = session[label]
+        paths[label] = session.get(label, '')
     return render_template("search.html", labels=labels, paths=paths)
 
 @search.route('/search_res')
