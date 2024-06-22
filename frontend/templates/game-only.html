@@ -223,10 +223,10 @@
             const loading = document.querySelector('.loading');
 
             close.addEventListener('click', function() {
-                bg.style.display = 'none';
-                window.style.display = 'none';
                 const canvas = document.querySelector('canvas');
                 if (canvas) {
+                    bg.style.display = 'none';
+                    window.style.display = 'none';
                     console.log("Removing chart");
                     canvas.remove();
                 }
@@ -263,15 +263,25 @@
                     }
                     console.log('Summary data:', summary_data);
                     loading.style.display = "none";
-                    const summary_chart = document.createElement('canvas');
-                    summary_chart.width = 600;
-                    summary_chart.height = 600;
-                    close.parentNode.insertBefore(summary_chart, close);
-                    var pieChart = new Chart(summary_chart, {
-                        type: 'pie',
-                        data: summary_data
-                    });
-                    pieChart.resize(600, 600);
+                    if (summary_data['labels'].length == 0) {
+                        const error_text = document.createElement('span');
+                        error_text.textContent = "Error: no messages from user have been found. Reload page and talk with our bartender!";
+                        error_text.style.fontSize = "20px";
+                        error_text.style.top = "40%";
+                        error_text.style.position = 'relative';
+                        close.parentNode.insertBefore(error_text, close);
+                    }
+                    else {
+                        const summary_chart = document.createElement('canvas');
+                        summary_chart.width = 600;
+                        summary_chart.height = 600;
+                        close.parentNode.insertBefore(summary_chart, close);
+                        var pieChart = new Chart(summary_chart, {
+                            type: 'pie',
+                            data: summary_data
+                        });
+                        pieChart.resize(600, 600);
+                    }
                 })
             });
         });
