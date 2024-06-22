@@ -5,6 +5,18 @@ from db import db
 
 search = Blueprint('search', __name__)
 
+@search.route('/search')
+def search_page():
+    print('here')
+    session['filter'] = 'all'
+    session['search_input'] = ''
+    labels = ['view', 'theme', 'floor', 'misc', 'character']
+    paths = {}
+    for label in labels:
+        if session[label] is not None and session[label] != '':
+            paths[label] = session[label]
+    return render_template("search.html", labels=labels, paths=paths)
+
 @search.route('/search_res')
 def search_data_page():
     search_input = request.args.get('search_input')

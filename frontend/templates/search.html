@@ -8,6 +8,20 @@
 <title>Search bar</title>
 
 <div class="choice-container">
+{% for label, path in paths.items()%}
+    {%if path%}
+        <div class="box">
+            <img src="{{ url_for('static', filename='images/' + path) }}" alt="{{chair}}">
+        </div>
+    {%else%}
+        <div class="box">
+            <div class="title">{{label.capitalize()}}</div>
+            <div class="content">Choose {{label.capitalize()}}!</div>
+        </div>
+    {%endif%}
+{%endfor%}
+</div>
+<!-- <div class="choice-container">
     <div class="box" id='floor'>
         <div class="title">Floor</div>
         <div class="content">Choose Floor!</div>
@@ -32,7 +46,7 @@
         <div class="title">Character</div>
         <div class="content">Choose Character!</div>
     </div>
-</div>
+</div> -->
 
 <div>
     <a class="start-game-button" href="/game_only">Start the game!</a>

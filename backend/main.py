@@ -6,9 +6,12 @@ from search import search
 from game import game
 from flask_session import Session
 from rest_api import api
+import os
 
+static_path = os.path.abspath('./frontend/static')
+templates_path = os.path.abspath('./frontend/templates')
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder=static_path, template_folder=templates_path)
 app.config["SECRET_KEY"] = '4ae628294ab30b9ef4d89841bc9c8bec23572095ee35e12eaefa2160276aace4'
 app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{db_path}"
 app.config['SESSION_TYPE'] = 'filesystem'

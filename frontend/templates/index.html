@@ -5,6 +5,11 @@
 {% block head %}
 <title>Pour and Listen</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+<style>
+    body {
+        overflow-x: hidden;
+    }
+    </style>
 {% endblock %}
 
 {% block body %}
@@ -27,9 +32,15 @@
         <p class="group-text">By Applied Programming Group 4</p>
 
         <!--Creating login and signup buttons-->
-        <button class="start-button"; onclick="window.location.href='/login'">Login</button>
-        <br/>
-        <button class="start-button"; onclick="window.location.href='/register'">Sign Up</button>
+        {%if not is_auth%}
+            <button class="start-button"; onclick="window.location.href='/login'">Login</button>
+            <br/>
+            <button class="start-button"; onclick="window.location.href='/register'">Sign Up</button>
+        {%else%}
+            <button class="start-button"; onclick="window.location.href='/search'">Play!</button>
+            <br/>
+            <button class="start-button"; onclick="window.location.href='/logout'">Log Out</button>
+        {%endif%}
     </div>
    
 </div>

@@ -7,11 +7,8 @@ general = Blueprint('general', __name__)
 
 @general.route('/')
 def index():
-   try:
-      print(current_user.username, session.get('logged_in'))
-   except Exception:
-      print('not logged in')
-   return render_template('index.html')
+   is_auth = current_user.is_authenticated
+   return render_template('index.html', is_auth=is_auth)
 
 @general.route('/registrationsucces', methods =["GET", "POST"])
 def registrationsucces():
@@ -20,12 +17,6 @@ def registrationsucces():
 @general.route('/game', methods =["GET", "POST"])
 def game():
    return render_template('gamepage.html')
-
-@general.route('/search')
-def search_page():
-    session['filter'] = 'all'
-    session['search_input'] = ''
-    return render_template("search.html")
 
 @general.route('/summary_plot')
 def summary_plot():

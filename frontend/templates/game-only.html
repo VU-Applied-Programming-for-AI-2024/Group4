@@ -8,11 +8,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Talk to our Bartender!</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://unpkg.com/htmx.org@1.7.0"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    {% endblock %}
-    
-    {% block body %}
     <style>
         body {
             margin: 0;
@@ -51,13 +50,14 @@
             flex-direction: column;
             border-radius: 10px;
             margin-right: 15px;
-
+            max-height: 50%;
         }
 
         #messages {
             flex: 1;
             overflow-y: auto;
-            max-height: 150px;
+            max-height: 50%;
+            /* max-height: 150px; */
             margin-bottom: 10px;
             border: 1px solid #ccc;
             padding: 10px;
@@ -101,39 +101,180 @@
             background-color: #333;
             color: #fff;
         }
+
+        .popup-background{
+            background-color: #79218749;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+        .popup-window {
+            width: 800px;
+            height: 800px;
+            background-color: #ccc;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            opacity: 1;
+            display: none;
+        }
+
+        .dot1 {
+            animation: appear-dissappear 3s infinite;
+        }
+        .dot2 {
+            animation: appear-dissappear 3s infinite 1s;
+        }
+        .dot3 {
+            animation: appear-dissappear 3s infinite 2s;
+        }
+        @keyframes appear-dissappear {
+            0%, 33.33% {
+                opacity: 0;
+            }
+            33.33%, 66.66% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        .close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 32px;
+        height: 32px;
+        opacity: 0.3;
+        cursor: pointer;
+        }
+        .close:hover {
+        opacity: 1;
+        }
+        .close:before, .close:after {
+        position: absolute;
+        left: 15px;
+        content: ' ';
+        height: 33px;
+        width: 2px;
+        background-color: #333;
+        }
+        .close:before {
+        transform: rotate(45deg);
+        }
+        .close:after {
+        transform: rotate(-45deg);
+        }
+        .loading {
+            position: relative;
+            top: 50%;
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.js"></script>
 </head>
 
+{% endblock %}
+{% block body %}
+    <div class="popup-background"></div>
+    <div class="popup-window">
+        <!-- <canvas id="summary_chart" width="300px" height="300px" z-index="-10">
+        </canvas> -->
+        <div class="close"></div>
+        <div class="loading"><span>Loading</span>
+            <span class="dot1">.</span>
+            <span class="dot2">.</span>
+            <span class="dot3">.</span>
+        </div>
+    </div>
     <div id="game-container"></div>
     <div id="chat-container">
+        <button id="summary-button">Summary</button>
         <div id="messages"></div>
         <div id="chat-input">
             <input type="text" id="message-input" placeholder="Type your message...">
             <button id="send-button">Send</button>
         </div>
     </div>
-    <!-- <script>
-        var theme = "{{ theme }}";
-        var floor = "{{ floor }}";
-        var view = "{{ view }}";
-        var misc = "{{ misc }}";
-        var light = "{{ light }}";
-        console.log('Theme:', theme);
-        console.log('Floor:', floor);
-        console.log('View:', view);
-        console.log('Misc:', misc);
-        console.log('Light:', light);
-
-        // Optionally, store it in sessionStorage
-        sessionStorage.setItem('theme', theme);
-        sessionStorage.setItem('floor', floor);
-        sessionStorage.setItem('view', view);
-        sessionStorage.setItem('misc', misc);
-        sessionStorage.setItem('light', light);
-    </script> -->
     <script src="{{ url_for('static', filename='js/game_script.js') }}"></script> 
     <script src="{{ url_for('static', filename='js/chat_script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function random_color() {
+            var hex = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; ++i) {
+                color += hex[Math.floor(Math.random() * hex.length)];
+            }
+            return color;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const bg = document.querySelector('.popup-background');
+            const window = document.querySelector('.popup-window');
+            const summary = document.querySelector('#summary-button');
+            const close = document.querySelector('.close');
+            const loading = document.querySelector('.loading');
+
+            close.addEventListener('click', function() {
+                bg.style.display = 'none';
+                window.style.display = 'none';
+                const canvas = document.querySelector('canvas');
+                if (canvas) {
+                    console.log("Removing chart");
+                    canvas.remove();
+                }
+            });
+
+            summary.addEventListener('click', function() {
+                loading.style.display = 'block';
+                bg.style.display = 'block';
+                window.style.display = 'block';
+
+                var summary_data = {};
+                fetch('http://127.0.0.1:5000/summary_data', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                }).then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Received summary log:', data);
+                    
+                    summary_data['labels'] = [];
+                    summary_data['datasets'] = [{}];
+                    summary_data['datasets'][0]['data'] = [];
+                    summary_data['datasets'][0]['backgroundColor'] = [];
+                    for (var key in data) {
+                        summary_data['labels'].push(key);
+                        summary_data['datasets'][0]['data'].push(data[key]);
+                        summary_data['datasets'][0]['backgroundColor'].push(random_color())
+                    }
+                    console.log('Summary data:', summary_data);
+                    loading.style.display = "none";
+                    const summary_chart = document.createElement('canvas');
+                    summary_chart.width = 600;
+                    summary_chart.height = 600;
+                    close.parentNode.insertBefore(summary_chart, close);
+                    var pieChart = new Chart(summary_chart, {
+                        type: 'pie',
+                        data: summary_data
+                    });
+                    pieChart.resize(600, 600);
+                })
+            });
+        });
+    </script>
 {% endblock %}
 </html>
 

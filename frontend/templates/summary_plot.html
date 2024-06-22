@@ -1,12 +1,6 @@
-{% extends 'base.html' %}
-
-{% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-<title>Choose your character</title>
-{% endblock %}
-
-{% block body %}
-<canvas id="summary_chart" width="30%" height="30%"></canvas>
+<canvas id="summary_chart" width="300px" height="300px" z-index="-10">
+</canvas>
+<div class="close"></div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 function random_color() {
@@ -19,9 +13,16 @@ function random_color() {
 }
 
 var summary_chart = document.getElementById("summary_chart");
+const close = document.querySelector('.close');
+const summary = document.querySelector('#summary-button');
+const canvas = document.querySelector('canvas');
 
-// Chart.defaults.global.defaultFontFamily = "Lato";
-// Chart.defaults.global.defaultFontSize = 18;
+close.addEventListener('click', function() {
+    bg.style.display = 'none';
+    window.style.display = 'none';
+    canvas.style.display = 'none';
+});
+
 var summary_data = {};
 fetch('http://127.0.0.1:5000/summary_data', {
     method: 'GET',
@@ -36,6 +37,7 @@ fetch('http://127.0.0.1:5000/summary_data', {
 })
 .then(data => {
     console.log('Received summary log:', data);
+    
     summary_data['labels'] = [];
     summary_data['datasets'] = [{}];
     summary_data['datasets'][0]['data'] = [];
@@ -46,16 +48,12 @@ fetch('http://127.0.0.1:5000/summary_data', {
         summary_data['datasets'][0]['backgroundColor'].push(random_color())
     }
     console.log('Summary data:', summary_data);
+    summary_chart.style.zIndex = 10000;
     var pieChart = new Chart(summary_chart, {
         type: 'pie',
-        data: summary_data,
-        options: {
-            responsive: true,
-        }
+        data: summary_data
     });
-    pieChart.resize();
+    pieChart.resize(600, 600);
 })
 
 </script>
-
-{% endblock %}
