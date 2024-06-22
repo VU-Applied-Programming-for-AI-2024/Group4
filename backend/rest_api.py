@@ -39,8 +39,3 @@ def summary_data():
     messages = db.session.execute(text(f'select content from message where uid == {uid}')).all()
     messages = list(map(lambda x: x[0], messages))
     return jsonify(summarizer.analyse(messages))
-
-
-@api.route('/summary_plot')
-def summary_plot():
-    return render_template('summary_plot.html')
