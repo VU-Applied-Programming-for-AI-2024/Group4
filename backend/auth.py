@@ -32,9 +32,7 @@ def login():
 
       if user is not None and user.password == password:
          login_user(user)
-         session['logged_in'] = True
-         session['username'] = username
-         flash("Registration succeeded.", 'success')
+         flash("You've logged in. Now pick elements of environment!", 'success')
          return redirect(url_for('search.search_page'))
       else:
          flash("Login failed. Please check your login information.", 'error')
@@ -51,12 +49,12 @@ def register():
       user = User.query.filter(User.username == username).first()
 
       if user is None:
-         uid = str(int(db.session.execute(text("select max(uid) from users")).scalar()) + 1)
+         uid = str(int(db.session.execute(text("select max(cast(uid as integer)) from users")).scalar()) + 1)
          new_user = User(uid=uid, username=username, password=password)
          db.session.add(new_user)
          db.session.commit()
          flash('Success!', 'success')
-         return redirect(url_for('general.registrationsucces'))
+         return redirect(url_for('auth.login'))
          # except Exception as e:
             # flash("Password doesn't meet requirements (it must be not empty)!", "error")
       else:

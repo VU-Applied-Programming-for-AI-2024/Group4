@@ -33,9 +33,9 @@
                     <a href="/">Home</a>
                     <a href="/about">About</a>
                     <a href="/search">Search</a>
-                    {%if session.get('logged_in')%}
+                    {%if current_user.is_authenticated%}
                         <a href="/logout">Log out</a>
-                        <a>{{session.get('username')}}</a>
+                        <a>{{current_user.username}}</a>
                     {%else%}
                         <a href="/login">Log in</a>
                         <a href="/register">Sign up</a>
@@ -45,7 +45,36 @@
 
         </div>
 
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flash">
+            {% for category, message in messages %}
+                <li class="flash {{category}}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+
         {% block body %}{% endblock %}
+
+        <script>
+            const timeout = 3000;
+          
+            function hide_flash() {
+              const flash_messages = document.querySelectorAll('.flash li');
+          
+              flash_messages.forEach(message => {
+                console.log('Deleting flash messages');
+                message.style.transition = 'opacity 0.5s ease-out';
+                message.style.opacity = '0';
+                setTimeout(() => {
+                  message.remove();
+                }, 500);
+              });
+            }
+            
+            setTimeout(hide_flash, timeout);
+        </script>
 
         <script>
             function dropDown() {

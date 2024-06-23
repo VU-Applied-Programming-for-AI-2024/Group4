@@ -3,6 +3,24 @@
 /* used in base.html*/
 
 /* upload images in the background*/
+.flash {
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  list-style-type: none;
+  font-size: 70%;
+  display: inline-block;
+  width: 90%;
+}
+.flash.error {
+  /* background-color: #f8d7da; */
+  color: rgb(255, 221, 0);
+}
+.flash.success {
+  /* background-color: #cc91d5a7;  */
+  color: #00ff3cd0;
+}
 
 body {
   font-family: Georgia, serif;

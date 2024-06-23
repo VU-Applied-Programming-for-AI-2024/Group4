@@ -4,19 +4,7 @@
 
 /* upload images in the background*/
 
-.flash {
-  list-style-type: none;
-  font-size: 70%;
-  padding: 0;
-}
-.flash.error {
-  /* background-color: #f8d7da; */
-  color: rgb(255, 221, 0);
-}
-.flash.success {
-  /* background-color: #cc91d5a7;  */
-  color: #00ff3cd0;
-}
+
 
 .model_back {
   background-image: url("/static/happy_boy.png"), url('/static/happy_girl.png');

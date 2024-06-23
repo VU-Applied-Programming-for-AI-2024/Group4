@@ -7,7 +7,15 @@
 {% block head %}
 <title>Search bar</title>
 
-<div class="choice-container">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+<script src="https://unpkg.com/htmx.org@1.9.12"></script>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="choice-container" position="fixed">
 {% for label, path in paths.items()%}
     {%if path != ''%}
         <div class="box">
@@ -21,43 +29,15 @@
     {%endif%}
 {%endfor%}
 </div>
-<!-- <div class="choice-container">
-    <div class="box" id='floor'>
-        <div class="title">Floor</div>
-        <div class="content">Choose Floor!</div>
-    </div>
+<br>
+<form method="POST" action="">
+<button type="submit" class="start-game-button" hx-post="/pregame_check" hx-trigger="click">Start the game!</button>
+</form>
 
-    <div class="box" id='view'>
-        <div class="title">View</div>
-        <div class="content">Choose View!</div>
-    </div>
-
-    <div class="box" id='theme'>
-        <div class="title">Theme</div>
-        <div class="content">Choose Theme!</div>
-    </div>
-
-    <div class="box" id="misc">
-        <div class="title">Misc</div>
-        <div class="content">Choose Misc!</div>
-    </div>
-
-    <div class="box" id="character">
-        <div class="title">Character</div>
-        <div class="content">Choose Character!</div>
-    </div>
-</div> -->
-
-<div>
-    <a class="start-game-button" href="/game_only">Start the game!</a>
-</div>
+<button class="start-game-button" hx-get="/clear_search" hx-trigger="click">Clear choice</button>
 
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-<script src="https://unpkg.com/htmx.org@1.9.12"></script>
-{% endblock %}
 
-{% block body %}
 <!--Creating search container and button-->
 <div id='chair'>
     
