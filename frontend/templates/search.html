@@ -5,35 +5,14 @@
 
 
 {% block head %}
-<title>Search bar</title>
-
-<div class="choice-container">
-    <div class="box" id='floor'>
-        <div class="title">Floor</div>
-        <div class="content">Choose Floor!</div>
-    </div>
-
-    <div class="box" id='view'>
-        <div class="title">View</div>
-        <div class="content">Choose View!</div>
-    </div>
-
-    <div class="box" id='theme'>
-        <div class="title">Theme</div>
-        <div class="content">Choose Theme!</div>
-    </div>
-
-    <div class="box" id="misc">
-        <div class="title">Misc</div>
-        <div class="content">Choose Misc!</div>
-    </div>
-</div>
-
 <div>
-    <a class="start-game-button" href="/choosechar">Start the game!</a>
+    <p style="font-size: 36px; margin-top: 5%;">Welcome to Pour and Listen!</p>
+    <p>Before we're ready to enter the bar, you can select its decor below</p>
+    <p>When you're ready, just press start!</p>
+    <button class="start-game-button" href="/choosechar">Start</button>
 </div>
 
-
+<title>Search bar</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 <script src="https://unpkg.com/htmx.org@1.9.12"></script>
 {% endblock %}
@@ -41,10 +20,40 @@
 {% block body %}
 <!--Creating search container and button-->
 <div id='chair'>
+
+<p class="searchtitle" style="margin-bottom: -45px;">Selected Decor</p>
+
+<div class="choice-container">
+    <div class="box" id='floor'>
+        <div class="title">Floor</div>
+        <div class="content">Choose Floor!</div>
+    </div>
+    
+     <div class="box" id='view'>
+        <div class="title">View</div>
+        <div class="content">Choose View!</div>
+    </div>
+    
+    <div class="box" id='theme'>
+        <div class="title">Theme</div>
+        <div class="content">Choose Theme!</div>
+    </div>
+    
+    <div class="box" id="misc">
+        <div class="title">Misc</div>
+        <div class="content">Choose Misc!</div>
+    </div>
+</div>
+
+<!-- <div>
+    <button class="start-game-button" href="/choosechar">Start the game!</button>
+</div> -->
     
 </div>
+</br>
+<p class="searchtitle" >Search</p>
 <div class="search-container">
-    <input type="text" class="searchInput" placeholder="Select Furniture" name="search_input" 
+    <input type="text" class="searchInput" placeholder="Search Environment Decor" name="search_input" 
                    hx-get="/search_res" hx-trigger="keydown change delay:500ms" hx-target="#result_table">
                    <select id="filter" name="filter" hx-get="/search_res" hx-trigger="change" hx-target="#result_table">
                     <option value="all">All</option>
@@ -55,6 +64,9 @@
                     <option value="room">Room</option>
                     <option value="chair">Chair</option>
                 </select>
+</div>
+<div>
+    <p class="searchtitle" style="margin-bottom: 15px;">Search Results:</p>
 </div>
 
 <div class="searchResults">
