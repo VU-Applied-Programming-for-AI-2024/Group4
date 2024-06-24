@@ -15,7 +15,18 @@
 
 {% block body %}
 
-<div class="choice-container" position="fixed">
+<div>
+    <p style="font-size: 36px; margin-top: 5%;">Welcome to Pour and Listen!</p>
+    <p>Before we're ready to enter the bar, you can select its decor below.</p>
+    <p>When you're ready, just press start!</p>
+    <form method="POST" action="">
+        <button type="submit" class="start-game-button" hx-post="/pregame_check" hx-trigger="click">Start</button>
+    </form>
+</div>
+
+<p class="searchtitle" style="margin-bottom: -45px;">Selected Decor</p>
+
+<div class="choice-container" position="fixed" style="margin-bottom: -35px;">
 {% for label, path in paths.items()%}
     {%if path != ''%}
         <div class="box">
@@ -30,11 +41,11 @@
 {%endfor%}
 </div>
 <br>
-<form method="POST" action="">
+<!-- <form method="POST" action="">
 <button type="submit" class="start-game-button" hx-post="/pregame_check" hx-trigger="click">Start the game!</button>
-</form>
+</form> -->
 
-<button class="start-game-button" hx-get="/clear_search" hx-trigger="click">Clear choice</button>
+<button class="start-game-button" hx-get="/clear_search" hx-trigger="click" style="margin-top: -40px; margin-bottom: 30px;">Clear choice</button>
 
 
 
@@ -42,8 +53,9 @@
 <div id='chair'>
     
 </div>
+<p class="searchtitle" >Search</p>
 <div class="search-container">
-    <input type="text" class="searchInput" placeholder="Select items" name="search_input" 
+    <input type="text" class="searchInput" placeholder="Select environment decor" name="search_input" 
                    hx-get="/search_res" hx-trigger="keydown change delay:500ms" hx-target="#result_table">
                    <select id="filter" name="filter" hx-get="/search_res" hx-trigger="change" hx-target="#result_table">
                     <option value="all">All</option>
@@ -53,6 +65,10 @@
                     <option value="misc">Misc</option>
                     <option value="character">Character</option>
                 </select>
+</div>
+
+<div>
+    <p class="searchtitle" style="margin-bottom: 15px;">Search Results:</p>
 </div>
 
 <div class="searchResults">

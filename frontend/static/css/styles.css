@@ -76,6 +76,15 @@
 }
 
 
+.searchtitle {
+  padding-top: 36px;
+  margin-top: 20px;
+  font-size: 36px;
+  padding-bottom: -20px;
+  margin-bottom: -95px;
+  color: rgb(255, 221, 0);
+  position: relative;
+}
 
 
 
