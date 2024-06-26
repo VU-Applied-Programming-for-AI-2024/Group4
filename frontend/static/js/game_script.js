@@ -3,12 +3,12 @@
 // BootScene class handles the inirial loading of assets and transitions to the GameScene
 class BootScene extends Phaser.Scene {
     constructor() {
-        super({ key: 'BootScene' }); // Call the parent class constructor with the scene key
+        super({ key: 'BootScene' }); // Call the Phaser.Scene constructor with a unique key 'BootScene'
     }
 
     // This method loads assets before the game starts
     preload() {
-        var env = {}; // object to hold environment data
+        var env = {}; // empty object created to hold environment data
         // fetch('http://localhost:5000/session', {
         fetch('http://127.0.0.1:5000/session', {
             method: 'GET',
@@ -112,7 +112,7 @@ class GameScene extends Phaser.Scene {
     }
 }
 
-let game;
+let game; // Variable declaration
 
 // Initializes the game when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function () {
