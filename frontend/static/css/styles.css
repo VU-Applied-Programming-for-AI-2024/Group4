@@ -5,6 +5,12 @@
 /* upload images in the background*/
 
 
+/* pixel font */
+.jersey-10-regular {
+  font-family: "Jersey 10", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
 .model_back {
   background-image: url("/static/happy_boy.png"), url('/static/happy_girl.png');
