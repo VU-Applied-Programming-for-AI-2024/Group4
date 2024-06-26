@@ -5,14 +5,17 @@
 <!DOCTYPE html>
 <html lang="en">
     {% block head %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">  <!-- Character encoding for the document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Viewport settings for responsive design -->
     <title>Talk to our Bartender!</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://unpkg.com/htmx.org@1.7.0"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <style>
+    <!-- External resources -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Link to Font Awesome CSS for icons -->
+    <script src="https://unpkg.com/htmx.org@1.7.0"></script> <!-- Link to HTMX library for HTML-over-the-wire functionality -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> <!-- Link to external CSS file -->
+
+    <!-- Internal CSS styles -->
+    <style> 
         body {
             margin: 0;
             padding: 0;
@@ -53,7 +56,8 @@
             max-height: 50%;
         }
 
-        #messages {
+        /* Styles for messages area in chat container */
+        #messages { 
             flex: 1;
             overflow-y: auto;
             max-height: 50%;
@@ -63,7 +67,8 @@
             padding: 10px;
         }
 
-        #messages p{
+        /* Styles for individual messages */
+        #messages p{ 
             display: block;
             margin: 0.5em 0;
             padding: 0.5em;
@@ -72,11 +77,13 @@
             word-wrap: break-word;
         }
 
+        /* Styles for chat input area */
         #chat-input {
             display: flex;
         }
 
-        #chat-input input {
+        /* Styles for chat input field */
+        #chat-input input { 
             flex: 1;
             padding: 10px;
             border: 1px solid #ccc;
@@ -93,6 +100,7 @@
             cursor: pointer;
         }
 
+        /* Hover effect for send button */
         #chat-input button:hover {
             background: #218838; /* Darker shade for hover effect */
         }
@@ -125,6 +133,7 @@
             display: none;
         }
 
+        /* Animation styles for loading dots */
         .dot1 {
             animation: appear-dissappear 3s infinite;
         }
@@ -145,6 +154,8 @@
                 opacity: 0;
             }
         }
+
+        /* Styles for close button in popup window */
         .close {
         position: absolute;
         right: 0;
@@ -176,7 +187,7 @@
             top: 50%;
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.js"></script>  <!-- Link to Phaser library -->
 </head>
 
 {% endblock %}
@@ -185,7 +196,7 @@
     <div class="popup-window">
         <!-- <canvas id="summary_chart" width="300px" height="300px" z-index="-10">
         </canvas> -->
-        <div class="close"></div>
+        <div class="close"></div> <!-- Close button for popup window -->
         <div class="loading"><span>Loading</span>
             <span class="dot1">.</span>
             <span class="dot2">.</span>

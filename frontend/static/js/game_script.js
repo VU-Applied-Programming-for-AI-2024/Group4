@@ -1,11 +1,14 @@
+// This script handles the game container using the Phaser library
+
+// BootScene class handles the inirial loading of assets and transitions to the GameScene
 class BootScene extends Phaser.Scene {
     constructor() {
-        super({ key: 'BootScene' });
+        super({ key: 'BootScene' }); // Call the Phaser.Scene constructor with a unique key 'BootScene'
     }
 
-    // loading images
+    // This method loads assets before the game starts
     preload() {
-        var env = {};
+        var env = {}; // empty object created to hold environment data
         // fetch('http://localhost:5000/session', {
         fetch('http://127.0.0.1:5000/session', {
             method: 'GET',
@@ -39,21 +42,25 @@ class BootScene extends Phaser.Scene {
 
         console.log("Loading assets...");
 
+        // Load static images for the boy and girl sprites
         this.load.image('boy', '/static/images/boy.png');
         this.load.image('girl', '/static/images/girl.png');
     }
 
+    // Create method starts the GameScene after assets are loaded
     create() {
         console.log("Assets loaded, starting GameScene...");
-        this.scene.start('GameScene');
+        this.scene.start('GameScene'); // Transition to GameScene
     }
 }
 
+// GameScene class handles the main game logic and rendering
 class GameScene extends Phaser.Scene {
     constructor() {
-        super({ key: 'GameScene' });
+        super({ key: 'GameScene' }); // Call Phaser.Scene constructor with unique key
     }    
 
+    // Create method sets up game scene
     create() {
         console.log("Creating GameScene...");
 
@@ -71,18 +78,22 @@ class GameScene extends Phaser.Scene {
         // Set world bounds to match the size of the game
         this.physics.world.setBounds(0, 0, this.sys.game.config.width, this.sys.game.config.height);
 
+        // Add player sprite to the scene and position it at the center
         this.player = this.physics.add.sprite(this.sys.game.config.width / 2, this.sys.game.config.height / 2, 'character');
         this.player.setScale(0.08);
 
         // Make the player collide with the world bounds
         this.player.setCollideWorldBounds(true);
 
+        // Create cursor keys for player movement
         this.cursors = this.input.keyboard.createCursorKeys();
     }
 
+    // Update method to handle game logic that needs to run every frame
     update() {
-        this.player.setVelocity(0);
+        this.player.setVelocity(0); // Reset player velocity
 
+        // Check for cursor key presses and set the player's velocity in the right direction
         if (this.cursors.left.isDown) {
             this.player.setVelocityX(-300);
             this.player.anims.play('left', true);
@@ -96,28 +107,30 @@ class GameScene extends Phaser.Scene {
             this.player.setVelocityY(300);
             this.player.anims.play('down', true);
         } else {
-            this.player.anims.stop();
+            this.player.anims.stop(); // Stop animation if no key is pressed
         }
     }
 }
 
-let game;
+let game; // Variable declaration
 
+// Initializes the game when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function () {
     const config = {
         type: Phaser.AUTO,
         width: 800,
         height: 600,
-        scene: [BootScene, GameScene],
+        scene: [BootScene, GameScene], // Define the scenes to use
         physics: {
-            default: 'arcade',
+            default: 'arcade', // arcade physics engine
             arcade: {
-                gravity: { y: 0 },
+                gravity: { y: 0 }, // No gravity since this is a top-down view game
                 debug: false
             }
         },
-        parent: 'game-container'
+        parent: 'game-container' // Specify the parent HTML element
     };
 
+    // Create new Phaser game with the defined configuration
     game = new Phaser.Game(config);
 });
