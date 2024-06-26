@@ -17,7 +17,7 @@
 
 <div>
     <p style="font-size: 36px; margin-top: 5%;">Welcome to Pour and Listen!</p>
-    <p>Before we're ready to enter the bar, you can select its decor below.</p>
+    <p>Before you're ready to enter the bar, remember to login and select the bar's decor below.</p>
     <p>When you're ready, just press start!</p>
     <form method="POST" action="">
         <button type="submit" class="start-game-button" hx-post="/pregame_check" hx-trigger="click">Start</button>
@@ -45,18 +45,20 @@
 <button type="submit" class="start-game-button" hx-post="/pregame_check" hx-trigger="click">Start the game!</button>
 </form> -->
 
-<button class="start-game-button" hx-get="/clear_search" hx-trigger="click" style="margin-top: -40px; margin-bottom: 30px;">Clear choice</button>
+<button class="start-game-button" hx-get="/clear_search" hx-trigger="click" style="margin-top: -40px; margin-bottom: 50px;">Clear choice</button>
 
 
 
 <!--Creating search container and button-->
+<p class="searchtitle" style="margin-top: 10px;">Search</p>
 <div id='chair'>
     
 </div>
-<p class="searchtitle" >Search</p>
-<div class="search-container">
+<div class="search-container" style="margin-top:10px">
+    <!--Creating search input place-->
     <input type="text" class="searchInput" placeholder="Select environment decor" name="search_input" 
                    hx-get="/search_res" hx-trigger="keydown change delay:500ms" hx-target="#result_table">
+                   <!--Creating search filter dropdown-->
                    <select id="filter" name="filter" hx-get="/search_res" hx-trigger="change" hx-target="#result_table">
                     <option value="all">All</option>
                     <option value="theme">Theme</option>
@@ -67,10 +69,12 @@
                 </select>
 </div>
 
+<!--Creating search results title-->
 <div>
     <p class="searchtitle" style="margin-bottom: 15px;">Search Results:</p>
 </div>
 
+<!--Inputting search results-->
 <div class="searchResults">
     <table>
         <thead>
