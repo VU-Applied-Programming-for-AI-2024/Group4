@@ -14,3 +14,10 @@ Message summary model is not performing well and may not represent actuality.
 
 ## Requirements
 Requirements file can be found in backend folder, please use official python3.11.9.
+
+
+## Instructions
+1) Install dependencies;
+2) Open backend folder;
+3) Run main.py;
+4) Enjoy!
